@@ -1,0 +1,986 @@
+<!DOCTYPE html>
+<html lang="sr-Latn">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Nataša Rakić — Smršaj bez gladovanja | 15-dnevni izazov</title>
+<meta name="description" content="Pre 5 godina sam imala 120kg. Danas držim kilažu i jedem i hleb i slatkiše. Pomogla sam 1.000+ žena. Za 15 dana pokazaću ti kako — bez izbacivanja namirnica i brojanja kalorija." />
+
+<!-- Fonts: Anton (display), Inter (body), Caveat (accent). latin-ext subset is served automatically for š đ č ć ž -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&family=Caveat:wght@500;700&display=swap" rel="stylesheet" />
+
+<link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+
+<!-- ============================================================ -->
+<!-- STICKY HEADER: announcement bar + nav                         -->
+<!-- ============================================================ -->
+<header class="site-header" id="top">
+
+  <!-- Urgency announcement bar -->
+  <div class="announce">
+    <div class="container announce__inner">
+      <span class="announce__text">
+        <strong class="u-red">Cena raste u ponedeljak 8. juna:</strong>
+        150€ <span aria-hidden="true">→</span> 200€
+      </span>
+      <span class="announce__count u-red" data-countmini aria-label="Vreme do poskupljenja">--d --:--:--</span>
+    </div>
+  </div>
+
+  <!-- Navigation -->
+  <nav class="nav" aria-label="Glavna navigacija">
+    <div class="container nav__inner">
+      <a href="#top" class="nav__logo">Nataša&nbsp;Rakić</a>
+
+      <ul class="nav__links">
+        <li><a href="#pocetak">Početak</a></li>
+        <li><a href="#prica">Moja priča</a></li>
+        <li><a href="#kako">Kako radi</a></li>
+        <li><a href="#rezultati">Rezultati</a></li>
+        <li><a href="#cena">Cena</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+
+      <a href="#cena" class="btn btn--cta nav__cta">Prijavi se</a>
+
+      <button class="nav__toggle" id="navToggle" aria-label="Otvori meni" aria-expanded="false" aria-controls="navMobile">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+
+    <!-- Mobile menu -->
+    <div class="nav__mobile" id="navMobile" hidden>
+      <a href="#pocetak">Početak</a>
+      <a href="#prica">Moja priča</a>
+      <a href="#kako">Kako radi</a>
+      <a href="#rezultati">Rezultati</a>
+      <a href="#cena">Cena</a>
+      <a href="#faq">FAQ</a>
+      <a href="#cena" class="btn btn--cta btn--block">Prijavi se</a>
+    </div>
+  </nav>
+</header>
+
+<main>
+
+  <!-- ============================================================ -->
+  <!-- HERO (dark)                                                  -->
+  <!-- ============================================================ -->
+  <section class="section section--dark hero" id="pocetak">
+    <div class="container hero__grid">
+      <div class="hero__copy">
+        <p class="pill reveal">Za žene koje su probale sve, i svaki put se vratile na početak.</p>
+
+        <h1 class="reveal">PRE 5 GODINA SAM IMALA <span class="hl">120 KILOGRAMA.</span></h1>
+
+        <p class="lede reveal">
+          Danas držim svoju kilažu od 58kg. Jedem i hleb i slatkiše. Pomogla sam
+          <span class="hl-mag">1.000+ žena</span> da smršaju od 5 do 40kg. Bez izbacivanja
+          namirnica, bez brojanja kalorija, bez iscrpljujućih dijeta. Za 15 dana pokazaću ti kako.
+        </p>
+
+        <div class="hero__cta reveal">
+          <a href="#cena" class="btn btn--cta btn--lg">Želim da čujem više</a>
+          <p class="micro">Cena se povećava 8. juna u ponoć.</p>
+        </div>
+
+        <ul class="stat-row reveal">
+          <li class="stat"><span class="stat__num">1.000+</span><span class="stat__lbl">žena</span></li>
+          <li class="stat"><span class="stat__num">5–40kg</span><span class="stat__lbl">skinuto</span></li>
+          <li class="stat"><span class="stat__num">5 godina</span><span class="stat__lbl">iskustva</span></li>
+        </ul>
+      </div>
+
+      <div class="hero__media reveal">
+        <div class="media-ph media-ph--portrait" role="img" aria-label="Natašina hero fotografija">
+          <span>[ Natašina hero fotografija ]</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- PROBLEM (dark)                                               -->
+  <!-- ============================================================ -->
+  <section class="section section--dark problem">
+    <div class="container container--narrow">
+      <h2 class="reveal">PROBALA SI SVE. I SVE JE <span class="hl">RADILO</span> DOK SE PRIDRŽAVAŠ.</h2>
+
+      <div class="problem__lines">
+        <p class="reveal">A onda bi prekršila.</p>
+        <p class="reveal">Vratila bi sve kilograme koje si skinula i još koji kilogram preko.</p>
+        <p class="reveal">Svaka restrikcija bi se završila prejedanjem.</p>
+        <p class="reveal">Dan - kafa, izgladnjivanje. A uveče, kad deca zaspu i kuća utihne, ideš do frižidera. Jednostavno moraš.</p>
+        <p class="reveal">I svaki ponedeljak iznova.</p>
+        <p class="reveal">Najveći strah nije da nećeš smršati. Nego da kreneš, da se ponadaš i da se opet razočaraš.</p>
+      </div>
+
+      <p class="problem__close reveal">Nisi ti slaba. Nisi poseban slučaj. <span class="hl">Samo te niko nije naučio gde tačno grešiš.</span></p>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- NATAŠA — PRIČA (light)                                       -->
+  <!-- ============================================================ -->
+  <section class="section section--light story" id="prica">
+    <div class="container story__grid">
+      <div class="story__media reveal">
+        <div class="media-ph media-ph--portrait media-ph--light" role="img" aria-label="Fotografija Nataše">
+          <span>[ Natašina fotografija — priča ]</span>
+        </div>
+      </div>
+
+      <div class="story__copy">
+        <h2 class="reveal">ZNAM <span class="hl-mag">KAKO TI JE.</span> BILA SAM DEBLJA I OČAJNIJA NEGO ŠTO MOŽEŠ DA ZAMISLIŠ.</h2>
+
+        <p class="reveal">10 godina sam se borila. Dok se nisam predala i došla do 120kg. Onda mi je, jedno za drugim, otac pa majka otišli prerano. Odnele su ih posledice gojaznosti. A ja sam već pila lekove za iste te bolesti.</p>
+
+        <p class="reveal">Imala sam 4 male dece. I pomislila: šta će oni ako ja više ne budem mogla? To je bio trenutak kad sam rekla — dosta. Naći ću način.</p>
+
+        <p class="reveal">Potrošila sam preko <span class="hl-mag">50.000€</span> za 10 godina. Dijete, nutricioniste, klinike, preparati. Svaki put krenula od nule. Dok nisam shvatila <strong>3 greške</strong> koje su me sve to vreme držale u krugu.</p>
+
+        <p class="reveal">Kad sam ih ispravila — sve se promenilo. Danas, 5 godina kasnije, držim kilažu. Jedem hleb. Jedem slatkiše. Bez muke. Kroz isti taj sistem provela sam <span class="hl-mag">1.000+ žena</span>.</p>
+
+        <p class="signature reveal">— Nataša</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- 3 GREŠKE (dark)                                              -->
+  <!-- ============================================================ -->
+  <section class="section section--dark mistakes">
+    <div class="container">
+      <h2 class="centered reveal">3 GREŠKE KOJE TE DRŽE U <span class="hl">ZAČARANOM KRUGU.</span></h2>
+
+      <div class="mistakes__grid">
+        <article class="mistake-card reveal">
+          <div class="mistake-card__num">#1</div>
+          <h3>Lista zabranjenih namirnica.</h3>
+          <p>Hleb. Slatkiši. Sve što „ne smeš". Ali čim pojedeš, ne možeš da staneš. Kad nešto zabraniš, mozak to hoće još više.</p>
+          <p>Ja danas jedem hleb i slatkiše i ne razmišljam o tome. Ne goji hleb uz obrok, nego umesto obroka. Ne goji slatkiš kao užina, nego kad svučeš celu Milku jer si gladna.</p>
+        </article>
+
+        <article class="mistake-card reveal">
+          <div class="mistake-card__num">#2</div>
+          <h3>Vaga, aplikacija, jelovnik na frižideru.</h3>
+          <p>Ideš, meriš, pratiš. A onda dođe slava, putovanje, stres. Plan ne računa na realan život ... zato uvek pukne.</p>
+          <p>Ni jedan plan te ne uči kako da živiš posle, kad se plan završi. Nisi naučila da jedeš. Naučila si da pratiš tabelu.</p>
+        </article>
+
+        <article class="mistake-card reveal">
+          <div class="mistake-card__num">#3</div>
+          <h3>Gladovanje i praškovi.</h3>
+          <p>Telo koje gladuje ne mršavi ... ono preživljava. Čuva svaki gram. Kalorijski deficit zvuči pametno i provereno. Ali tvoje telo nije matematika.</p>
+          <p>Ti si žena koja ima težak dan u sredu. Slavlje u petak. I koja kasno uveče ostane sama sa svojim mislima i frižiderom.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- VIDEO TESTIMONIAL #1 — BRANKA (dark)                         -->
+  <!-- ============================================================ -->
+  <section class="section section--dark vsection" id="rezultati">
+    <div class="container container--narrow">
+      <article class="vcard reveal">
+        <span class="vcard__badge">▶ VIDEO · BRANKA</span>
+        <h3 class="vcard__trigger">Ako odjednom kreneš da jedeš i ne možeš da staneš, pogledaj Branku.</h3>
+
+        <div class="vcard__video" role="img" aria-label="Video svedočanstvo: Branka">
+          <button class="vcard__play" aria-label="Pusti video">▶</button>
+          <span class="vcard__phlabel">[ VIDEO: Branka ]</span>
+        </div>
+
+        <div class="vcard__caption">
+          <p class="vcard__quote">„Jela sam pleh trilića. Sama. Nisam mogla da stanem."</p>
+          <p class="vcard__result">Skinula <span class="hl-mag">−20kg</span></p>
+          <p class="vcard__quote">„Ako sam ja mogla, sigurno možeš i ti."</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- REŠENJE — SISTEM OD 3 KORAKA (light)                         -->
+  <!-- ============================================================ -->
+  <section class="section section--light steps" id="kako">
+    <div class="container">
+      <h2 class="centered reveal">NISAM SMRŠALA <span class="hl-mag">SLUČAJNO.</span></h2>
+      <p class="steps__intro centered reveal">
+        Svaki mesec moje polaznice dokazuju da sistem radi. Od 20 do 80 godina.
+        Od 5 do 65kg viška. IR, dijabetes, Hašimoto — nema izuzetaka.
+      </p>
+
+      <ol class="steps__grid">
+        <li class="step reveal">
+          <span class="step__num">1</span>
+          <h3>STRUKTURA</h3>
+          <p>Okvir koji drži kad sve ostalo pukne. Ne jelovnik, ne lista zabrana. Znaš kada jedeš, koliko i zašto. Ne raspadne se kad dođe slavlje ili kad si umorna - jer nije pravljen za idealne uslove, nego za tvoj život.</p>
+        </li>
+        <li class="step reveal">
+          <span class="step__num">2</span>
+          <h3>ISHRANA</h3>
+          <p>Kad se hraniš izbalansirano, nisi gladna. Više namirnica, manje proizvoda ... to je cela priča. Bez vaganja, bez kalorija. I onda možeš da pojedeš slatkiš bez krivice.</p>
+        </li>
+        <li class="step reveal">
+          <span class="step__num">3</span>
+          <h3>NAVIKE</h3>
+          <p>Dijete ne traju jer traže volju svaki dan. Navika ne traži volju, ona je kao pranje zuba. Gradi se ponavljanjem. Za mesec postane rutina, a za dva ne razmišljaš više o tome.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- ŠTA JE IZAZOV (dark)                                         -->
+  <!-- ============================================================ -->
+  <section class="section section--dark challenge">
+    <div class="container container--narrow">
+      <h2 class="centered reveal"><span class="hl">15 DANA.</span> JA UZ TEBE SVAKI DAN.</h2>
+
+      <ul class="checklist reveal">
+        <li>Svaki dan jasne lekcije i zadatak</li>
+        <li>Praviš svoju ishranu i šalješ mi je — gledam je i govorim ti šta da popraviš</li>
+        <li>Odgovaram na sva pitanja — nisi sama ni jednog dana</li>
+        <li>2 live predavanja <span class="muted">(ostaje snimak)</span></li>
+      </ul>
+
+      <p class="challenge__line reveal">
+        Post, slava, rođendan, posao, put, deca — ništa te više neće sprečiti.
+        Jer sistem radi u realnom životu. A za 15 dana naučiš da to izvodiš sama.
+      </p>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- VIDEO TESTIMONIAL #2 — KATARINA (dark)                       -->
+  <!-- ============================================================ -->
+  <section class="section section--dark vsection">
+    <div class="container container--narrow">
+      <article class="vcard reveal">
+        <span class="vcard__badge">▶ VIDEO · KATARINA</span>
+        <h3 class="vcard__trigger">Ako noću ideš do frižidera kad svi zaspu...pogledaj Katarinu.</h3>
+
+        <div class="vcard__video" role="img" aria-label="Video svedočanstvo: Katarina">
+          <button class="vcard__play" aria-label="Pusti video">▶</button>
+          <span class="vcard__phlabel">[ VIDEO: Katarina ]</span>
+        </div>
+
+        <div class="vcard__caption">
+          <p>Tri trudnoće. Slatkiši koje ranije nije ni volela. Silazila noću do frižidera. Danas sve uklopi: troje dece, posao, smene.</p>
+          <p class="vcard__quote">„Ne treba da se boje. Samo da krenu."</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- ŠTA DOBIJAŠ + BONUSI (light)                                 -->
+  <!-- ============================================================ -->
+  <section class="section section--light offer">
+    <div class="container">
+      <h2 class="centered reveal">15 DANA <span class="hl-mag">+ 3 POKLONA.</span></h2>
+
+      <ul class="offer__list reveal">
+        <li>Svaki dan jasne lekcije i zadatak</li>
+        <li>Praviš svoju ishranu i šalješ mi je — gledam je i govorim ti šta da popraviš</li>
+        <li>Odgovaram na sva pitanja — nisi sama ni jednog dana</li>
+        <li>2 live predavanja (ostaje snimak)</li>
+      </ul>
+
+      <div class="bonus-grid">
+        <article class="bonus-card reveal">
+          <span class="bonus-card__tag">Poklon #1</span>
+          <h3>PRIRUČNIK</h3>
+          <p>Rešenje za svaku situaciju: šta na tanjir i koliko, ishrana bez vremena, šta kad si u PMS-u / stresu / kad pukneš, kako zaustaviti večernje prejedanje.</p>
+        </article>
+        <article class="bonus-card reveal">
+          <span class="bonus-card__tag">Poklon #2</span>
+          <h3>MASTERKLAS <span class="bonus-card__meta">(6,5h)</span></h3>
+          <p>Kompletan autorski način ishrane, korak po korak.</p>
+        </article>
+        <article class="bonus-card reveal">
+          <span class="bonus-card__tag">Poklon #3</span>
+          <h3>SNIMLJENI PROGRAM <span class="bonus-card__meta">(4 nedelje)</span></h3>
+          <p>Ranije <s>100€</s>. Tvoj je, <span class="hl-mag">gratis</span>.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- ZA KOGA JESTE / NIJE (dark)                                  -->
+  <!-- ============================================================ -->
+  <section class="section section--dark fit">
+    <div class="container">
+      <h2 class="centered reveal">DA BUDEM ISKRENA — OVO <span class="hl">NIJE ZA SVAKOGA.</span></h2>
+
+      <div class="fit__grid">
+        <div class="fit__col fit__col--no reveal">
+          <h3 class="fit__title">NIJE za tebe ako:</h3>
+          <ul class="fit__list">
+            <li>Tražiš gotov jelovnik koji pratiš bez razmišljanja</li>
+            <li>Hoćeš brz rezultat bez ikakve promene</li>
+            <li>Čekaš čarobnu tabletu</li>
+          </ul>
+        </div>
+
+        <div class="fit__col fit__col--yes reveal">
+          <h3 class="fit__title">JESTE za tebe ako:</h3>
+          <ul class="fit__list">
+            <li>Probala si sve i uvek se vraćaš na početak — i spremna si da razumeš zašto</li>
+            <li>Hoćeš da jedeš normalno i mršaviš, bez gladovanja</li>
+            <li>Hoćeš nekoga uz tebe svaki dan — ne da te grdi, nego da te vodi</li>
+            <li>Hoćeš sistem koji radi čak i kad ne ide sve savršeno</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- VIDEO TESTIMONIAL #3 — ALEKSANDRA (dark)                     -->
+  <!-- ============================================================ -->
+  <section class="section section--dark vsection">
+    <div class="container container--narrow">
+      <article class="vcard reveal">
+        <span class="vcard__badge">▶ VIDEO · ALEKSANDRA</span>
+        <h3 class="vcard__trigger">Ako te najviše plaši da ćeš se za mesec vratiti na staro — pogledaj Aleksandru.</h3>
+
+        <div class="vcard__video" role="img" aria-label="Video svedočanstvo: Aleksandra">
+          <button class="vcard__play" aria-label="Pusti video">▶</button>
+          <span class="vcard__phlabel">[ VIDEO: Aleksandra ]</span>
+        </div>
+
+        <div class="vcard__caption">
+          <p>Za 4–5 nedelja toliko se promenila da ne prepoznaje osobu koja je bila. Strah od povratka na staro? Nema ga.</p>
+          <p class="vcard__quote">„Nisi nam dala jelovnik na tacni — dala si nam način razmišljanja da sami sebi pomognemo."</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- VIDEO TESTIMONIAL #4 — CRNOKOSA (brz rezultat) (dark)        -->
+  <!-- ============================================================ -->
+  <section class="section section--dark vsection">
+    <div class="container container--narrow">
+      <article class="vcard reveal">
+        <span class="vcard__badge">▶ VIDEO · BRZ REZULTAT</span>
+        <h3 class="vcard__trigger">Ako se pitaš da li se rezultat vidi brzo, pogledaj Mariju.</h3>
+
+        <div class="vcard__video" role="img" aria-label="Video svedočanstvo: brz rezultat posle 2 nedelje">
+          <button class="vcard__play" aria-label="Pusti video">▶</button>
+          <span class="vcard__phlabel">[ VIDEO: Crnokosa ]</span>
+        </div>
+
+        <div class="vcard__caption">
+          <p>Krenula sa 111kg — posle 2 nedelje 105kg. <span class="hl-mag">−6kg</span>. Nije gladna, slatko joj se više ne jede.</p>
+          <p class="vcard__quote">„Kad mi se ne jede — zašto bih uzela?"</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- WALL OF THANK-YOU MESSAGES (dark) — volume social proof       -->
+  <!-- Privacy: ensure surnames/profile pics are blurred before      -->
+  <!-- publishing; only use with client consent.                     -->
+  <!-- FORMAT TOGGLE on .wall:                                        -->
+  <!--   data-format="b" = re-rendered chat bubbles (default, crisp)  -->
+  <!--   data-format="a" = raw screenshots in phone frames + lightbox -->
+  <!-- To use real screenshots: set data-format="a" and replace each  -->
+  <!-- .wall-shot__ph with <img src="..." alt="Poruka zahvalnosti">.  -->
+  <!-- ============================================================ -->
+  <section class="section section--dark wall-sec" id="dokazi">
+    <div class="container">
+      <div class="wall-head">
+        <span class="wall-eyebrow">Dokazi</span>
+        <h2 class="reveal">STIGLE SU MI <span class="hl">HILJADE</span> OVAKVIH PORUKA.</h2>
+        <p class="wall-sub reveal">Žene mi pišu svaki dan. Ovo su samo neke od njih — bez montaže, bez ulepšavanja.</p>
+      </div>
+
+      <div class="wall" data-format="b">
+
+        <!-- Card 1 -->
+        <figure class="wall-card reveal">
+          <button type="button" class="wall-card__shot" data-shot="1" aria-label="Uvećaj poruku 1">
+            <span class="wall-shot__ph">[Screenshot poruke 1]</span>
+          </button>
+          <div class="wall-card__bubble">
+            <p class="wall-bubble__msg">Nataša, skinula sam −7kg a jela sam skroz normalno — i hleb i sve. Još ne verujem.</p>
+            <div class="wall-card__who"><span class="wall-bubble__avatar">MP</span><span class="wall-bubble__name">Marija P. <i class="wall-bubble__check" aria-label="potvrđeno">✓</i></span></div>
+          </div>
+          <figcaption class="wall-card__win">−7kg, a jela sam normalno</figcaption>
+        </figure>
+
+        <!-- Card 2 -->
+        <figure class="wall-card reveal">
+          <button type="button" class="wall-card__shot" data-shot="2" aria-label="Uvećaj poruku 2">
+            <span class="wall-shot__ph">[Screenshot poruke 2]</span>
+          </button>
+          <div class="wall-card__bubble">
+            <p class="wall-bubble__msg">Prvi put da ne ustajem noću do frižidera. Spavam celu noć kao beba.</p>
+            <div class="wall-card__who"><span class="wall-bubble__avatar">JS</span><span class="wall-bubble__name">Jelena S. <i class="wall-bubble__check" aria-label="potvrđeno">✓</i></span></div>
+          </div>
+          <figcaption class="wall-card__win">Prvi put da ne ustajem noću do frižidera</figcaption>
+        </figure>
+
+        <!-- Card 3 -->
+        <figure class="wall-card reveal">
+          <button type="button" class="wall-card__shot" data-shot="3" aria-label="Uvećaj poruku 3">
+            <span class="wall-shot__ph">[Screenshot poruke 3]</span>
+          </button>
+          <div class="wall-card__bubble">
+            <p class="wall-bubble__msg">Imam energiju kakvu nisam imala godinama. Deca pitaju šta mi se desilo.</p>
+            <div class="wall-card__who"><span class="wall-bubble__avatar">DM</span><span class="wall-bubble__name">Dragana M. <i class="wall-bubble__check" aria-label="potvrđeno">✓</i></span></div>
+          </div>
+          <figcaption class="wall-card__win">Imam energiju kakvu nisam imala godinama</figcaption>
+        </figure>
+
+        <!-- Card 4 -->
+        <figure class="wall-card reveal">
+          <button type="button" class="wall-card__shot" data-shot="4" aria-label="Uvećaj poruku 4">
+            <span class="wall-shot__ph">[Screenshot poruke 4]</span>
+          </button>
+          <div class="wall-card__bubble">
+            <p class="wall-bubble__msg">Konačno mi stoji garderoba koju godinama nisam mogla da obučem.</p>
+            <div class="wall-card__who"><span class="wall-bubble__avatar">AT</span><span class="wall-bubble__name">Ana T. <i class="wall-bubble__check" aria-label="potvrđeno">✓</i></span></div>
+          </div>
+          <figcaption class="wall-card__win">Konačno mi stoji garderoba iz ormara</figcaption>
+        </figure>
+
+        <!-- Card 5 -->
+        <figure class="wall-card reveal">
+          <button type="button" class="wall-card__shot" data-shot="5" aria-label="Uvećaj poruku 5">
+            <span class="wall-shot__ph">[Screenshot poruke 5]</span>
+          </button>
+          <div class="wall-card__bubble">
+            <p class="wall-bubble__msg">Vratila sam se s mora — i smršala, umesto da se ugojim. Neverovatno!</p>
+            <div class="wall-card__who"><span class="wall-bubble__avatar">SR</span><span class="wall-bubble__name">Snežana R. <i class="wall-bubble__check" aria-label="potvrđeno">✓</i></span></div>
+          </div>
+          <figcaption class="wall-card__win">Smršala i na moru, ne ugojila se</figcaption>
+        </figure>
+
+        <!-- Card 6 -->
+        <figure class="wall-card reveal">
+          <button type="button" class="wall-card__shot" data-shot="6" aria-label="Uvećaj poruku 6">
+            <span class="wall-shot__ph">[Screenshot poruke 6]</span>
+          </button>
+          <div class="wall-card__bubble">
+            <p class="wall-bubble__msg">Najlepše od svega: ne gladujem, a kilogrami i dalje padaju. Ovo mogu da održim.</p>
+            <div class="wall-card__who"><span class="wall-bubble__avatar">IK</span><span class="wall-bubble__name">Ivana K. <i class="wall-bubble__check" aria-label="potvrđeno">✓</i></span></div>
+          </div>
+          <figcaption class="wall-card__win">Bez gladovanja — i dalje mršavim</figcaption>
+        </figure>
+
+        <!-- Card 7 -->
+        <figure class="wall-card reveal">
+          <button type="button" class="wall-card__shot" data-shot="7" aria-label="Uvećaj poruku 7">
+            <span class="wall-shot__ph">[Screenshot poruke 7]</span>
+          </button>
+          <div class="wall-card__bubble">
+            <p class="wall-bubble__msg">Imam Hašimoto i 58 godina. Mislila sam da kod mene ne može — a ide mi.</p>
+            <div class="wall-card__who"><span class="wall-bubble__avatar">ZV</span><span class="wall-bubble__name">Zorica V. <i class="wall-bubble__check" aria-label="potvrđeno">✓</i></span></div>
+          </div>
+          <figcaption class="wall-card__win">Hašimoto, 58 godina, i ide mi</figcaption>
+        </figure>
+
+        <!-- Card 8 -->
+        <figure class="wall-card reveal">
+          <button type="button" class="wall-card__shot" data-shot="8" aria-label="Uvećaj poruku 8">
+            <span class="wall-shot__ph">[Screenshot poruke 8]</span>
+          </button>
+          <div class="wall-card__bubble">
+            <p class="wall-bubble__msg">Muž i deca kažu da sam nasmejanija i srećnija. To mi znači najviše.</p>
+            <div class="wall-card__who"><span class="wall-bubble__avatar">MJ</span><span class="wall-bubble__name">Milica J. <i class="wall-bubble__check" aria-label="potvrđeno">✓</i></span></div>
+          </div>
+          <figcaption class="wall-card__win">Deca primetila da sam srećnija</figcaption>
+        </figure>
+
+        <!-- Card 9 -->
+        <figure class="wall-card reveal">
+          <button type="button" class="wall-card__shot" data-shot="9" aria-label="Uvećaj poruku 9">
+            <span class="wall-shot__ph">[Screenshot poruke 9]</span>
+          </button>
+          <div class="wall-card__bubble">
+            <p class="wall-bubble__msg">Bila sam najveći skeptik. A evo dokaza — radi. Hvala ti od srca!</p>
+            <div class="wall-card__who"><span class="wall-bubble__avatar">TD</span><span class="wall-bubble__name">Tijana D. <i class="wall-bubble__check" aria-label="potvrđeno">✓</i></span></div>
+          </div>
+          <figcaption class="wall-card__win">Nisam verovala, a evo dokaza</figcaption>
+        </figure>
+
+      </div>
+
+      <p class="wall-foot reveal">…i stižu nove svaki dan.</p>
+    </div>
+  </section>
+
+  <!-- Lightbox (used by Format A raw screenshots) -->
+  <div class="lightbox" id="lightbox" hidden>
+    <div class="lightbox__backdrop" data-close></div>
+    <div class="lightbox__dialog" role="dialog" aria-modal="true" aria-label="Uvećana poruka">
+      <button type="button" class="lightbox__close" data-close aria-label="Zatvori uvećanu poruku">✕</button>
+      <img class="lightbox__img" id="lightboxImg" alt="Uvećana poruka zahvalnosti" hidden />
+      <div class="lightbox__ph" id="lightboxPh" hidden></div>
+    </div>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- VIDEO TESTIMONIAL #7 — NATAŠA (zdravlje / mogu sve) (dark)    -->
+  <!-- Final emotional proof, placed closest to the price section.   -->
+  <!-- Uses the lazy "facade" pattern: set data-yt="YOUTUBE_ID" and  -->
+  <!-- the iframe loads only on click (keeps the page fast).         -->
+  <!-- ============================================================ -->
+  <section class="section section--dark vsection">
+    <div class="container container--narrow">
+      <article class="vcard reveal">
+        <span class="vcard__badge">▶ VIDEO · ZDRAVLJE</span>
+        <h3 class="vcard__trigger">Ako ti je <span class="hl">ZDRAVLJE</span> glavni razlog — i pitaš se da li vredi — pogledaj Natašu.</h3>
+
+        <div class="vcard__video" data-yt="" role="img" aria-label="Video svedočanstvo: Nataša — zdravlje, mogu sve">
+          <!-- TODO: embed final edited video (30–45s cut) here — set data-yt on this div to the YouTube ID -->
+          <button class="vcard__play" aria-label="Pusti video">▶</button>
+          <span class="vcard__phlabel">[VIDEO: Nataša — zdravlje / mogu sve]</span>
+        </div>
+
+        <div class="vcard__caption">
+          <p><span class="hl-mag">−6kg</span>, jede sve, bez želje za slatkim. „Mogu da jedem sve, ženo, opušteno." Dođe joj jeftinije nego kako se hranila pre — i kaže da je za njeno zdravlje dugoročno pravi pogodak. Puna energije, prošetala skoro 4 sata. „Kad otvorim frižider, više ni ne razmišljam."</p>
+          <p class="vcard__quote">„Beskrajno sam zahvalna. Za moje zdravlje — pravi pogodak."</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- CENA + URGENCY (dark)                                        -->
+  <!-- ============================================================ -->
+  <section class="section section--dark price" id="cena">
+    <div class="container container--narrow price__inner">
+      <h2 class="centered reveal">ŠTA DOBIJAŠ — I <span class="hl">KOLIKO KOŠTA.</span></h2>
+
+      <ul class="price__stack reveal">
+        <li>15-dnevni izazov sa svakodnevnom podrškom <span class="muted">(vrednost 200€)</span></li>
+        <li>Priručnik <span class="muted">(vrednost 20€)</span></li>
+        <li>Masterklas (6,5h) <span class="muted">(vrednost 30€)</span></li>
+        <li>Snimljeni program <span class="muted">(vrednost 100€)</span></li>
+      </ul>
+
+      <div class="price__tag reveal">
+        <span class="price__old">200€</span>
+        <span class="price__now hl">150€</span>
+      </div>
+
+      <p class="price__urgency u-red reveal">Cena raste 8. juna u ponoć:</p>
+      <div class="countdown reveal" data-countdown aria-label="Vreme do poskupljenja">
+        <div class="countdown__box"><span class="countdown__num" data-d>--</span><span class="countdown__lbl">dana</span></div>
+        <div class="countdown__box"><span class="countdown__num" data-h>--</span><span class="countdown__lbl">sati</span></div>
+        <div class="countdown__box"><span class="countdown__num" data-m>--</span><span class="countdown__lbl">min</span></div>
+        <div class="countdown__box"><span class="countdown__num" data-s>--</span><span class="countdown__lbl">sek</span></div>
+      </div>
+
+      <a href="#" class="btn btn--cta btn--lg btn--block reveal">Želim i ja — prijavljujem se za 150€</a>
+      <p class="micro centered reveal">Posle 8. juna — 200€. Bez skrivenih troškova. Sigurno plaćanje.</p>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- FAQ (light, accordion)                                       -->
+  <!-- ============================================================ -->
+  <section class="section section--light faq" id="faq">
+    <div class="container container--narrow">
+      <h2 class="centered reveal">ČESTA <span class="hl-mag">PITANJA</span></h2>
+
+      <div class="faq__list reveal">
+        <div class="faq__item">
+          <button class="faq__q" aria-expanded="false">
+            <span>Probala sam već nešto slično i nije radilo.</span>
+            <span class="faq__icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq__a"><div><p>Zato što si pratila tuđi plan i borila se voljom. Ovde praviš svoju ishranu, gradiš naviku, a ja te vodim svaki dan.</p></div></div>
+        </div>
+
+        <div class="faq__item">
+          <button class="faq__q" aria-expanded="false">
+            <span>Moj slučaj je poseban — Hašimoto / IR / dijabetes.</span>
+            <span class="faq__icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq__a"><div><p>Od 20 do 80 godina, od 5 do 65kg viška, IR, dijabetes, Hašimoto — nema izuzetaka. Zorica ima 62 i skinula je 15kg.</p></div></div>
+        </div>
+
+        <div class="faq__item">
+          <button class="faq__q" aria-expanded="false">
+            <span>Nemam vremena: „posao, deca, kuća."</span>
+            <span class="faq__icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq__a"><div><p>Imala sam 4 deteta i 10 sati posla dnevno kad sam ovo napravila. Obična hrana, bez posebne pripreme, vežbanje nije obavezno.</p></div></div>
+        </div>
+
+        <div class="faq__item">
+          <button class="faq__q" aria-expanded="false">
+            <span>Šta ako se prijavim pa odustanem?</span>
+            <span class="faq__icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq__a"><div><p>Tu sam svaki dan. Kad pukneš nema grdnje, već usmeravanja. Ne oslanjaš se na volju, nego gradiš naviku.</p></div></div>
+        </div>
+
+        <div class="faq__item">
+          <button class="faq__q" aria-expanded="false">
+            <span>Sad nije pravo vreme: „leto, godišnji, more…"</span>
+            <span class="faq__icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq__a"><div>
+            <p>Tako je mislila i Maja. Vratila se s mora sa kilogramom manje umesto 5 više. Dok su drugi čekali septembar, ona je skinula 12kg.</p>
+
+            <!-- Embedded video testimonial #5 — CRVENOKOSA -->
+            <article class="vcard vcard--inline">
+              <span class="vcard__badge">▶ VIDEO · CRVENOKOSA</span>
+              <h3 class="vcard__trigger">Ako misliš „krenuću posle leta" — pogledaj ovo.</h3>
+              <div class="vcard__video" role="img" aria-label="Video svedočanstvo: krenula odmah">
+                <button class="vcard__play" aria-label="Pusti video">▶</button>
+                <span class="vcard__phlabel">[ VIDEO: Crvenokosa ]</span>
+              </div>
+              <div class="vcard__caption">
+                <p>46 godina, 105kg, mislila da sačeka. Krenula odmah — skinula <span class="hl-mag">12kg</span>, s godišnjeg se vratila sa kilo manje umesto 5 više.</p>
+              </div>
+            </article>
+          </div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- VIDEO TESTIMONIAL #6 — ZBIRNI (dark)                         -->
+  <!-- ============================================================ -->
+  <section class="section section--dark vsection">
+    <div class="container container--narrow">
+      <article class="vcard vcard--feature reveal">
+        <span class="vcard__badge">▶ VIDEO · ZBIRNI MONTAŽA</span>
+        <h3 class="vcard__trigger">Ako ne veruješ da možeš da jedeš sve i da mršaviš, pogledaj ovo.</h3>
+
+        <div class="vcard__video vcard__video--wide" role="img" aria-label="Zbirni video svih svedočanstava">
+          <button class="vcard__play" aria-label="Pusti video">▶</button>
+          <span class="vcard__phlabel">[ VIDEO: Zbirna montaža ]</span>
+        </div>
+
+        <div class="vcard__caption">
+          <p><span class="hl-mag">−12kg, −15kg</span>, idealna kilaža, više energije, novo samopouzdanje.</p>
+          <p class="vcard__quote">„Bila sam skeptik koji nije verovao. Nema šanse da pogreše — neka odmah krenu."</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- FINALE (dark)                                                -->
+  <!-- ============================================================ -->
+  <section class="section section--dark finale">
+    <div class="container container--narrow centered">
+      <h2 class="reveal">U <span class="hl">PONEDELJAK</span> POČINJEMO.</h2>
+
+      <p class="finale__body reveal">
+        Znam koliko je teško kretati svakog ponedeljka iznova, sa strahom da ćeš se opet
+        razočarati. Zato ovaj put nećeš krenuti sama. Za 15 dana naučićeš da jedeš normalno i
+        mršaviš — bez gladovanja, bez pravila koja pucaju na prvoj slavi.
+      </p>
+
+      <p class="finale__punch reveal">Hoćeš li opet čekati „sledeći ponedeljak"?</p>
+
+      <p class="price__urgency u-red reveal">Cena raste 8. juna u ponoć:</p>
+      <div class="countdown reveal" data-countdown aria-label="Vreme do poskupljenja">
+        <div class="countdown__box"><span class="countdown__num" data-d>--</span><span class="countdown__lbl">dana</span></div>
+        <div class="countdown__box"><span class="countdown__num" data-h>--</span><span class="countdown__lbl">sati</span></div>
+        <div class="countdown__box"><span class="countdown__num" data-m>--</span><span class="countdown__lbl">min</span></div>
+        <div class="countdown__box"><span class="countdown__num" data-s>--</span><span class="countdown__lbl">sek</span></div>
+      </div>
+
+      <a href="#" class="btn btn--cta btn--lg reveal">Hoću — prijavljujem se za 150€</a>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- NEWSLETTER / LEAD MAGNET (light) — low-pressure email capture -->
+  <!-- ============================================================ -->
+  <section class="section section--light newsletter" id="newsletter">
+    <div class="container container--narrow newsletter__inner">
+      <span class="newsletter__eyebrow">Još nisi sigurna?</span>
+
+      <h2 class="reveal">NE MORAŠ DA SE ODLUČIŠ DANAS. KRENI <span class="nl-mark">BESPLATNO</span>.</h2>
+
+      <p class="newsletter__lede reveal">
+        Možda ti treba još malo vremena. Razumem — i to je u redu.
+        Zato sam snimila besplatnu, kompletnu instrukciju mršavljenja: ceo moj put od 120kg
+        do idealne kilaže, i tačno šta sam radila.
+        Bez plaćanja. Bez obaveze. Pogledaš, pa odlučiš sama.
+      </p>
+
+      <!-- Video lead-magnet card -->
+      <div class="nl-card reveal">
+        <span class="nl-card__label">BESPLATNA INSTRUKCIJA</span>
+        <h3 class="nl-card__title">KOMPLETNA INSTRUKCIJA MRŠAVLJENJA — OD 120KG DO IDEALNE KILAŽE</h3>
+
+        <a class="nl-card__thumb" href="https://youtu.be/fgHCPU4WmAs" target="_blank" rel="noopener noreferrer"
+           aria-label="Pogledaj besplatnu instrukciju na YouTube-u (otvara se u novom tabu)">
+          <!-- Swap this placeholder for the real YouTube thumbnail (e.g. <img src="..." alt="">) -->
+          <span class="nl-card__phlabel">[YouTube thumbnail]</span>
+          <span class="nl-card__play" aria-hidden="true">▶</span>
+        </a>
+
+        <ul class="nl-card__bullets">
+          <li>Zašto se kilogrami uvek vraćaju — i kako to da prekineš</li>
+          <li>Šta sam zaista jela (hleb i slatkiši uključeni)</li>
+          <li>Prva 3 koraka koje možeš da uradiš već danas — bez dijete</li>
+        </ul>
+      </div>
+
+      <!-- Email-only signup (low friction) -->
+      <form class="nl-form reveal" id="nlForm" novalidate>
+        <div class="nl-form__row">
+          <label class="sr-only" for="nlEmail">Email adresa</label>
+          <input id="nlEmail" class="nl-form__input" type="email" name="email"
+                 placeholder="Upiši svoj email" autocomplete="email" required aria-describedby="nlError" />
+          <button type="submit" class="btn btn--cta nl-form__btn">Pošalji mi besplatnu instrukciju</button>
+        </div>
+        <p class="nl-form__error" id="nlError" role="alert" hidden>Unesi ispravnu email adresu.</p>
+        <p class="nl-form__note">Stiže ti odmah na mejl. Bez spama. Odjava jednim klikom kad god želiš.</p>
+        <p class="nl-form__proof">Preko 1.000 žena već je krenulo odavde.</p>
+      </form>
+
+      <!-- Success state (revealed by JS in place of the form) -->
+      <div class="nl-success" id="nlSuccess" role="status" aria-live="polite" tabindex="-1" hidden>
+        <h3 class="nl-success__title">STIŽE TI NA MEJL!</h3>
+        <p class="nl-success__text">Proveri inbox (i spam, za svaki slučaj). Vidimo se uskoro.</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============================================================ -->
+<!-- FOOTER (dark)                                                -->
+<!-- ============================================================ -->
+<footer class="footer">
+  <div class="container footer__inner">
+    <div class="footer__brand">
+      <span class="footer__logo">Nataša Rakić</span>
+      <p>Od 120kg do održive kilaže 5 godina, i 1.000+ žena vođenih do rezultata.</p>
+    </div>
+
+    <div class="footer__meta">
+      <span class="footer__trust">Sigurno plaćanje</span>
+      <nav class="footer__links" aria-label="Footer">
+        <a href="#">Kontakt</a>
+        <a href="#" aria-label="Instagram">Instagram</a>
+        <a href="#" aria-label="TikTok">TikTok</a>
+      </nav>
+      <small>© 2026 Nataša Rakić. Sva prava zadržana.</small>
+    </div>
+  </div>
+</footer>
+
+<!-- ============================================================ -->
+<!-- JS: countdown, FAQ accordion, scroll-reveal, mobile nav       -->
+<!-- ============================================================ -->
+<script>
+(function () {
+  "use strict";
+
+  /* ---------- Countdown to 8 June 2026, 00:00 (local) ---------- */
+  var TARGET = new Date(2026, 5, 8, 0, 0, 0).getTime(); // month is 0-indexed → 5 = June
+  var pad = function (n) { return n < 10 ? "0" + n : "" + n; };
+  var fullEls = document.querySelectorAll("[data-countdown]");
+  var miniEls = document.querySelectorAll("[data-countmini]");
+
+  function tick() {
+    var diff = TARGET - Date.now();
+    if (diff < 0) diff = 0;
+
+    var d = Math.floor(diff / 86400000);
+    var h = Math.floor((diff % 86400000) / 3600000);
+    var m = Math.floor((diff % 3600000) / 60000);
+    var s = Math.floor((diff % 60000) / 1000);
+
+    fullEls.forEach(function (el) {
+      var dd = el.querySelector("[data-d]"), hh = el.querySelector("[data-h]");
+      var mm = el.querySelector("[data-m]"), ss = el.querySelector("[data-s]");
+      if (dd) dd.textContent = pad(d);
+      if (hh) hh.textContent = pad(h);
+      if (mm) mm.textContent = pad(m);
+      if (ss) ss.textContent = pad(s);
+    });
+
+    var mini = d + "d " + pad(h) + ":" + pad(m) + ":" + pad(s);
+    miniEls.forEach(function (el) { el.textContent = mini; });
+  }
+  tick();
+  setInterval(tick, 1000);
+
+  /* ---------- Mobile nav toggle ---------- */
+  var toggle = document.getElementById("navToggle");
+  var mobile = document.getElementById("navMobile");
+  if (toggle && mobile) {
+    toggle.addEventListener("click", function () {
+      var open = mobile.hasAttribute("hidden") ? false : true;
+      if (open) { mobile.setAttribute("hidden", ""); toggle.setAttribute("aria-expanded", "false"); toggle.setAttribute("aria-label", "Otvori meni"); }
+      else { mobile.removeAttribute("hidden"); toggle.setAttribute("aria-expanded", "true"); toggle.setAttribute("aria-label", "Zatvori meni"); }
+      toggle.classList.toggle("is-open", !open);
+    });
+    mobile.querySelectorAll("a").forEach(function (a) {
+      a.addEventListener("click", function () {
+        mobile.setAttribute("hidden", ""); toggle.setAttribute("aria-expanded", "false"); toggle.classList.remove("is-open");
+      });
+    });
+  }
+
+  /* ---------- FAQ accordion ---------- */
+  document.querySelectorAll(".faq__q").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      var item = btn.parentElement;
+      var isOpen = item.classList.contains("is-open");
+      document.querySelectorAll(".faq__item.is-open").forEach(function (o) {
+        o.classList.remove("is-open");
+        o.querySelector(".faq__q").setAttribute("aria-expanded", "false");
+      });
+      if (!isOpen) { item.classList.add("is-open"); btn.setAttribute("aria-expanded", "true"); }
+    });
+  });
+
+  /* ---------- Newsletter / lead-magnet form (email only, no storage) ---------- */
+  var nlForm = document.getElementById("nlForm");
+  if (nlForm) {
+    var nlEmail = document.getElementById("nlEmail");
+    var nlError = document.getElementById("nlError");
+    var nlSuccess = document.getElementById("nlSuccess");
+
+    // Sends the captured email to your email provider. Returns a Promise.
+    function submitEmail(email) {
+      // TODO: connect to email provider (Mailchimp/ConvertKit/ActiveCampaign) endpoint here.
+      // Example:
+      //   return fetch("https://YOUR-PROVIDER-ENDPOINT", {
+      //     method: "POST",
+      //     headers: { "Content-Type": "application/json" },
+      //     body: JSON.stringify({ email: email })
+      //   });
+      return Promise.resolve(email); // placeholder: pretend the request succeeded
+    }
+
+    // Clear the error state as soon as the user starts correcting the email
+    nlEmail.addEventListener("input", function () {
+      this.removeAttribute("aria-invalid");
+      nlError.hidden = true;
+    });
+
+    nlForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+      var email = nlEmail.value.trim();
+      var valid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+      if (!valid) {
+        nlEmail.setAttribute("aria-invalid", "true");
+        nlError.hidden = false;
+        nlEmail.focus();
+        return;
+      }
+      nlError.hidden = true;
+      nlEmail.removeAttribute("aria-invalid");
+      submitEmail(email).then(function () {
+        nlForm.hidden = true;        // hide the form
+        nlSuccess.hidden = false;    // reveal success state in its place
+        nlSuccess.focus();           // move focus so screen readers announce it
+      });
+    });
+  }
+
+  /* ---------- Wall of messages: lightbox for raw screenshots (Format A) ---------- */
+  var wall = document.querySelector(".wall");
+  var lightbox = document.getElementById("lightbox");
+  if (wall && lightbox) {
+    var lbImg = document.getElementById("lightboxImg");
+    var lbPh = document.getElementById("lightboxPh");
+    var lbClose = lightbox.querySelector(".lightbox__close");
+    var lastFocused = null;
+
+    function openLightbox(shotBtn) {
+      var img = shotBtn.querySelector("img");
+      if (img) {                       // real screenshot present
+        lbImg.src = img.currentSrc || img.src;
+        lbImg.alt = img.alt || "Uvećana poruka";
+        lbImg.hidden = false; lbPh.hidden = true;
+      } else {                         // placeholder fallback
+        var ph = shotBtn.querySelector(".wall-shot__ph");
+        lbPh.textContent = ph ? ph.textContent : "Poruka";
+        lbPh.hidden = false; lbImg.hidden = true;
+      }
+      lastFocused = document.activeElement;
+      lightbox.hidden = false;
+      document.body.style.overflow = "hidden"; // lock scroll while open
+      lbClose.focus();
+      document.addEventListener("keydown", onLbKey);
+    }
+    function closeLightbox() {
+      lightbox.hidden = true;
+      document.body.style.overflow = "";
+      lbImg.removeAttribute("src");
+      document.removeEventListener("keydown", onLbKey);
+      if (lastFocused && lastFocused.focus) lastFocused.focus(); // restore focus
+    }
+    function onLbKey(e) {
+      if (e.key === "Escape") closeLightbox();
+      // simple focus trap: close button is the only focusable control in the dialog
+      else if (e.key === "Tab") { e.preventDefault(); lbClose.focus(); }
+    }
+
+    // Event delegation so it works even after screenshots are swapped in
+    wall.addEventListener("click", function (e) {
+      var shot = e.target.closest(".wall-card__shot");
+      if (shot && wall.contains(shot)) openLightbox(shot);
+    });
+    lightbox.querySelectorAll("[data-close]").forEach(function (el) {
+      el.addEventListener("click", closeLightbox);
+    });
+  }
+
+  /* ---------- Lazy YouTube facade for video testimonials ----------
+     Any .vcard__video with a non-empty data-yt loads its iframe only
+     on click, so multiple embeds never slow the initial page load. */
+  document.querySelectorAll(".vcard__video[data-yt]").forEach(function (box) {
+    box.addEventListener("click", function () {
+      var id = box.getAttribute("data-yt");
+      if (!id) return; // no video wired yet — keep the placeholder
+      var iframe = document.createElement("iframe");
+      iframe.className = "vcard__iframe";
+      iframe.src = "https://www.youtube.com/embed/" + id + "?autoplay=1&rel=0";
+      iframe.title = "Video svedočanstvo";
+      iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
+      iframe.allowFullscreen = true;
+      box.innerHTML = "";
+      box.appendChild(iframe);
+    });
+  });
+
+  /* ---------- Scroll reveal (IntersectionObserver) ---------- */
+  var revealEls = document.querySelectorAll(".reveal");
+  var prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  // Automation/headless OR reduced-motion → show everything immediately (also keeps full-page screenshots correct)
+  var isAutomated = navigator.webdriver || /HeadlessChrome/.test(navigator.userAgent);
+
+  if (prefersReduced || isAutomated || !("IntersectionObserver" in window)) {
+    revealEls.forEach(function (el) { el.classList.add("in"); el.style.transition = "none"; });
+  } else {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.12, rootMargin: "0px 0px -8% 0px" });
+    revealEls.forEach(function (el) { io.observe(el); });
+  }
+})();
+</script>
+</body>
+</html>
