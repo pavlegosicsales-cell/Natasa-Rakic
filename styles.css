@@ -249,7 +249,9 @@ section[id] { scroll-margin-top: var(--header-h); }
 
 .nav { background: rgba(14, 14, 16, 0.88); backdrop-filter: blur(12px); border-bottom: 1px solid var(--line-dark); }
 .nav__inner { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 64px; }
-.nav__logo { font-family: var(--font-display); font-size: 1.4rem; letter-spacing: 0.02em; text-transform: uppercase; }
+.nav__logo { font-family: var(--font-display); font-size: 1.4rem; letter-spacing: 0.02em; text-transform: uppercase; display: inline-flex; align-items: baseline; gap: 9px; }
+.nav__logo__tag { font-family: var(--font-accent); font-weight: 400; font-size: 1.05rem; letter-spacing: 0; text-transform: none; color: var(--accent-magenta); line-height: 1; }
+@media (max-width: 380px) { .nav__logo__tag { display: none; } }
 /* Tubelight navbar — glass pill with a glowing "lamp" that springs to the active link */
 .nav__links {
   display: none;
@@ -625,6 +627,9 @@ section[id] { scroll-margin-top: var(--header-h); }
 .problem-card:hover p { transform: translateX(6px); }
 
 .problem__close { font-size: clamp(1.2rem, 3vw, 1.7rem); font-weight: 700; line-height: 1.5; max-width: 34ch; }
+.problem__close .u-accent { text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 4px; }
+.problem__close .break-mobile { display: none; }
+@media (max-width: 600px) { .problem__close .break-mobile { display: block; } }
 
 /* ============================================================
    STORY (light)
