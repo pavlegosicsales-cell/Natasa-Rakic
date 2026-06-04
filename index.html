@@ -208,9 +208,9 @@
         <span class="vcard__badge">▶ VIDEO · BRANKA</span>
         <h3 class="vcard__trigger">Ako odjednom kreneš da jedeš i ne možeš da staneš, pogledaj Branku.</h3>
 
-        <div class="vcard__video" role="img" aria-label="Video svedočanstvo: Branka">
-          <button class="vcard__play" aria-label="Pusti video">▶</button>
-          <span class="vcard__phlabel">[ VIDEO: Branka ]</span>
+        <div class="vcard__video" role="button" tabindex="0" data-video="videos/branka.mp4" aria-label="Pusti video: Branka">
+          <button class="vcard__play" aria-label="Pusti video" tabindex="-1">▶</button>
+          <span class="vcard__phlabel">Pusti video · Branka</span>
         </div>
 
         <div class="vcard__caption">
@@ -312,9 +312,9 @@
         <span class="vcard__badge">▶ VIDEO · KATARINA</span>
         <h3 class="vcard__trigger">Ako noću ideš do frižidera kad svi zaspu...pogledaj Katarinu.</h3>
 
-        <div class="vcard__video" role="img" aria-label="Video svedočanstvo: Katarina">
-          <button class="vcard__play" aria-label="Pusti video">▶</button>
-          <span class="vcard__phlabel">[ VIDEO: Katarina ]</span>
+        <div class="vcard__video" role="button" tabindex="0" data-video="videos/katarina.mp4" aria-label="Pusti video: Katarina">
+          <button class="vcard__play" aria-label="Pusti video" tabindex="-1">▶</button>
+          <span class="vcard__phlabel">Pusti video · Katarina</span>
         </div>
 
         <div class="vcard__caption">
@@ -1099,6 +1099,29 @@
       iframe.allowFullscreen = true;
       box.innerHTML = "";
       box.appendChild(iframe);
+    });
+  });
+
+  /* ---------- Local mp4 testimonials (facade: load only on click) ---------- */
+  function playLocalVideo(box) {
+    var src = box.getAttribute("data-video");
+    if (!src || box.querySelector("video")) return;
+    var v = document.createElement("video");
+    v.className = "vcard__media";
+    v.src = src;
+    v.controls = true;
+    v.autoplay = true;
+    v.playsInline = true;
+    v.setAttribute("playsinline", "");
+    v.preload = "metadata";
+    box.innerHTML = "";
+    box.appendChild(v);
+    var p = v.play(); if (p && p.catch) p.catch(function () {});
+  }
+  document.querySelectorAll(".vcard__video[data-video]").forEach(function (box) {
+    box.addEventListener("click", function () { playLocalVideo(box); });
+    box.addEventListener("keydown", function (e) {
+      if (e.key === "Enter" || e.key === " ") { e.preventDefault(); playLocalVideo(box); }
     });
   });
 
