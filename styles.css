@@ -833,7 +833,7 @@ section[id] { scroll-margin-top: var(--header-h); }
   position: absolute; inset: 0; z-index: 0; pointer-events: none; border-radius: inherit; overflow: hidden;
   background-image: radial-gradient(circle, rgba(255, 255, 255, 0.7) 1px, transparent 1.6px);
   background-size: 20px 20px;
-  opacity: 0.05;
+  opacity: 0.13;
   transition: opacity 0.4s ease;
 }
 .vcard__dots::before {
@@ -846,7 +846,7 @@ section[id] { scroll-margin-top: var(--header-h); }
   -webkit-mask: radial-gradient(110px circle at var(--mx, 50%) var(--my, 50%), #000 0%, transparent 62%);
           mask: radial-gradient(110px circle at var(--mx, 50%) var(--my, 50%), #000 0%, transparent 62%);
 }
-.vcard:hover .vcard__dots { opacity: 0.1; }
+.vcard:hover .vcard__dots { opacity: 0.18; }
 .vcard:hover .vcard__dots::before { opacity: 0.55; }
 @media (prefers-reduced-motion: reduce) { .vcard__dots, .vcard__dots::before { transition: none; } }
 .vcard:hover {
