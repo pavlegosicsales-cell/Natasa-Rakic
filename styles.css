@@ -1416,6 +1416,77 @@ section[id] { scroll-margin-top: var(--header-h); }
           mask-image: radial-gradient(135% 100% at 50% 0%, #000 60%, transparent 100%);
 }
 .finale > .container { position: relative; z-index: 1; }
+
+/* ============================================================
+   SIGNUP MODAL (2 koraka) — glass card, brand glow + light beams
+   ============================================================ */
+.signup[hidden] { display: none; }
+.signup { position: fixed; inset: 0; z-index: 300; display: grid; place-items: center; padding: 20px; }
+.signup__backdrop { position: absolute; inset: 0; background: rgba(6, 4, 8, 0.74); backdrop-filter: blur(6px); animation: signup-fade 0.3s ease; }
+.signup__dialog { position: relative; z-index: 1; width: 100%; max-width: 420px; }
+.signup__card {
+  position: relative; overflow: hidden; border-radius: 22px;
+  padding: 32px 26px 28px;
+  background:
+    radial-gradient(120% 80% at 50% -10%, rgba(255, 30, 142, 0.2), transparent 60%),
+    linear-gradient(180deg, rgba(22, 19, 26, 0.94), rgba(14, 14, 16, 0.96));
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  box-shadow: 0 44px 90px -30px rgba(0, 0, 0, 0.9), 0 0 70px -22px rgba(255, 30, 142, 0.55);
+  backdrop-filter: blur(16px);
+  animation: signup-pop 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+@keyframes signup-fade { from { opacity: 0; } }
+@keyframes signup-pop { from { opacity: 0; transform: translateY(16px) scale(0.97); } }
+/* traveling light beams along the edges */
+.signup__beams { position: absolute; inset: 0; border-radius: inherit; overflow: hidden; pointer-events: none; }
+.signup__beams span { position: absolute; opacity: 0.7; }
+.signup__beams span:nth-child(1) { top: 0; left: 0; height: 2px; width: 45%; background: linear-gradient(90deg, transparent, #fff, transparent); animation: beam-x 3s linear infinite; }
+.signup__beams span:nth-child(2) { bottom: 0; right: 0; height: 2px; width: 45%; background: linear-gradient(90deg, transparent, var(--accent-magenta), transparent); animation: beam-x 3s linear infinite reverse; animation-delay: 1.5s; }
+.signup__beams span:nth-child(3) { top: 0; right: 0; width: 2px; height: 45%; background: linear-gradient(180deg, transparent, #fff, transparent); animation: beam-y 3s linear infinite; animation-delay: 0.75s; }
+.signup__beams span:nth-child(4) { bottom: 0; left: 0; width: 2px; height: 45%; background: linear-gradient(180deg, transparent, var(--accent-yellow), transparent); animation: beam-y 3s linear infinite reverse; animation-delay: 2.25s; }
+@keyframes beam-x { 0% { transform: translateX(-110%); } 100% { transform: translateX(330%); } }
+@keyframes beam-y { 0% { transform: translateY(-110%); } 100% { transform: translateY(330%); } }
+
+.signup__close { position: absolute; top: 12px; right: 12px; z-index: 3; width: 36px; height: 36px; border-radius: 50%; border: 1px solid rgba(255, 255, 255, 0.14); background: rgba(255, 255, 255, 0.06); color: #fff; font-size: 0.95rem; cursor: pointer; display: grid; place-items: center; transition: background 0.25s ease; }
+.signup__close:hover { background: rgba(255, 255, 255, 0.14); }
+.signup__head { position: relative; z-index: 2; text-align: center; margin-bottom: 22px; }
+.signup__logo { display: inline-grid; place-items: center; width: 46px; height: 46px; border-radius: 50%; border: 1px solid rgba(255, 30, 142, 0.4); background: rgba(255, 30, 142, 0.12); color: var(--accent-yellow); font-family: var(--font-display); font-size: 1.3rem; margin-bottom: 12px; }
+.signup__title { font-family: var(--font-display); font-weight: 400; font-size: 1.7rem; color: #fff; margin: 0 0 4px; line-height: 1.15; }
+.signup__sub { color: var(--text-muted-dark); font-size: 0.98rem; margin: 0; }
+
+.signup__step { position: relative; z-index: 2; display: grid; gap: 12px; }
+.signup__step[hidden] { display: none; }
+.signup__field input {
+  width: 100%; height: 52px; border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.13); background: rgba(255, 255, 255, 0.05);
+  color: #fff; font: inherit; font-size: 1.0625rem; padding: 0 16px;
+  transition: border-color 0.25s ease, background 0.25s ease;
+}
+.signup__field input::placeholder { color: rgba(255, 255, 255, 0.42); }
+.signup__field input:focus { outline: none; border-color: var(--accent-magenta); background: rgba(255, 255, 255, 0.09); }
+.signup__field input[aria-invalid="true"] { border-color: var(--urgency); }
+.signup__error { color: #FF7A7A; font-size: 0.9rem; margin: 2px 0 0; }
+.signup__next, .signup__pay {
+  height: 54px; border: none; border-radius: 999px;
+  font-family: var(--font-body); font-weight: 700; font-size: 1.05rem; cursor: pointer;
+  display: flex; align-items: center; justify-content: center; text-decoration: none;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+}
+.signup__next { margin-top: 6px; background: var(--cta); color: #fff; box-shadow: 0 14px 30px -10px rgba(255, 106, 0, 0.7); }
+.signup__next:hover { transform: translateY(-2px); box-shadow: 0 20px 42px -12px rgba(255, 106, 0, 0.85); }
+.signup__paytitle { position: relative; z-index: 2; text-align: center; color: #fff; font-weight: 700; font-size: 1.05rem; margin: 0 0 16px; }
+.signup__pay--card { background: var(--cta); color: #fff; box-shadow: 0 14px 30px -10px rgba(255, 106, 0, 0.7); }
+.signup__pay--card:hover { transform: translateY(-2px); box-shadow: 0 20px 42px -12px rgba(255, 106, 0, 0.85); }
+.signup__pay--bank { background: rgba(255, 255, 255, 0.06); color: #fff; border: 1px solid rgba(255, 255, 255, 0.16); margin-top: 12px; }
+.signup__pay--bank:hover { background: rgba(255, 255, 255, 0.12); transform: translateY(-2px); }
+.signup__banknote { position: relative; z-index: 2; color: var(--accent-yellow); font-size: 0.92rem; text-align: center; margin: 14px 0 0; }
+.signup__back { display: block; margin: 16px auto 0; background: none; border: none; color: var(--text-muted-dark); cursor: pointer; font-size: 0.92rem; }
+.signup__back:hover { color: #fff; }
+
+@media (prefers-reduced-motion: reduce) {
+  .signup__beams span { animation: none; opacity: 0.4; }
+  .signup__card, .signup__backdrop { animation: none; }
+}
 .finale__body { color: #D3D3D8; font-size: clamp(1.05rem, 2.3vw, 1.25rem); max-width: 56ch; margin: 0 auto 22px; }
 .finale__punch { font-family: var(--font-display); text-transform: uppercase; font-size: clamp(1.4rem, 4.5vw, 2.2rem); line-height: 1.15; color: #fff; max-width: 24ch; margin: 0 auto 28px; }
 

@@ -47,7 +47,7 @@
         <li><a href="#faq">FAQ</a></li>
       </ul>
 
-      <a href="#cena" class="liquid-btn nav__cta">
+      <a href="#cena" class="liquid-btn nav__cta" data-open-signup>
         <span class="liquid-btn__blobs" aria-hidden="true"><span></span><span></span><span></span></span>
         <span class="liquid-btn__label">Prijavi se</span>
       </a>
@@ -65,7 +65,7 @@
       <a href="#rezultati">Rezultati</a>
       <a href="#cena">Cena</a>
       <a href="#faq">FAQ</a>
-      <a href="#cena" class="btn btn--cta btn--block">Prijavi se</a>
+      <a href="#cena" class="btn btn--cta btn--block" data-open-signup>Prijavi se</a>
     </div>
   </nav>
 </header>
@@ -805,7 +805,7 @@
         <div class="countdown__box"><span class="countdown__num" data-s>--</span><span class="countdown__lbl">sek</span></div>
       </div>
 
-      <a href="#" class="shiny-cta shiny-cta--block reveal"><span>Želim i ja — prijavljujem se za 150€</span></a>
+      <a href="#" class="shiny-cta shiny-cta--block reveal" data-open-signup><span>Želim i ja — prijavljujem se za 150€</span></a>
       <p class="micro centered reveal">Posle 8. juna — 200€. Bez skrivenih troškova. Sigurno plaćanje.</p>
     </div>
   </section>
@@ -923,7 +923,7 @@
         <div class="countdown__box"><span class="countdown__num" data-s>--</span><span class="countdown__lbl">sek</span></div>
       </div>
 
-      <a href="#" class="shiny-cta shiny-cta--block reveal"><span>Hoću — prijavljujem se za 150€</span></a>
+      <a href="#" class="shiny-cta shiny-cta--block reveal" data-open-signup><span>Hoću — prijavljujem se za 150€</span></a>
     </div>
   </section>
 
@@ -1029,6 +1029,46 @@
     </div>
   </div>
 </footer>
+
+<!-- ============================================================ -->
+<!-- SIGNUP MODAL — 2 koraka: podaci → izbor plaćanja              -->
+<!-- ============================================================ -->
+<div class="signup" id="signup" hidden>
+  <div class="signup__backdrop" data-close></div>
+  <div class="signup__dialog" role="dialog" aria-modal="true" aria-labelledby="signupTitle">
+    <div class="signup__card" id="signupCard">
+      <div class="signup__beams" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+      <button class="signup__close" type="button" data-close aria-label="Zatvori">✕</button>
+
+      <div class="signup__head">
+        <span class="signup__logo" aria-hidden="true">N</span>
+        <h2 class="signup__title" id="signupTitle">Prijava na izazov</h2>
+        <p class="signup__sub" data-step1-only>Popuni podatke i kreni za 15 dana.</p>
+        <p class="signup__sub" data-step2-only hidden>Još samo izaberi način plaćanja.</p>
+      </div>
+
+      <!-- Korak 1: podaci -->
+      <form class="signup__step" id="signupStep1" novalidate>
+        <div class="signup__field"><input type="text" name="ime" placeholder="Ime" autocomplete="given-name" required></div>
+        <div class="signup__field"><input type="text" name="prezime" placeholder="Prezime" autocomplete="family-name" required></div>
+        <div class="signup__field"><input type="tel" name="telefon" placeholder="Broj telefona" autocomplete="tel" inputmode="tel" required></div>
+        <p class="signup__error" id="signupError" role="alert" hidden>Molim te popuni sva polja (ispravan broj telefona).</p>
+        <button type="submit" class="signup__next">Dalje →</button>
+      </form>
+
+      <!-- Korak 2: plaćanje -->
+      <div class="signup__step" id="signupStep2" hidden>
+        <p class="signup__paytitle">Izaberi način plaćanja:</p>
+        <!-- Plaćanje karticom → lava.top -->
+        <a class="signup__pay signup__pay--card" href="https://app.lava.top/products/7d9804c6-7833-47c1-9af4-bb63d65e2a06" target="_blank" rel="noopener noreferrer">Plaćanje karticom</a>
+        <!-- TODO: zameni href kad stigne link za plaćanje preko računa -->
+        <button type="button" class="signup__pay signup__pay--bank" data-bank>Plaćanje preko računa</button>
+        <p class="signup__banknote" hidden>Uputstvo za uplatu preko računa stiže ti uskoro — javljamo se lično.</p>
+        <button type="button" class="signup__back" data-back>← Nazad</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- ============================================================ -->
 <!-- JS: countdown, FAQ accordion, scroll-reveal, mobile nav       -->
@@ -1348,5 +1388,6 @@
 <script src="newsletter-aurora.js"></script>
 <script src="vcard-dots.js"></script>
 <script src="bonus-toggle.js"></script>
+<script src="signup.js"></script>
 </body>
 </html>
