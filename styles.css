@@ -1479,6 +1479,8 @@ section[id] { scroll-margin-top: var(--header-h); }
 .signup__pay--card:hover { transform: translateY(-2px); box-shadow: 0 20px 42px -12px rgba(255, 106, 0, 0.85); }
 .signup__pay--bank { background: rgba(255, 255, 255, 0.06); color: #fff; border: 1px solid rgba(255, 255, 255, 0.16); margin-top: 12px; }
 .signup__pay--bank:hover { background: rgba(255, 255, 255, 0.12); transform: translateY(-2px); }
+.signup__bankform { position: relative; z-index: 2; display: grid; gap: 12px; margin-top: 12px; }
+.signup__bankform[hidden] { display: none; }
 .signup__banknote { position: relative; z-index: 2; color: var(--accent-yellow); font-size: 0.92rem; text-align: center; margin: 14px 0 0; }
 .signup__back { display: block; margin: 16px auto 0; background: none; border: none; color: var(--text-muted-dark); cursor: pointer; font-size: 0.92rem; }
 .signup__back:hover { color: #fff; }

@@ -14,6 +14,8 @@
   var card = document.getElementById("signupCard");
   var errorEl = document.getElementById("signupError");
   var bankNote = modal.querySelector(".signup__banknote");
+  var bankForm = document.getElementById("signupBankForm");
+  var bankError = document.getElementById("bankError");
   var step1Subs = modal.querySelectorAll("[data-step1-only]");
   var step2Subs = modal.querySelectorAll("[data-step2-only]");
   var lastFocused = null;
@@ -24,6 +26,7 @@
     step1Subs.forEach(function (e) { e.hidden = n !== 1; });
     step2Subs.forEach(function (e) { e.hidden = n !== 2; });
     if (bankNote) bankNote.hidden = true;
+    if (bankForm) { bankForm.hidden = true; if (bankError) bankError.hidden = true; }
   }
 
   function open() {
@@ -81,9 +84,26 @@
   var backBtn = modal.querySelector("[data-back]");
   if (backBtn) backBtn.addEventListener("click", function () { showStep(1); });
 
-  // Bank payment — link not provided yet
+  // Bank payment → reveal email form
   var bankBtn = modal.querySelector("[data-bank]");
   if (bankBtn) bankBtn.addEventListener("click", function () {
+    if (bankNote) bankNote.hidden = true;
+    if (bankForm) {
+      bankForm.hidden = false;
+      var input = bankForm.querySelector("input");
+      if (input) setTimeout(function () { input.focus(); }, 50);
+    }
+  });
+
+  // Bank email form submit
+  if (bankForm) bankForm.addEventListener("submit", function (e) {
+    e.preventDefault();
+    var email = bankForm.bankEmail.value.trim();
+    var valid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    bankForm.bankEmail.setAttribute("aria-invalid", valid ? "false" : "true");
+    if (!valid) { bankError.hidden = false; return; }
+    bankError.hidden = true;
+    bankForm.hidden = true;
     if (bankNote) bankNote.hidden = false;
   });
 
