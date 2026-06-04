@@ -47,7 +47,10 @@
         <li><a href="#faq">FAQ</a></li>
       </ul>
 
-      <a href="#cena" class="btn btn--cta nav__cta">Prijavi se</a>
+      <a href="#cena" class="liquid-btn nav__cta">
+        <span class="liquid-btn__blobs" aria-hidden="true"><span></span><span></span><span></span></span>
+        <span class="liquid-btn__label">Prijavi se</span>
+      </a>
 
       <button class="nav__toggle" id="navToggle" aria-label="Otvori meni" aria-expanded="false" aria-controls="navMobile">
         <span></span><span></span><span></span>
@@ -359,19 +362,37 @@
 
       <div class="bonus-grid">
         <article class="bonus-card reveal">
+          <span class="bonus-card__ic" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+            </svg>
+          </span>
           <span class="bonus-card__tag">Poklon #1</span>
           <h3>PRIRUČNIK</h3>
           <p>Rešenje za svaku situaciju: šta na tanjir i koliko, ishrana bez vremena, šta kad si u PMS-u / stresu / kad pukneš, kako zaustaviti večernje prejedanje.</p>
+          <span class="bonus-card__value">Vrednost 50€ · <span class="hl-mag">gratis</span></span>
         </article>
         <article class="bonus-card reveal">
+          <span class="bonus-card__ic" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/>
+            </svg>
+          </span>
           <span class="bonus-card__tag">Poklon #2</span>
           <h3>MASTERKLAS <span class="bonus-card__meta">(6,5h)</span></h3>
           <p>Kompletan autorski način ishrane, korak po korak.</p>
+          <span class="bonus-card__value">Vrednost 50€ · <span class="hl-mag">gratis</span></span>
         </article>
         <article class="bonus-card reveal">
+          <span class="bonus-card__ic" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="3" width="20" height="14" rx="2"/><path d="m10 8 5 3-5 3V8z" fill="currentColor" stroke="none"/><path d="M7 21h10"/>
+            </svg>
+          </span>
           <span class="bonus-card__tag">Poklon #3</span>
           <h3>SNIMLJENI PROGRAM <span class="bonus-card__meta">(4 nedelje)</span></h3>
-          <p>Ranije <s>100€</s>. Tvoj je, <span class="hl-mag">gratis</span>.</p>
+          <p>Kompletan snimljeni program koji pratiš svojim tempom.</p>
+          <span class="bonus-card__value">Ranije <s>100€</s> · <span class="hl-mag">gratis</span></span>
         </article>
       </div>
     </div>
@@ -462,9 +483,10 @@
   <!-- .wall-shot__ph with <img src="..." alt="Poruka zahvalnosti">.  -->
   <!-- ============================================================ -->
   <section class="section section--dark wall-sec" id="dokazi">
+    <div class="wall-rays" aria-hidden="true"></div>
     <div class="container">
       <div class="wall-head">
-        <span class="wall-eyebrow">Dokazi</span>
+        <span class="pill pill--eyebrow"><span class="pill__dot" aria-hidden="true"></span>Dokazi</span>
         <h2 class="reveal">STIGLE SU MI <span class="hl">HILJADE</span> OVAKVIH PORUKA.</h2>
         <p class="wall-sub reveal">Žene mi pišu svaki dan. Ovo su samo neke od njih — bez montaže, bez ulepšavanja.</p>
       </div>
@@ -648,7 +670,7 @@
         <div class="countdown__box"><span class="countdown__num" data-s>--</span><span class="countdown__lbl">sek</span></div>
       </div>
 
-      <a href="#" class="btn btn--cta btn--lg btn--block reveal">Želim i ja — prijavljujem se za 150€</a>
+      <a href="#" class="shiny-cta shiny-cta--block reveal"><span>Želim i ja — prijavljujem se za 150€</span></a>
       <p class="micro centered reveal">Posle 8. juna — 200€. Bez skrivenih troškova. Sigurno plaćanje.</p>
     </div>
   </section>
@@ -764,7 +786,7 @@
         <div class="countdown__box"><span class="countdown__num" data-s>--</span><span class="countdown__lbl">sek</span></div>
       </div>
 
-      <a href="#" class="btn btn--cta btn--lg reveal">Hoću — prijavljujem se za 150€</a>
+      <a href="#" class="shiny-cta shiny-cta--block reveal"><span>Hoću — prijavljujem se za 150€</span></a>
     </div>
   </section>
 
@@ -773,7 +795,7 @@
   <!-- ============================================================ -->
   <section class="section section--light newsletter" id="newsletter">
     <div class="container container--narrow newsletter__inner">
-      <span class="newsletter__eyebrow">Još nisi sigurna?</span>
+      <span class="pill pill--eyebrow pill--light"><span class="pill__dot" aria-hidden="true"></span>Još nisi sigurna?</span>
 
       <h2 class="reveal">NE MORAŠ DA SE ODLUČIŠ DANAS. KRENI <span class="nl-mark">BESPLATNO</span>.</h2>
 
@@ -1134,5 +1156,7 @@
 <script src="hero-split.js"></script>
 <script src="mistakes-dots.js"></script>
 <script src="bonus-bento.js"></script>
+<script src="wall-marquee.js"></script>
+<script src="wall-rays.js"></script>
 </body>
 </html>
