@@ -1329,15 +1329,14 @@ section[id] { scroll-margin-top: var(--header-h); }
   -webkit-mask-image: linear-gradient(to bottom, transparent, #000 12%, #000 88%, transparent);
           mask-image: linear-gradient(to bottom, transparent, #000 12%, #000 88%, transparent);
 }
+/* JS creates exactly as many columns as fit the viewport (1 / 2 / 3) so every
+   message stays visible — no columns are hidden. Per-column scroll duration is
+   set inline by the JS, matched to how many cards that column holds. */
 .wall-col { flex: 1 1 0; min-width: 0; max-width: 360px; }
-.wall-col--2, .wall-col--3 { display: none; }
 .wall-track { display: flex; flex-direction: column; will-change: transform; }
 .wall-track .wall-card { margin: 0 0 20px; }
 @keyframes wall-scroll { from { transform: translateY(0); } to { transform: translateY(-50%); } }
 .wall-track--anim { animation: wall-scroll var(--dur, 34s) linear infinite; }
-.wall-col--1 .wall-track { --dur: 34s; }
-.wall-col--2 .wall-track { --dur: 44s; }
-.wall-col--3 .wall-track { --dur: 39s; }
 .wall-col:hover .wall-track--anim { animation-play-state: paused; }
 /* Fallback while JS hasn't restructured yet (and no-JS): simple stack */
 .wall:not(:has(.wall-cols)) { display: grid; gap: 18px; }
@@ -1402,8 +1401,7 @@ section[id] { scroll-margin-top: var(--header-h); }
 .lightbox__close { position: absolute; top: -14px; right: -14px; width: 44px; height: 44px; border-radius: 50%; border: none; background: #fff; color: #0E0E10; font-size: 1.1rem; cursor: pointer; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); transition: background 0.2s ease; }
 .lightbox__close:hover { background: var(--accent-yellow); }
 
-@media (min-width: 640px) { .wall-col--2 { display: block; } }
-@media (min-width: 1000px) { .wall-sec { padding: 80px 0; } .wall-col--3 { display: block; } }
+@media (min-width: 1000px) { .wall-sec { padding: 80px 0; } }
 @media (prefers-reduced-motion: reduce) {
   .wall-track--anim { animation: none; }
   .wall-card { transition: none; }
