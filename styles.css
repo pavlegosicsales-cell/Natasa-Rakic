@@ -662,7 +662,7 @@ section[id] { scroll-margin-top: var(--header-h); }
 }
 /* per-image framing so the head sits at a similar height in both */
 .ba__img--before { clip-path: inset(0 calc(100% - var(--pos)) 0 0); object-position: center 6%; }
-.ba__img--after  { object-position: center 34%; }
+.ba__img--after  { object-position: center 8%; }
 .ba__tag {
   position: absolute; top: 14px; z-index: 3;
   font-size: 0.7rem; font-weight: 800; letter-spacing: 0.12em;
