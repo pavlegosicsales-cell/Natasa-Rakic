@@ -554,12 +554,13 @@ section[id] { scroll-margin-top: var(--header-h); }
 }
 .media-ph--portrait { aspect-ratio: 4 / 5; }
 /* Hero photo */
+.hero__media { max-width: 380px; margin-inline: auto; }
 .hero__photo {
   display: block;
   width: 100%;
-  aspect-ratio: 4 / 5;
+  height: auto;                 /* keep the photo's natural ratio — no crop */
+  max-height: 70vh;
   object-fit: cover;
-  object-position: center 30%;
   border-radius: var(--radius-lg);
   border: 1px solid rgba(255, 255, 255, 0.1);
   box-shadow: 0 30px 70px -30px rgba(0, 0, 0, 0.85),
