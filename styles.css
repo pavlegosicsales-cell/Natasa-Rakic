@@ -1508,7 +1508,7 @@ section[id] { scroll-margin-top: var(--header-h); }
   font-size: 0.8rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase;
   color: var(--text-muted); margin-bottom: 16px;
 }
-.newsletter h2 { color: var(--text-dark); max-width: 620px; margin: 0 auto 20px; }
+.newsletter h2 { color: var(--text-dark); max-width: 620px; margin: 0 auto 20px; line-height: 1.32; }
 /* Yellow highlighter marker (yellow text on white is unreadable, so we use a marker) */
 .nl-mark {
   background: var(--accent-yellow); color: #0E0E10;
