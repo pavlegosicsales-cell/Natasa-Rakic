@@ -766,6 +766,14 @@ section[id] { scroll-margin-top: var(--header-h); }
    VIDEO TESTIMONIAL CARDS (visually distinct)
    ============================================================ */
 .vsection { padding: 48px 0; }
+/* Two-up testimonial layout: side-by-side on desktop, stacked on mobile */
+.vcard-duo { display: grid; grid-template-columns: 1fr; gap: 22px; max-width: 920px; margin: 0 auto; align-items: stretch; }
+.vcard-duo .vcard { display: flex; flex-direction: column; height: 100%; }
+.vcard-duo .vcard__video { width: 100%; } /* flex column + auto margins would otherwise shrink it to content */
+.vcard-duo .vcard:nth-child(2) { transition-delay: 0.12s; } /* stagger the second card's reveal */
+@media (min-width: 760px) {
+  .vcard-duo { grid-template-columns: 1fr 1fr; gap: 28px; }
+}
 .vcard {
   position: relative;
   background: var(--card-dark);
