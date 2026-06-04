@@ -1089,7 +1089,7 @@ section[id] { scroll-margin-top: var(--header-h); }
   color: #fff;
   box-shadow: 0 0 24px rgba(255, 30, 142, 0.5);
 }
-.bonus-grid { display: grid; gap: 20px; }
+.bonus-grid { display: grid; gap: 20px; align-items: start; }
 /* Bonus cards with cursor-following border glow + spotlight
    (ported from React Bits "MagicBento", brand colors, no particles) */
 .bonus-card {
@@ -1190,7 +1190,23 @@ section[id] { scroll-margin-top: var(--header-h); }
 .bonus-card p { color: #C7C7CD; margin-bottom: 0; font-size: 0.98rem; }
 /* bold subheadline + checkmark bullets */
 .bonus-card__sub { color: var(--accent-yellow); font-weight: 800; font-size: 1.1rem; line-height: 1.32; margin: 10px 0 16px; }
-.bonus-card__list { list-style: none; display: grid; gap: 11px; margin: 0 0 20px; padding: 0; }
+/* "Više" toggle — benefits collapsed by default, expand on click */
+.bonus-card__toggle {
+  display: inline-flex; align-items: center; gap: 7px;
+  align-self: flex-start;
+  font-family: var(--font-body); font-weight: 700; font-size: 0.92rem;
+  color: var(--accent-magenta); cursor: pointer;
+  background: rgba(255, 30, 142, 0.12); border: 1px solid rgba(255, 30, 142, 0.4);
+  padding: 9px 18px; border-radius: 999px; margin: 2px 0 4px;
+  transition: background 0.3s ease, border-color 0.3s ease;
+}
+.bonus-card__toggle:hover { background: rgba(255, 30, 142, 0.22); border-color: rgba(255, 30, 142, 0.6); }
+.bonus-card__chev { font-size: 0.8rem; line-height: 1; transition: transform 0.3s ease; }
+.bonus-card.is-open .bonus-card__chev { transform: rotate(180deg); }
+.bonus-card__more { display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.45s cubic-bezier(.16,1,.3,1); }
+.bonus-card.is-open .bonus-card__more { grid-template-rows: 1fr; }
+.bonus-card__more > div { overflow: hidden; }
+.bonus-card__list { list-style: none; display: grid; gap: 11px; margin: 14px 0 20px; padding: 0; }
 .bonus-card__list li { position: relative; padding-left: 26px; font-size: 1.0625rem; line-height: 1.45; color: #D6D6DC; }
 .bonus-card__list li::before {
   content: "✓"; position: absolute; left: 0; top: 0.05em;
