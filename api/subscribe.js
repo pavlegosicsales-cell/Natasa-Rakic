@@ -9,7 +9,7 @@
    Set BREVO_API_KEY in Vercel → Settings → Environment Variables.
    ============================================================ */
 
-const BREVO_LIST_ID = 0; // TODO: replace with my Brevo list ID
+const BREVO_LIST_ID = 3; // Brevo list ID
 
 module.exports = async function handler(req, res) {
   if (req.method !== "POST") {
