@@ -553,6 +553,18 @@ section[id] { scroll-margin-top: var(--header-h); }
   padding: 24px;
 }
 .media-ph--portrait { aspect-ratio: 4 / 5; }
+/* Hero photo */
+.hero__photo {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  object-position: center 30%;
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 30px 70px -30px rgba(0, 0, 0, 0.85),
+              0 0 60px -28px rgba(255, 30, 142, 0.55);
+}
 .media-ph--light { background: linear-gradient(135deg, rgba(255,30,142,0.06), rgba(14,14,16,0.03)), #F4F4F5; border-color: rgba(14,14,16,0.18); color: var(--text-muted); }
 
 /* ============================================================
@@ -613,6 +625,63 @@ section[id] { scroll-margin-top: var(--header-h); }
 .story__grid { display: grid; gap: 32px; }
 .story__copy h2 { color: var(--text-dark); line-height: 1.16; }
 .story__media .media-ph { position: sticky; top: var(--header-h); }
+.story__media .ba { position: sticky; top: var(--header-h); }
+
+/* Before/After comparison slider (drag to reveal "danas") */
+.ba {
+  --pos: 85%;
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: 0 28px 64px -28px rgba(14, 14, 16, 0.45);
+  cursor: ew-resize;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: pan-y;
+}
+.ba:focus-visible { outline: 3px solid var(--accent-magenta); outline-offset: 3px; }
+.ba__img {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: center 22%;
+  pointer-events: none; -webkit-user-drag: none;
+}
+.ba__img--before { clip-path: inset(0 calc(100% - var(--pos)) 0 0); }
+.ba__tag {
+  position: absolute; top: 14px; z-index: 3;
+  font-size: 0.7rem; font-weight: 800; letter-spacing: 0.12em;
+  padding: 6px 12px; border-radius: 999px;
+  background: rgba(14, 14, 16, 0.62); color: #fff; backdrop-filter: blur(4px);
+  pointer-events: none;
+}
+.ba__tag--before { left: 14px; }
+.ba__tag--after { right: 14px; }
+.ba__handle {
+  position: absolute; top: 0; bottom: 0; left: var(--pos);
+  width: 2px; transform: translateX(-50%); z-index: 4;
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 0 0 1px rgba(14, 14, 16, 0.12), 0 0 18px rgba(255, 30, 142, 0.5);
+  pointer-events: none;
+}
+.ba__knob {
+  position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+  width: 46px; height: 46px; border-radius: 50%;
+  display: grid; place-items: center;
+  background: var(--accent-magenta); color: #fff;
+  box-shadow: 0 8px 20px -4px rgba(255, 30, 142, 0.65);
+}
+.ba__knob svg { width: 22px; height: 22px; display: block; }
+/* gentle hint nudge until first interaction */
+.ba:not(.ba--touched) .ba__handle { animation: ba-hint 2.4s ease-in-out infinite; }
+@keyframes ba-hint {
+  0%, 100% { margin-left: 0; }
+  50% { margin-left: -14px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ba:not(.ba--touched) .ba__handle { animation: none; }
+}
 
 /* ============================================================
    3 GREŠKE

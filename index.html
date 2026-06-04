@@ -105,9 +105,7 @@
       </div>
 
       <div class="hero__media reveal">
-        <div class="media-ph media-ph--portrait" role="img" aria-label="Natašina hero fotografija">
-          <span>[ Natašina hero fotografija ]</span>
-        </div>
+        <img class="hero__photo" src="hero-natasa.png" alt="Nataša Rakić — na plaži" width="3024" height="4032" loading="eager" decoding="async" />
       </div>
     </div>
   </section>
@@ -138,8 +136,17 @@
   <section class="section section--light story" id="prica">
     <div class="container story__grid">
       <div class="story__media reveal">
-        <div class="media-ph media-ph--portrait media-ph--light" role="img" aria-label="Fotografija Nataše">
-          <span>[ Natašina fotografija — priča ]</span>
+        <div class="ba" data-ba role="slider" aria-label="Prevuci da uporediš: pre i danas"
+             aria-valuemin="0" aria-valuemax="100" aria-valuenow="85" tabindex="0">
+          <img class="ba__img ba__img--after" src="story-after.jpg" alt="Nataša danas" loading="lazy" decoding="async" />
+          <img class="ba__img ba__img--before" src="story-before.jpg" alt="Nataša pre" loading="lazy" decoding="async" />
+          <span class="ba__tag ba__tag--before">PRE</span>
+          <span class="ba__tag ba__tag--after">DANAS</span>
+          <div class="ba__handle" aria-hidden="true">
+            <span class="ba__knob">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m15 6-6 6 6 6M9 6l6 6-6 6"/></svg>
+            </span>
+          </div>
         </div>
       </div>
 
@@ -1158,5 +1165,6 @@
 <script src="bonus-bento.js"></script>
 <script src="wall-marquee.js"></script>
 <script src="wall-rays.js"></script>
+<script src="story-ba.js"></script>
 </body>
 </html>
