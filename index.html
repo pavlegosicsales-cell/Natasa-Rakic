@@ -38,6 +38,7 @@
       <a href="#top" class="nav__logo">Nataša&nbsp;Rakić</a>
 
       <ul class="nav__links">
+        <li class="tube-lamp" aria-hidden="true"></li>
         <li><a href="#pocetak">Početak</a></li>
         <li><a href="#prica">Moja priča</a></li>
         <li><a href="#kako">Kako radi</a></li>
@@ -72,11 +73,13 @@
   <!-- HERO (dark)                                                  -->
   <!-- ============================================================ -->
   <section class="section section--dark hero" id="pocetak">
+    <!-- Animated WebGL light rays (SideRays effect ported to vanilla WebGL, brand colors) -->
+    <div class="hero__rays" aria-hidden="true"></div>
     <div class="container hero__grid">
       <div class="hero__copy">
-        <p class="pill reveal">Za žene koje su probale sve, i svaki put se vratile na početak.</p>
+        <p class="pill reveal"><span class="pill__dot" aria-hidden="true"></span>Za žene koje su probale sve, i svaki put se vratile na početak.</p>
 
-        <h1 class="reveal">PRE 5 GODINA SAM IMALA <span class="hl">120 KILOGRAMA.</span></h1>
+        <h1 class="hero__title">PRE 5 GODINA SAM IMALA <span class="hl">120 KILOGRAMA.</span></h1>
 
         <p class="lede reveal">
           Danas držim svoju kilažu od 58kg. Jedem i hleb i slatkiše. Pomogla sam
@@ -85,14 +88,16 @@
         </p>
 
         <div class="hero__cta reveal">
-          <a href="#cena" class="btn btn--cta btn--lg">Želim da čujem više</a>
+          <a href="#cena" class="shiny-cta">
+            <span>Želim da čujem više<span class="shiny-cta__arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h15M13 6l6 6-6 6"/></svg></span></span>
+          </a>
           <p class="micro">Cena se povećava 8. juna u ponoć.</p>
         </div>
 
         <ul class="stat-row reveal">
-          <li class="stat"><span class="stat__num">1.000+</span><span class="stat__lbl">žena</span></li>
-          <li class="stat"><span class="stat__num">5–40kg</span><span class="stat__lbl">skinuto</span></li>
-          <li class="stat"><span class="stat__num">5 godina</span><span class="stat__lbl">iskustva</span></li>
+          <li class="stat"><span class="stat__num" data-count="1000" data-sep data-suffix="+">1.000+</span><span class="stat__lbl">žena</span></li>
+          <li class="stat"><span class="stat__num" data-count="40" data-prefix="5–" data-suffix="kg">5–40kg</span><span class="stat__lbl">skinuto</span></li>
+          <li class="stat"><span class="stat__num" data-count="5" data-suffix=" godina">5 godina</span><span class="stat__lbl">iskustva</span></li>
         </ul>
       </div>
 
@@ -109,18 +114,18 @@
   <!-- ============================================================ -->
   <section class="section section--dark problem">
     <div class="container container--narrow">
-      <h2 class="reveal">PROBALA SI SVE. I SVE JE <span class="hl">RADILO</span> DOK SE PRIDRŽAVAŠ.</h2>
+      <h2 class="reveal centered">PROBALA SI SVE. I SVE JE <span class="hl">RADILO</span>.<br>DOK SE PRIDRŽAVAŠ.</h2>
 
-      <div class="problem__lines">
-        <p class="reveal">A onda bi prekršila.</p>
-        <p class="reveal">Vratila bi sve kilograme koje si skinula i još koji kilogram preko.</p>
-        <p class="reveal">Svaka restrikcija bi se završila prejedanjem.</p>
-        <p class="reveal">Dan - kafa, izgladnjivanje. A uveče, kad deca zaspu i kuća utihne, ideš do frižidera. Jednostavno moraš.</p>
-        <p class="reveal">I svaki ponedeljak iznova.</p>
-        <p class="reveal">Najveći strah nije da nećeš smršati. Nego da kreneš, da se ponadaš i da se opet razočaraš.</p>
-      </div>
+      <ol class="problem__lines">
+        <li class="problem-card reveal"><span class="problem-card__num">01</span><p>A onda bi prekršila.</p></li>
+        <li class="problem-card reveal"><span class="problem-card__num">02</span><p>Vratila bi sve kilograme koje si skinula i još koji kilogram preko.</p></li>
+        <li class="problem-card reveal"><span class="problem-card__num">03</span><p>Svaka restrikcija bi se završila prejedanjem.</p></li>
+        <li class="problem-card reveal"><span class="problem-card__num">04</span><p>Dan - kafa, izgladnjivanje. A uveče, kad deca zaspu i kuća utihne, ideš do frižidera. Jednostavno moraš.</p></li>
+        <li class="problem-card reveal"><span class="problem-card__num">05</span><p>I svaki ponedeljak iznova.</p></li>
+        <li class="problem-card reveal"><span class="problem-card__num">06</span><p>Najveći strah nije da nećeš smršati. Nego da kreneš, da se ponadaš i da se opet razočaraš.</p></li>
+      </ol>
 
-      <p class="problem__close reveal">Nisi ti slaba. Nisi poseban slučaj. <span class="hl">Samo te niko nije naučio gde tačno grešiš.</span></p>
+      <p class="problem__close reveal centered">Nisi ti slaba.<br>Nisi poseban slučaj.<br><span class="hl">Samo te niko nije naučio gde tačno grešiš.</span></p>
     </div>
   </section>
 
@@ -155,6 +160,7 @@
   <!-- 3 GREŠKE (dark)                                              -->
   <!-- ============================================================ -->
   <section class="section section--dark mistakes">
+    <div class="mistakes__dots" aria-hidden="true"></div>
     <div class="container">
       <h2 class="centered reveal">3 GREŠKE KOJE TE DRŽE U <span class="hl">ZAČARANOM KRUGU.</span></h2>
 
@@ -210,6 +216,7 @@
   <!-- REŠENJE — SISTEM OD 3 KORAKA (light)                         -->
   <!-- ============================================================ -->
   <section class="section section--light steps" id="kako">
+    <div class="steps__bg" aria-hidden="true"></div>
     <div class="container">
       <h2 class="centered reveal">NISAM SMRŠALA <span class="hl-mag">SLUČAJNO.</span></h2>
       <p class="steps__intro centered reveal">
@@ -245,10 +252,38 @@
       <h2 class="centered reveal"><span class="hl">15 DANA.</span> JA UZ TEBE SVAKI DAN.</h2>
 
       <ul class="checklist reveal">
-        <li>Svaki dan jasne lekcije i zadatak</li>
-        <li>Praviš svoju ishranu i šalješ mi je — gledam je i govorim ti šta da popraviš</li>
-        <li>Odgovaram na sva pitanja — nisi sama ni jednog dana</li>
-        <li>2 live predavanja <span class="muted">(ostaje snimak)</span></li>
+        <li>
+          <span class="checklist__ic" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/><path d="m9 16 2 2 4-4"/>
+            </svg>
+          </span>
+          <span class="checklist__txt">Svaki dan jasne lekcije i zadatak</span>
+        </li>
+        <li>
+          <span class="checklist__ic" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 2 11 13"/><path d="M22 2 15 22l-4-9-9-4 20-7z"/>
+            </svg>
+          </span>
+          <span class="checklist__txt">Praviš svoju ishranu i šalješ mi je — gledam je i govorim ti šta da popraviš</span>
+        </li>
+        <li>
+          <span class="checklist__ic" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+            </svg>
+          </span>
+          <span class="checklist__txt">Odgovaram na sva pitanja — nisi sama ni jednog dana</span>
+        </li>
+        <li>
+          <span class="checklist__ic" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="4" width="20" height="14" rx="2"/><path d="m10 9 4 2.5L10 14V9z" fill="currentColor" stroke="none"/><path d="M8 22h8M12 18v4"/>
+            </svg>
+          </span>
+          <span class="checklist__txt">2 live predavanja <span class="muted">(ostaje snimak)</span></span>
+        </li>
       </ul>
 
       <p class="challenge__line reveal">
@@ -287,11 +322,39 @@
     <div class="container">
       <h2 class="centered reveal">15 DANA <span class="hl-mag">+ 3 POKLONA.</span></h2>
 
-      <ul class="offer__list reveal">
-        <li>Svaki dan jasne lekcije i zadatak</li>
-        <li>Praviš svoju ishranu i šalješ mi je — gledam je i govorim ti šta da popraviš</li>
-        <li>Odgovaram na sva pitanja — nisi sama ni jednog dana</li>
-        <li>2 live predavanja (ostaje snimak)</li>
+      <ul class="offer__list checklist checklist--light reveal">
+        <li>
+          <span class="checklist__ic" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/><path d="m9 16 2 2 4-4"/>
+            </svg>
+          </span>
+          <span class="checklist__txt">Svaki dan jasne lekcije i zadatak</span>
+        </li>
+        <li>
+          <span class="checklist__ic" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 2 11 13"/><path d="M22 2 15 22l-4-9-9-4 20-7z"/>
+            </svg>
+          </span>
+          <span class="checklist__txt">Praviš svoju ishranu i šalješ mi je — gledam je i govorim ti šta da popraviš</span>
+        </li>
+        <li>
+          <span class="checklist__ic" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+            </svg>
+          </span>
+          <span class="checklist__txt">Odgovaram na sva pitanja — nisi sama ni jednog dana</span>
+        </li>
+        <li>
+          <span class="checklist__ic" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="4" width="20" height="14" rx="2"/><path d="m10 9 4 2.5L10 14V9z" fill="currentColor" stroke="none"/><path d="M8 22h8M12 18v4"/>
+            </svg>
+          </span>
+          <span class="checklist__txt">2 live predavanja <span class="muted">(ostaje snimak)</span></span>
+        </li>
       </ul>
 
       <div class="bonus-grid">
@@ -567,8 +630,8 @@
 
       <ul class="price__stack reveal">
         <li>15-dnevni izazov sa svakodnevnom podrškom <span class="muted">(vrednost 200€)</span></li>
-        <li>Priručnik <span class="muted">(vrednost 20€)</span></li>
-        <li>Masterklas (6,5h) <span class="muted">(vrednost 30€)</span></li>
+        <li>Priručnik <span class="muted">cena</span> <s>50€</s> <span class="hl-mag">0€</span></li>
+        <li>Masterklas (6,5h) <span class="muted">cena</span> <s>50€</s> <span class="hl-mag">0€</span></li>
         <li>Snimljeni program <span class="muted">(vrednost 100€)</span></li>
       </ul>
 
@@ -980,7 +1043,96 @@
     }, { threshold: 0.12, rootMargin: "0px 0px -8% 0px" });
     revealEls.forEach(function (el) { io.observe(el); });
   }
+
+  /* ---------- Hero stat count-up (numbers animate in when seen) ---------- */
+  var statNums = Array.prototype.slice.call(document.querySelectorAll(".stat__num[data-count]"));
+  function groupThousands(s) { return s.replace(/\B(?=(\d{3})+(?!\d))/g, "."); }
+  function renderStat(el, value) {
+    var n = Math.round(value);
+    var num = (el.dataset.sep !== undefined) ? groupThousands(String(n)) : String(n);
+    el.textContent = (el.dataset.prefix || "") + num + (el.dataset.suffix || "");
+  }
+  function animateStat(el, delay) {
+    var to = parseFloat(el.dataset.count);
+    var dur = 1300, started = null;
+    el.classList.add("stat__num--counting");
+    function step(now) {
+      if (started === null) started = now;
+      var p = Math.min((now - started) / dur, 1);
+      var eased = 1 - Math.pow(1 - p, 3); // easeOutCubic — fast, then settles
+      renderStat(el, to * eased);
+      if (p < 1) requestAnimationFrame(step);
+      else { renderStat(el, to); el.classList.remove("stat__num--counting"); }
+    }
+    setTimeout(function () { requestAnimationFrame(step); }, delay);
+  }
+
+  if (statNums.length) {
+    if (prefersReduced || isAutomated || !("IntersectionObserver" in window)) {
+      statNums.forEach(function (el) { renderStat(el, parseFloat(el.dataset.count)); });
+    } else {
+      var statIO = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (!e.isIntersecting) return;
+          statIO.unobserve(e.target);
+          renderStat(e.target, 0);
+          animateStat(e.target, statNums.indexOf(e.target) * 160); // stagger
+        });
+      }, { threshold: 0.6 });
+      statNums.forEach(function (el) { statIO.observe(el); });
+    }
+  }
+
+  /* ---------- Tubelight navbar: lamp springs to the active link ---------- */
+  var navLinks = document.querySelector(".nav__links");
+  if (navLinks) {
+    var tLinks = Array.prototype.slice.call(navLinks.querySelectorAll("a"));
+    var lamp = navLinks.querySelector(".tube-lamp");
+    if (tLinks.length && lamp) {
+      var moveLamp = function (link) {
+        lamp.style.width = link.offsetWidth + "px";
+        lamp.style.height = link.offsetHeight + "px";
+        lamp.style.transform = "translate(" + link.offsetLeft + "px, " + (link.offsetTop - 5) + "px)";
+      };
+      var setActive = function (link, animate) {
+        tLinks.forEach(function (l) { l.classList.toggle("is-active", l === link); });
+        if (!animate) lamp.style.transition = "none";
+        moveLamp(link);
+        if (!animate) { void lamp.offsetWidth; lamp.style.transition = ""; } // flush, then restore the spring
+      };
+      tLinks.forEach(function (l) { l.addEventListener("click", function () { setActive(l, true); }); });
+
+      // Scrollspy: light up the link whose section is in the viewport's middle band
+      var tSections = tLinks.map(function (l) {
+        var href = l.getAttribute("href");
+        return href && href.charAt(0) === "#" ? document.querySelector(href) : null;
+      });
+      if ("IntersectionObserver" in window) {
+        var spy = new IntersectionObserver(function (entries) {
+          entries.forEach(function (e) {
+            if (!e.isIntersecting) return;
+            var idx = tSections.indexOf(e.target);
+            if (idx >= 0) setActive(tLinks[idx], true);
+          });
+        }, { rootMargin: "-45% 0px -50% 0px", threshold: 0 });
+        tSections.forEach(function (s) { if (s) spy.observe(s); });
+      }
+
+      var syncLamp = function () {
+        var active = navLinks.querySelector("a.is-active") || tLinks[0];
+        setActive(active, false);
+      };
+      setActive(tLinks[0], false);
+      window.addEventListener("resize", syncLamp);
+      window.addEventListener("load", syncLamp);
+    }
+  }
 })();
 </script>
+<!-- Hero light-rays (vanilla WebGL port of SideRays) -->
+<script src="hero-rays.js"></script>
+<script src="hero-split.js"></script>
+<script src="mistakes-dots.js"></script>
+<script src="bonus-bento.js"></script>
 </body>
 </html>
