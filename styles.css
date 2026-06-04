@@ -1322,6 +1322,20 @@ section[id] { scroll-margin-top: var(--header-h); }
    ============================================================ */
 .finale { padding: 80px 0; }
 .finale h2 { font-size: clamp(2rem, 7vw, 3.6rem); margin-bottom: 24px; }
+.finale { position: relative; isolation: isolate; overflow: hidden; }
+/* Gradient grid background (ported from 21st.dev "gradient-blur-bg", brand colors) */
+.finale__bg {
+  position: absolute; inset: 0; z-index: 0; pointer-events: none;
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    radial-gradient(circle 560px at 0% 12%, rgba(255, 30, 142, 0.2), transparent),
+    radial-gradient(circle 560px at 100% 0%, rgba(232, 255, 58, 0.12), transparent);
+  background-size: 56px 56px, 56px 56px, 100% 100%, 100% 100%;
+  -webkit-mask-image: radial-gradient(135% 100% at 50% 0%, #000 60%, transparent 100%);
+          mask-image: radial-gradient(135% 100% at 50% 0%, #000 60%, transparent 100%);
+}
+.finale > .container { position: relative; z-index: 1; }
 .finale__body { color: #D3D3D8; font-size: clamp(1.05rem, 2.3vw, 1.25rem); max-width: 56ch; margin: 0 auto 22px; }
 .finale__punch { font-family: var(--font-display); text-transform: uppercase; font-size: clamp(1.4rem, 4.5vw, 2.2rem); line-height: 1.15; color: #fff; max-width: 24ch; margin: 0 auto 28px; }
 
