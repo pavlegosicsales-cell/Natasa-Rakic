@@ -95,16 +95,40 @@
     }
   });
 
-  // Bank email form submit
+  // Bank email form submit → add contact to Brevo, then show success
   if (bankForm) bankForm.addEventListener("submit", function (e) {
     e.preventDefault();
     var email = bankForm.bankEmail.value.trim();
     var valid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
     bankForm.bankEmail.setAttribute("aria-invalid", valid ? "false" : "true");
-    if (!valid) { bankError.hidden = false; return; }
+    if (!valid) { bankError.textContent = "Unesi ispravnu email adresu."; bankError.hidden = false; return; }
     bankError.hidden = true;
-    bankForm.hidden = true;
-    if (bankNote) bankNote.hidden = false;
+
+    // Reuse the data already entered in step 1 (no new fields).
+    var payload = {
+      ime: step1.ime.value.trim(),
+      prezime: step1.prezime.value.trim(),
+      telefon: step1.telefon.value.trim(),
+      email: email
+    };
+
+    var submitBtn = bankForm.querySelector("button[type=submit]");
+    if (submitBtn) submitBtn.disabled = true;
+
+    fetch("/api/subscribe", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload)
+    }).then(function (r) {
+      if (!r.ok) throw new Error("request failed");
+      bankForm.hidden = true;                 // success only after a 2xx response
+      if (bankNote) bankNote.hidden = false;
+    }).catch(function () {
+      bankError.textContent = "Nešto nije u redu. Pokušaj ponovo.";
+      bankError.hidden = false;
+    }).then(function () {
+      if (submitBtn) submitBtn.disabled = false;
+    });
   });
 
   // 3D tilt on the card (desktop, fine pointer only)
