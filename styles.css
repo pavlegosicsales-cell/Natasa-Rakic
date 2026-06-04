@@ -657,10 +657,12 @@ section[id] { scroll-margin-top: var(--header-h); }
 .ba__img {
   position: absolute; inset: 0;
   width: 100%; height: 100%;
-  object-fit: cover; object-position: center 22%;
+  object-fit: cover;
   pointer-events: none; -webkit-user-drag: none;
 }
-.ba__img--before { clip-path: inset(0 calc(100% - var(--pos)) 0 0); }
+/* per-image framing so the head sits at a similar height in both */
+.ba__img--before { clip-path: inset(0 calc(100% - var(--pos)) 0 0); object-position: center 6%; }
+.ba__img--after  { object-position: center 34%; }
 .ba__tag {
   position: absolute; top: 14px; z-index: 3;
   font-size: 0.7rem; font-weight: 800; letter-spacing: 0.12em;
