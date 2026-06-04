@@ -209,6 +209,7 @@
         <h3 class="vcard__trigger">Ako odjednom kreneš da jedeš i ne možeš da staneš, pogledaj Branku.</h3>
 
         <div class="vcard__video" role="button" tabindex="0" data-video="videos/branka.mp4" aria-label="Pusti video: Branka">
+          <img class="vcard__thumb" src="videos/branka.jpg" alt="" aria-hidden="true" loading="lazy" />
           <button class="vcard__play" aria-label="Pusti video" tabindex="-1">▶</button>
           <span class="vcard__phlabel">Pusti video · Branka</span>
         </div>
@@ -313,6 +314,7 @@
         <h3 class="vcard__trigger">Ako noću ideš do frižidera kad svi zaspu...pogledaj Katarinu.</h3>
 
         <div class="vcard__video" role="button" tabindex="0" data-video="videos/katarina.mp4" aria-label="Pusti video: Katarina">
+          <img class="vcard__thumb" src="videos/katarina.jpg" alt="" aria-hidden="true" loading="lazy" />
           <button class="vcard__play" aria-label="Pusti video" tabindex="-1">▶</button>
           <span class="vcard__phlabel">Pusti video · Katarina</span>
         </div>
@@ -803,9 +805,10 @@
         <span class="vcard__badge">▶ VIDEO · ZBIRNI MONTAŽA</span>
         <h3 class="vcard__trigger">Ako ne veruješ da možeš da jedeš sve i da mršaviš, pogledaj ovo.</h3>
 
-        <div class="vcard__video vcard__video--wide" role="img" aria-label="Zbirni video svih svedočanstava">
-          <button class="vcard__play" aria-label="Pusti video">▶</button>
-          <span class="vcard__phlabel">[ VIDEO: Zbirna montaža ]</span>
+        <div class="vcard__video" role="button" tabindex="0" data-video="videos/svi.mp4" aria-label="Pusti zbirni video svedočanstava">
+          <img class="vcard__thumb" src="videos/svi.jpg" alt="" aria-hidden="true" loading="lazy" />
+          <button class="vcard__play" aria-label="Pusti video" tabindex="-1">▶</button>
+          <span class="vcard__phlabel">Pusti video · Zbirna montaža</span>
         </div>
 
         <div class="vcard__caption">
@@ -1106,8 +1109,11 @@
   function playLocalVideo(box) {
     var src = box.getAttribute("data-video");
     if (!src || box.querySelector("video")) return;
+    box.classList.add("vcard__video--playing");
     var v = document.createElement("video");
     v.className = "vcard__media";
+    var poster = box.querySelector(".vcard__thumb");
+    if (poster) v.poster = poster.getAttribute("src");
     v.src = src;
     v.controls = true;
     v.autoplay = true;
