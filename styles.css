@@ -841,6 +841,7 @@ section[id] { scroll-margin-top: var(--header-h); }
   transition: transform 0.25s ease;
 }
 .vcard__play:hover { transform: scale(1.08); }
+.vcard__caption { text-align: center; }
 .vcard__caption p { color: #D3D3D8; font-size: 1rem; max-width: none; }
 .vcard__caption p:last-child { margin-bottom: 0; }
 .vcard__quote { font-style: italic; color: #fff; }
