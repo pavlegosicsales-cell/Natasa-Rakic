@@ -531,12 +531,18 @@ section[id] { scroll-margin-top: var(--header-h); }
 @keyframes shimmer { to { rotate: 360deg; } }
 @keyframes breathe { from, to { scale: 1; } 50% { scale: 1.2; } }
 
-.stat-row { display: flex; flex-wrap: wrap; gap: 14px 30px; margin-top: 30px; padding-top: 26px; border-top: 1px solid var(--line-dark); }
-.stat { display: flex; flex-direction: column; }
-.stat__num { font-family: var(--font-display); font-size: clamp(1.75rem, 6vw, 2.4rem); color: var(--accent-magenta); line-height: 1; font-variant-numeric: tabular-nums; transition: text-shadow 0.6s ease, transform 0.6s ease; }
-/* While the number is counting up, give it a live magenta glow + tiny pop */
-.stat__num--counting { text-shadow: 0 0 22px rgba(255, 30, 142, 0.65); transform: scale(1.06); }
-.stat__lbl { font-size: 0.85rem; color: var(--text-muted-dark); margin-top: 4px; }
+.stat-row { display: flex; flex-wrap: wrap; gap: 12px 26px; margin-top: 30px; padding-top: 26px; border-top: 1px solid var(--line-dark); list-style: none; }
+.stat { display: flex; align-items: center; gap: 9px; font-size: 1.0625rem; font-weight: 600; color: #EDEDED; }
+.stat__tick {
+  display: inline-grid; place-items: center;
+  width: 24px; height: 24px; border-radius: 50%; flex: 0 0 auto;
+  background: rgba(255, 30, 142, 0.15); border: 1px solid rgba(255, 30, 142, 0.4);
+  color: var(--accent-magenta); font-size: 0.78rem; font-weight: 700;
+}
+.stat__hl { color: var(--accent-magenta); font-weight: 700; }
+/* legacy count-up styles (kept harmless if reused elsewhere) */
+.stat__num { font-family: var(--font-display); color: var(--accent-magenta); line-height: 1; }
+.stat__lbl { font-size: 0.85rem; color: var(--text-muted-dark); }
 
 /* Media placeholders */
 .media-ph {
