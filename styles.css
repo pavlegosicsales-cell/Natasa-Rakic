@@ -628,8 +628,8 @@ section[id] { scroll-margin-top: var(--header-h); }
 
 .problem__close { font-size: clamp(1.2rem, 3vw, 1.7rem); font-weight: 700; line-height: 1.5; max-width: 34ch; }
 .problem__close .u-accent { text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 4px; }
-.problem__close .break-mobile { display: none; }
-@media (max-width: 600px) { .problem__close .break-mobile { display: block; } }
+.break-mobile { display: none; }
+@media (max-width: 600px) { .break-mobile { display: block; } }
 
 /* ============================================================
    STORY (light)
