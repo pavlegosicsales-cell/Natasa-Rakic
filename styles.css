@@ -1218,6 +1218,14 @@ section[id] { scroll-margin-top: var(--header-h); }
 }
 .bonus-card__list li s { color: #6B6B70; }
 
+/* SNIMLJENI PROGRAM — week-by-week curriculum */
+.program-weeks { list-style: none; display: grid; gap: 14px; margin: 16px 0 18px; padding: 0; counter-reset: wk; }
+.program-weeks li { position: relative; padding-left: 16px; font-size: 1rem; line-height: 1.5; color: #C9C9D0; border-left: 2px solid rgba(255, 30, 142, 0.45); }
+.program-weeks__wk { display: block; font-family: var(--font-display); font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent-magenta); margin-bottom: 2px; }
+.program-weeks__t { color: #fff; font-weight: 800; }
+.program-weeks__t::after { content: " — "; color: #6B6B70; font-weight: 400; }
+.program-weeks__result { font-size: 1.0625rem; line-height: 1.5; color: #E4E4EA; margin: 0 0 4px; padding-top: 14px; border-top: 1px solid var(--line-dark); }
+
 @media (prefers-reduced-motion: reduce) {
   .bonus-card { transition: none; }
 }
