@@ -1396,9 +1396,6 @@ section[id] { scroll-margin-top: var(--header-h); }
 .faq__a .vcard { margin: 0 22px 22px; }
 .faq__a .vcard__caption p { padding: 0; color: #C7C7CD; }
 
-.faq__clip { width: 100%; max-width: 300px; margin: 0 22px 22px; border-radius: 14px; overflow: hidden; background: #0A0A0F; }
-.faq__clip video { width: 100%; height: auto; display: block; }
-.faq__clip__name { font-family: var(--font-accent); font-size: 0.95rem; color: var(--accent-magenta); padding: 8px 14px 10px; margin: 0; background: #0A0A0F; }
 
 @media (prefers-reduced-motion: reduce) {
   .faq__item, .faq__icon, .faq__icon::before, .faq__icon::after,
