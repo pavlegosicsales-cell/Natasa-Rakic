@@ -1168,16 +1168,17 @@
     var nlError = document.getElementById("nlError");
     var nlSuccess = document.getElementById("nlSuccess");
 
-    // Sends the captured email to your email provider. Returns a Promise.
+    // Sends the captured email to Brevo (newsletter list 7) via our serverless
+    // endpoint. Returns a Promise that rejects on any non-2xx response.
     function submitEmail(email) {
-      // TODO: connect to email provider (Mailchimp/ConvertKit/ActiveCampaign) endpoint here.
-      // Example:
-      //   return fetch("https://YOUR-PROVIDER-ENDPOINT", {
-      //     method: "POST",
-      //     headers: { "Content-Type": "application/json" },
-      //     body: JSON.stringify({ email: email })
-      //   });
-      return Promise.resolve(email); // placeholder: pretend the request succeeded
+      return fetch("/api/newsletter", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: email })
+      }).then(function (r) {
+        if (!r.ok) throw new Error("request failed");
+        return r;
+      });
     }
 
     // Clear the error state as soon as the user starts correcting the email
@@ -1186,11 +1187,14 @@
       nlError.hidden = true;
     });
 
+    var nlBtn = nlForm.querySelector("button[type=submit]");
+
     nlForm.addEventListener("submit", function (e) {
       e.preventDefault();
       var email = nlEmail.value.trim();
       var valid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
       if (!valid) {
+        nlError.textContent = "Unesi ispravnu email adresu.";
         nlEmail.setAttribute("aria-invalid", "true");
         nlError.hidden = false;
         nlEmail.focus();
@@ -1198,10 +1202,15 @@
       }
       nlError.hidden = true;
       nlEmail.removeAttribute("aria-invalid");
+      if (nlBtn) nlBtn.disabled = true;
       submitEmail(email).then(function () {
         nlForm.hidden = true;        // hide the form
         nlSuccess.hidden = false;    // reveal success state in its place
         nlSuccess.focus();           // move focus so screen readers announce it
+      }).catch(function () {
+        nlError.textContent = "Nešto nije u redu. Pokušaj ponovo.";
+        nlError.hidden = false;
+        if (nlBtn) nlBtn.disabled = false;
       });
     });
   }
