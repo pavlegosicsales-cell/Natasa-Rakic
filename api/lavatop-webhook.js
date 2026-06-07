@@ -9,11 +9,14 @@
    Required environment variables (Vercel → Settings → Env Vars):
      - LAVATOP_WEBHOOK_LOGIN     (Basic auth username, set in Lavatop)
      - LAVATOP_WEBHOOK_PASSWORD  (Basic auth password, set in Lavatop)
+     - LAVATOP_WEBHOOK_SECRET    (Lavatop API key — stored for future use,
+                                  e.g. verifying a signed payload / calling
+                                  Lavatop back; not used to authorize yet)
      - BREVO_API_KEY             (already configured for /api/subscribe)
 
    TODO (Brevo dashboard, one-time): create a new list named
-   "Izazov — kartica" and confirm its list ID is 4. If Brevo assigns
-   a different ID, update BREVO_LIST_ID below.
+   "Izazov — kartica" and confirm its list ID is 6. If Brevo assigns
+   a different ID, update BREVO_KARTICA_LIST_ID below.
 
    TODO (Lavatop dashboard, one-time): register this URL as the
    purchase/success webhook and set the Basic auth login + password
@@ -23,7 +26,7 @@
 const crypto = require("crypto");
 
 // TODO: confirm this matches the real "Izazov — kartica" list ID in Brevo.
-const BREVO_LIST_ID = 4;
+const BREVO_KARTICA_LIST_ID = 6;
 
 // Constant-time string compare to avoid leaking credentials via timing.
 function safeEqual(a, b) {
@@ -93,9 +96,8 @@ module.exports = async function handler(req, res) {
     }
     body = body || {};
 
-    // TODO: confirm the exact field names Lavatop sends in its webhook payload
-    // and trim this list down once verified (these are the common variants).
-    var email = firstField(body, ["email", "buyer_email", "clientEmail", "payerEmail"]).toLowerCase();
+    // Lavatop may send the buyer email under any of these keys — use the first present.
+    var email = firstField(body, ["buyer_email", "email", "customer_email"]).toLowerCase();
     var name = firstField(body, ["name", "buyer_name", "clientName", "fullName", "firstName"]);
     var amount = firstField(body, ["amount", "sum", "price", "total"]);
 
@@ -111,6 +113,11 @@ module.exports = async function handler(req, res) {
       console.error("[lavatop-webhook] Missing BREVO_API_KEY env var.");
       return res.status(500).json({ error: "Server not configured." });
     }
+
+    // Lavatop API key — read and reserved for future use (e.g. verifying a
+    // signed payload or calling the Lavatop API back). Not used yet.
+    // TODO: use this when adding payload-signature verification.
+    var lavatopSecret = process.env.LAVATOP_WEBHOOK_SECRET; // eslint-disable-line no-unused-vars
 
     // TODO: Lavatop sends a single "name". We store it in IME for now.
     // If you want IME/PREZIME split, split on the first space here — and make
@@ -130,7 +137,7 @@ module.exports = async function handler(req, res) {
       },
       body: JSON.stringify({
         email: email,
-        listIds: [BREVO_LIST_ID],
+        listIds: [BREVO_KARTICA_LIST_ID],
         updateEnabled: true,
         attributes: attributes
       })
@@ -142,7 +149,7 @@ module.exports = async function handler(req, res) {
 
     // 2xx, or an already-existing contact (updateEnabled) → success.
     if ((resp.status >= 200 && resp.status < 300) || (data && data.code === "duplicate_parameter")) {
-      console.log("[lavatop-webhook] Contact added to list", BREVO_LIST_ID, "—", email, "amount:", amount || "n/a");
+      console.log("[lavatop-webhook] Contact added to list", BREVO_KARTICA_LIST_ID, "—", email, "amount:", amount || "n/a");
       return res.status(200).json({ ok: true });
     }
 
