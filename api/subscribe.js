@@ -11,6 +11,45 @@
 
 const BREVO_LIST_ID = 3; // Brevo list ID
 
+/* Brevo's SMS attribute is validated as an E.164 phone number. A local
+   Serbian format ("062 123 4567") is rejected as "Invalid phone number",
+   which is why signup worked for some users (who typed +381…) but not
+   others. Normalize to international format before sending. */
+function normalizePhone(raw) {
+  if (!raw) return "";
+  var s = String(raw).replace(/[^\d+]/g, ""); // keep digits and a leading +
+  s = s.replace(/(?!^)\+/g, "");              // a "+" is only valid at the very start
+  if (s.charAt(0) === "+") return s;          // already international
+  if (s.slice(0, 2) === "00") return "+" + s.slice(2); // 00381… → +381…
+  if (s.slice(0, 3) === "381") return "+" + s;         // 381…   → +381…
+  if (s.charAt(0) === "0") return "+381" + s.slice(1); // 06X…   → +3816X…
+  if (s.length >= 6) return "+381" + s;                // bare local (6X…) → assume RS
+  return "";
+}
+
+function createContact(apiKey, email, attributes) {
+  return fetch("https://api.brevo.com/v3/contacts", {
+    method: "POST",
+    headers: {
+      "accept": "application/json",
+      "content-type": "application/json",
+      "api-key": apiKey
+    },
+    body: JSON.stringify({
+      email: email,
+      listIds: [BREVO_LIST_ID],
+      updateEnabled: true,
+      attributes: attributes
+    })
+  });
+}
+
+// 2xx (incl. 201 created / 204 updated) OR an existing contact = success.
+function isSuccess(status, data) {
+  if (status >= 200 && status < 300) return true;
+  return !!(data && data.code === "duplicate_parameter");
+}
+
 module.exports = async function handler(req, res) {
   if (req.method !== "POST") {
     res.setHeader("Allow", "POST");
@@ -28,7 +67,7 @@ module.exports = async function handler(req, res) {
     var ime = typeof body.ime === "string" ? body.ime.trim() : "";
     var prezime = typeof body.prezime === "string" ? body.prezime.trim() : "";
     var telefon = typeof body.telefon === "string" ? body.telefon.trim() : "";
-    var email = typeof body.email === "string" ? body.email.trim() : "";
+    var email = typeof body.email === "string" ? body.email.trim().toLowerCase() : "";
 
     // Server-side validation — never trust the client.
     var emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
@@ -38,46 +77,49 @@ module.exports = async function handler(req, res) {
 
     var apiKey = process.env.BREVO_API_KEY;
     if (!apiKey) {
+      console.error("[subscribe] Missing BREVO_API_KEY env var.");
       return res.status(500).json({ error: "Server nije konfigurisan." });
     }
 
-    var resp = await fetch("https://api.brevo.com/v3/contacts", {
-      method: "POST",
-      headers: {
-        "accept": "application/json",
-        "content-type": "application/json",
-        "api-key": apiKey
-      },
-      body: JSON.stringify({
-        email: email,
-        listIds: [BREVO_LIST_ID],
-        updateEnabled: true,
-        attributes: { IME: ime, PREZIME: prezime, SMS: telefon }
-      })
-    });
+    var phone = normalizePhone(telefon);
 
-    // 201 created, 204 updated → success
-    if (resp.ok || resp.status === 204) {
-      return res.status(200).json({ ok: true });
-    }
+    // Attempt 1: include the SMS attribute (normalized phone).
+    var attrs = { IME: ime, PREZIME: prezime };
+    if (phone) attrs.SMS = phone;
 
-    // Read the raw response body once (text), so we can both log it and parse it.
+    var resp = await createContact(apiKey, email, attrs);
     var rawBody = await resp.text().catch(function () { return ""; });
-
-    // Detailed error logging — visible in Vercel function logs.
-    // Brevo's error body never contains the API key, so this is safe to log.
-    console.error(
-      "[subscribe] Brevo API error — status:", resp.status,
-      "statusText:", resp.statusText,
-      "body:", rawBody
-    );
-
     var data = {};
     try { data = JSON.parse(rawBody); } catch (_) { data = {}; }
 
-    // Existing contact (with updateEnabled this is usually fine) → treat as success
-    if (data && data.code === "duplicate_parameter") {
+    if (isSuccess(resp.status, data)) {
       return res.status(200).json({ ok: true });
+    }
+
+    // Log the full Brevo error (status + body). Brevo's body never contains
+    // the API key, so this is safe to log. Visible in Vercel function logs.
+    console.error(
+      "[subscribe] Brevo error (attempt 1) — status:", resp.status,
+      "statusText:", resp.statusText, "body:", rawBody
+    );
+
+    // If Brevo rejected the phone number, retry WITHOUT the SMS attribute so the
+    // signup still succeeds (the contact is added → automation email fires).
+    var phoneRejected = phone && data && data.code === "invalid_parameter";
+    if (phoneRejected) {
+      var resp2 = await createContact(apiKey, email, { IME: ime, PREZIME: prezime });
+      var rawBody2 = await resp2.text().catch(function () { return ""; });
+      var data2 = {};
+      try { data2 = JSON.parse(rawBody2); } catch (_) { data2 = {}; }
+
+      if (isSuccess(resp2.status, data2)) {
+        console.error("[subscribe] Recovered without SMS attribute for:", email);
+        return res.status(200).json({ ok: true });
+      }
+      console.error(
+        "[subscribe] Brevo error (attempt 2, no SMS) — status:", resp2.status,
+        "statusText:", resp2.statusText, "body:", rawBody2
+      );
     }
 
     // Do NOT leak the API key or raw Brevo response details to the client.
