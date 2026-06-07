@@ -61,8 +61,21 @@ module.exports = async function handler(req, res) {
       return res.status(200).json({ ok: true });
     }
 
+    // Read the raw response body once (text), so we can both log it and parse it.
+    var rawBody = await resp.text().catch(function () { return ""; });
+
+    // Detailed error logging — visible in Vercel function logs.
+    // Brevo's error body never contains the API key, so this is safe to log.
+    console.error(
+      "[subscribe] Brevo API error — status:", resp.status,
+      "statusText:", resp.statusText,
+      "body:", rawBody
+    );
+
+    var data = {};
+    try { data = JSON.parse(rawBody); } catch (_) { data = {}; }
+
     // Existing contact (with updateEnabled this is usually fine) → treat as success
-    var data = await resp.json().catch(function () { return {}; });
     if (data && data.code === "duplicate_parameter") {
       return res.status(200).json({ ok: true });
     }
@@ -70,6 +83,7 @@ module.exports = async function handler(req, res) {
     // Do NOT leak the API key or raw Brevo response details to the client.
     return res.status(502).json({ error: "Neuspešno dodavanje kontakta." });
   } catch (e) {
+    console.error("[subscribe] Unexpected server error:", e && e.stack ? e.stack : e);
     return res.status(500).json({ error: "Greška na serveru." });
   }
 };
