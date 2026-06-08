@@ -25,7 +25,7 @@
   <div class="announce">
     <div class="container announce__inner">
       <span class="announce__text">
-        <strong class="u-red">Cena raste u ponedeljak 8. juna:</strong>
+        <strong class="u-red">Cena raste u sredu u ponoć:</strong>
         150€ <span aria-hidden="true">→</span> 200€
       </span>
       <span class="announce__count u-red" data-countmini aria-label="Vreme do poskupljenja">--d --:--:--</span>
@@ -94,7 +94,7 @@
           <a href="#greske" class="shiny-cta">
             <span>Želim da čujem više<span class="shiny-cta__arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h15M13 6l6 6-6 6"/></svg></span></span>
           </a>
-          <p class="micro">Cena se povećava 8. juna u ponoć.</p>
+          <p class="micro">Cena se povećava u sredu u ponoć.</p>
         </div>
 
         <ul class="stat-row reveal">
@@ -798,7 +798,7 @@
         <span class="price__now hl">150€</span>
       </div>
 
-      <p class="price__urgency u-red reveal">Cena raste 8. juna u ponoć:</p>
+      <p class="price__urgency u-red reveal">Cena raste u sredu u ponoć:</p>
       <div class="countdown reveal" data-countdown aria-label="Vreme do poskupljenja">
         <div class="countdown__box"><span class="countdown__num" data-d>--</span><span class="countdown__lbl">dana</span></div>
         <div class="countdown__box"><span class="countdown__num" data-h>--</span><span class="countdown__lbl">sati</span></div>
@@ -807,7 +807,7 @@
       </div>
 
       <a href="#" class="shiny-cta shiny-cta--block reveal" data-open-signup><span>Želim i ja — prijavljujem se za 150€</span></a>
-      <p class="micro centered reveal">Posle 8. juna — 200€. Bez skrivenih troškova. Sigurno plaćanje.</p>
+      <p class="micro centered reveal">Posle srede — 200€. Bez skrivenih troškova. Sigurno plaćanje.</p>
     </div>
   </section>
 
@@ -934,7 +934,7 @@
 
       <p class="finale__punch reveal">Hoćeš li opet čekati „sledeći ponedeljak"?</p>
 
-      <p class="price__urgency u-red reveal">Cena raste 8. juna u ponoć:</p>
+      <p class="price__urgency u-red reveal">Cena raste u sredu u ponoć:</p>
       <div class="countdown reveal" data-countdown aria-label="Vreme do poskupljenja">
         <div class="countdown__box"><span class="countdown__num" data-d>--</span><span class="countdown__lbl">dana</span></div>
         <div class="countdown__box"><span class="countdown__num" data-h>--</span><span class="countdown__lbl">sati</span></div>
@@ -1102,7 +1102,7 @@
   "use strict";
 
   /* ---------- Countdown to 8 June 2026, 00:00 (local) ---------- */
-  var TARGET = new Date(2026, 5, 8, 0, 0, 0).getTime(); // month is 0-indexed → 5 = June
+  var TARGET = new Date(2026, 5, 11, 0, 0, 0).getTime(); // 11 June 2026 00:00 — "u sredu u ponoć" (night Wed→Thu)
   var pad = function (n) { return n < 10 ? "0" + n : "" + n; };
   var fullEls = document.querySelectorAll("[data-countdown]");
   var miniEls = document.querySelectorAll("[data-countmini]");
