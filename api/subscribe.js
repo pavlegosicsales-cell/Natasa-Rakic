@@ -59,6 +59,29 @@ function isSuccess(status, data) {
   return !!(data && data.code === "duplicate_parameter");
 }
 
+/* Each contact must end up on exactly ONE payment list — otherwise (because
+   updateEnabled:true only ADDS to a list, never removes) a returning buyer
+   accumulates on several lists, multiple Brevo automations fire, and they get
+   the WRONG payment-instructions email. After adding to the chosen list, remove
+   the contact from the other payment lists. Best-effort: never fails the signup. */
+async function unlinkOtherPaymentLists(apiKey, email, keepListId) {
+  var others = BREVO_ALLOWED_LISTS.filter(function (id) { return id !== keepListId; });
+  if (!others.length) return;
+  try {
+    var r = await fetch("https://api.brevo.com/v3/contacts/" + encodeURIComponent(email), {
+      method: "PUT",
+      headers: { "accept": "application/json", "content-type": "application/json", "api-key": apiKey },
+      body: JSON.stringify({ unlinkListIds: others })
+    });
+    if (!(r.status >= 200 && r.status < 300)) {
+      var b = await r.text().catch(function () { return ""; });
+      console.error("[subscribe] unlink other lists failed — status:", r.status, "body:", b);
+    }
+  } catch (e) {
+    console.error("[subscribe] unlink error:", e && e.message ? e.message : e);
+  }
+}
+
 module.exports = async function handler(req, res) {
   if (req.method !== "POST") {
     res.setHeader("Allow", "POST");
@@ -105,6 +128,7 @@ module.exports = async function handler(req, res) {
     try { data = JSON.parse(rawBody); } catch (_) { data = {}; }
 
     if (isSuccess(resp.status, data)) {
+      await unlinkOtherPaymentLists(apiKey, email, listId);
       return res.status(200).json({ ok: true });
     }
 
@@ -126,6 +150,7 @@ module.exports = async function handler(req, res) {
 
       if (isSuccess(resp2.status, data2)) {
         console.error("[subscribe] Recovered without SMS attribute for:", email);
+        await unlinkOtherPaymentLists(apiKey, email, listId);
         return res.status(200).json({ ok: true });
       }
       console.error(
