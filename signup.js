@@ -127,12 +127,16 @@
   // Step navigation: "Plaćam iz Srbije"/"...inostranstva", WU, račun (data-goto)
   // and "← Nazad" (data-back) on every step.
   var emailTitle = document.getElementById("signupEmailTitle");
+  var selectedListId = 3; // Brevo list for the chosen payment method (3 = default/Srbija)
   modal.querySelectorAll("[data-goto]").forEach(function (btn) {
     btn.addEventListener("click", function () {
-      // The email step is shared; set its title from the button that opened it
-      // so it's clear which method (račun, Western Union…) the user picked.
+      // The email step is shared; set its title + target Brevo list from the
+      // button that opened it (3 = Srbija/račun, 8 = WU/Ria/MoneyGram,
+      // 9 = devizni račun) so each method gets its own instructions email.
       var t = btn.getAttribute("data-email-title");
       if (t && emailTitle) emailTitle.textContent = t;
+      var list = btn.getAttribute("data-list");
+      if (list) selectedListId = parseInt(list, 10);
       goToStep(btn.getAttribute("data-goto"));
     });
   });
@@ -151,11 +155,13 @@
     bankError.hidden = true;
 
     // Reuse the data already entered in step 1 (no new fields).
+    // listId routes the contact to the Brevo list matching the chosen method.
     var payload = {
       ime: step1.ime.value.trim(),
       prezime: step1.prezime.value.trim(),
       telefon: step1.telefon.value.trim(),
-      email: email
+      email: email,
+      listId: selectedListId
     };
 
     var submitBtn = bankForm.querySelector("button[type=submit]");

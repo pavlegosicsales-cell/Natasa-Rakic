@@ -9,7 +9,16 @@
    Set BREVO_API_KEY in Vercel → Settings → Environment Variables.
    ============================================================ */
 
-const BREVO_LIST_ID = 3; // Brevo list ID
+// Brevo lists, by payment method (each list triggers its own instructions email):
+//   3 — Srbija / domaći račun (default)   8 — Western Union / Ria / MoneyGram
+//   9 — inostranstvo / devizni račun
+const BREVO_DEFAULT_LIST_ID = 3;
+var BREVO_ALLOWED_LISTS = [3, 8, 9]; // allowlist — never trust a client-supplied list id blindly
+
+function resolveListId(raw) {
+  var n = typeof raw === "number" ? raw : parseInt(raw, 10);
+  return BREVO_ALLOWED_LISTS.indexOf(n) !== -1 ? n : BREVO_DEFAULT_LIST_ID;
+}
 
 /* Brevo's SMS attribute is validated as an E.164 phone number. A local
    Serbian format ("062 123 4567") is rejected as "Invalid phone number",
@@ -27,7 +36,7 @@ function normalizePhone(raw) {
   return "";
 }
 
-function createContact(apiKey, email, attributes) {
+function createContact(apiKey, email, attributes, listId) {
   return fetch("https://api.brevo.com/v3/contacts", {
     method: "POST",
     headers: {
@@ -37,7 +46,7 @@ function createContact(apiKey, email, attributes) {
     },
     body: JSON.stringify({
       email: email,
-      listIds: [BREVO_LIST_ID],
+      listIds: [listId],
       updateEnabled: true,
       attributes: attributes
     })
@@ -83,11 +92,14 @@ module.exports = async function handler(req, res) {
 
     var phone = normalizePhone(telefon);
 
+    // Which Brevo list (payment method) — validated against the allowlist.
+    var listId = resolveListId(body.listId);
+
     // Attempt 1: include the SMS attribute (normalized phone).
     var attrs = { IME: ime, PREZIME: prezime };
     if (phone) attrs.SMS = phone;
 
-    var resp = await createContact(apiKey, email, attrs);
+    var resp = await createContact(apiKey, email, attrs, listId);
     var rawBody = await resp.text().catch(function () { return ""; });
     var data = {};
     try { data = JSON.parse(rawBody); } catch (_) { data = {}; }
@@ -107,7 +119,7 @@ module.exports = async function handler(req, res) {
     // signup still succeeds (the contact is added → automation email fires).
     var phoneRejected = phone && data && data.code === "invalid_parameter";
     if (phoneRejected) {
-      var resp2 = await createContact(apiKey, email, { IME: ime, PREZIME: prezime });
+      var resp2 = await createContact(apiKey, email, { IME: ime, PREZIME: prezime }, listId);
       var rawBody2 = await resp2.text().catch(function () { return ""; });
       var data2 = {};
       try { data2 = JSON.parse(rawBody2); } catch (_) { data2 = {}; }
