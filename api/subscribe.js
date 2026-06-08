@@ -129,7 +129,7 @@ module.exports = async function handler(req, res) {
 
     if (isSuccess(resp.status, data)) {
       await unlinkOtherPaymentLists(apiKey, email, listId);
-      return res.status(200).json({ ok: true, listId: listId });
+      return res.status(200).json({ ok: true });
     }
 
     // Log the full Brevo error (status + body). Brevo's body never contains
@@ -151,7 +151,7 @@ module.exports = async function handler(req, res) {
       if (isSuccess(resp2.status, data2)) {
         console.error("[subscribe] Recovered without SMS attribute for:", email);
         await unlinkOtherPaymentLists(apiKey, email, listId);
-        return res.status(200).json({ ok: true, listId: listId });
+        return res.status(200).json({ ok: true });
       }
       console.error(
         "[subscribe] Brevo error (attempt 2, no SMS) — status:", resp2.status,
