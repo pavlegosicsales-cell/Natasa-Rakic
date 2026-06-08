@@ -589,6 +589,13 @@
         <p class="wall-sub reveal">Žene mi pišu svaki dan. Ovo su samo neke od njih — bez montaže, bez ulepšavanja.</p>
       </div>
 
+      <!-- Featured transformation — always visible, sits above the scrolling wall -->
+      <figure class="wall-featured reveal">
+        <button type="button" class="wall-card__shot" aria-label="Uvecaj rezultat">
+          <img src="messages/IMG_9655.PNG" width="1179" height="1301" alt="Rezultat: -28kg posle izazova" loading="lazy" decoding="async">
+        </button>
+      </figure>
+
       <div class="wall" data-format="a">
         <figure class="wall-card">
           <button type="button" class="wall-card__shot" aria-label="Uvecaj poruku">
@@ -1302,6 +1309,12 @@
     wall.addEventListener("click", function (e) {
       var shot = e.target.closest(".wall-card__shot");
       if (shot && wall.contains(shot)) openLightbox(shot);
+    });
+    // Featured card lives outside .wall — wire it to the same lightbox.
+    var featured = document.querySelector(".wall-featured");
+    if (featured) featured.addEventListener("click", function (e) {
+      var shot = e.target.closest(".wall-card__shot");
+      if (shot) openLightbox(shot);
     });
     lightbox.querySelectorAll("[data-close]").forEach(function (el) {
       el.addEventListener("click", closeLightbox);

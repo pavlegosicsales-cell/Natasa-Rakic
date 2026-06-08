@@ -1539,6 +1539,11 @@ section[id] { scroll-margin-top: var(--header-h); }
 .wall-sec h2 { color: #fff; }
 .wall-sub { color: var(--text-muted-dark); max-width: 600px; margin: 14px auto 0; font-size: 1.0625rem; }
 
+/* Featured transformation — stays visible above the scrolling wall */
+.wall-featured { position: relative; z-index: 2; width: 100%; max-width: 440px; margin: 0 auto 40px; padding: 0; border-radius: 20px; overflow: hidden; border: 2px solid var(--accent-magenta); background: #0A0A0F; box-shadow: 0 0 0 5px rgba(255, 30, 142, 0.12), 0 26px 60px -22px rgba(255, 30, 142, 0.6); }
+.wall-featured .wall-card__shot { display: block; width: 100%; margin: 0; padding: 0; border: 0; background: none; cursor: zoom-in; }
+.wall-featured img { display: block; width: 100%; height: auto; }
+
 /* Scrolling testimonials marquee (ported from 21st.dev "testimonial-v2"):
    up to 3 vertical columns auto-scroll at different speeds, masked top/bottom;
    cards lift on hover and the column pauses so you can read/tap. */
