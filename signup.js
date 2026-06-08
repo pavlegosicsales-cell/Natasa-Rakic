@@ -126,8 +126,15 @@
 
   // Step navigation: "Plaćam iz Srbije"/"...inostranstva", WU, račun (data-goto)
   // and "← Nazad" (data-back) on every step.
+  var emailTitle = document.getElementById("signupEmailTitle");
   modal.querySelectorAll("[data-goto]").forEach(function (btn) {
-    btn.addEventListener("click", function () { goToStep(btn.getAttribute("data-goto")); });
+    btn.addEventListener("click", function () {
+      // The email step is shared; set its title from the button that opened it
+      // so it's clear which method (račun, Western Union…) the user picked.
+      var t = btn.getAttribute("data-email-title");
+      if (t && emailTitle) emailTitle.textContent = t;
+      goToStep(btn.getAttribute("data-goto"));
+    });
   });
   modal.querySelectorAll("[data-back]").forEach(function (btn) {
     btn.addEventListener("click", back);
