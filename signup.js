@@ -84,15 +84,16 @@
   var backBtn = modal.querySelector("[data-back]");
   if (backBtn) backBtn.addEventListener("click", function () { showStep(1); });
 
-  // Bank payment → reveal email form
-  var bankBtn = modal.querySelector("[data-bank]");
-  if (bankBtn) bankBtn.addEventListener("click", function () {
-    if (bankNote) bankNote.hidden = true;
-    if (bankForm) {
-      bankForm.hidden = false;
-      var input = bankForm.querySelector("input");
-      if (input) setTimeout(function () { input.focus(); }, 50);
-    }
+  // "Plaćanje preko računa" and "Strano plaćanje" → reveal the SAME email form.
+  modal.querySelectorAll("[data-bank]").forEach(function (bankBtn) {
+    bankBtn.addEventListener("click", function () {
+      if (bankNote) bankNote.hidden = true;
+      if (bankForm) {
+        bankForm.hidden = false;
+        var input = bankForm.querySelector("input");
+        if (input) setTimeout(function () { input.focus(); }, 50);
+      }
+    });
   });
 
   // Bank email form submit → add contact to Brevo, then show success

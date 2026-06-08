@@ -1078,9 +1078,11 @@
       <!-- Korak 2: plaćanje -->
       <div class="signup__step" id="signupStep2" hidden>
         <p class="signup__paytitle">Izaberi način plaćanja:</p>
-        <!-- Plaćanje karticom → lava.top -->
-        <a class="signup__pay signup__pay--card" href="https://app.lava.top/products/7d9804c6-7833-47c1-9af4-bb63d65e2a06" target="_blank" rel="noopener noreferrer">Plaćanje karticom</a>
+        <!-- PayPal → lava.top checkout (same Lavatop URL previously used for "Plaćanje karticom") -->
+        <a class="signup__pay signup__pay--card" href="https://app.lava.top/products/7d9804c6-7833-47c1-9af4-bb63d65e2a06" target="_blank" rel="noopener noreferrer">PayPal</a>
+        <!-- Both of these open the SAME email flow → /api/subscribe (Brevo list 3) -->
         <button type="button" class="signup__pay signup__pay--bank" data-bank>Plaćanje preko računa</button>
+        <button type="button" class="signup__pay signup__pay--bank" data-bank>Strano plaćanje</button>
         <!-- Email forma za uplatu preko računa (otvara se na klik) -->
         <form class="signup__bankform" id="signupBankForm" hidden novalidate>
           <div class="signup__field"><input type="email" name="bankEmail" placeholder="Upiši svoj email" autocomplete="email" inputmode="email" required></div>
