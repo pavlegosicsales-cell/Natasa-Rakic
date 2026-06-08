@@ -1075,21 +1075,34 @@
         <button type="submit" class="signup__next">Dalje →</button>
       </form>
 
-      <!-- Korak 2: plaćanje -->
-      <div class="signup__step" id="signupStep2" hidden>
-        <p class="signup__paytitle">Izaberi način plaćanja:</p>
-        <!-- PayPal → lava.top checkout (same Lavatop URL previously used for "Plaćanje karticom") -->
+      <!-- Korak 2: odakle plaćaš? -->
+      <div class="signup__step" id="signupStepOdakle" hidden>
+        <p class="signup__paytitle">Odakle plaćaš?</p>
+        <button type="button" class="signup__pay signup__pay--bank" data-goto="email">Plaćam iz Srbije</button>
+        <button type="button" class="signup__pay signup__pay--bank" data-goto="inostranstvo">Plaćam iz inostranstva</button>
+        <button type="button" class="signup__back" data-back>← Nazad</button>
+      </div>
+
+      <!-- Korak 3b: plaćanje iz inostranstva -->
+      <div class="signup__step" id="signupStepInostranstvo" hidden>
+        <p class="signup__paytitle">Način plaćanja iz inostranstva:</p>
+        <!-- PayPal → lava.top checkout (same Lavatop URL as before) -->
         <a class="signup__pay signup__pay--card" href="https://app.lava.top/products/7d9804c6-7833-47c1-9af4-bb63d65e2a06" target="_blank" rel="noopener noreferrer">PayPal</a>
-        <!-- Both of these open the SAME email flow → /api/subscribe (Brevo list 3) -->
-        <button type="button" class="signup__pay signup__pay--bank" data-bank>Plaćanje preko računa</button>
-        <button type="button" class="signup__pay signup__pay--bank" data-bank>Strano plaćanje</button>
-        <!-- Email forma za uplatu preko računa (otvara se na klik) -->
-        <form class="signup__bankform" id="signupBankForm" hidden novalidate>
+        <!-- Both open the SAME email step → /api/subscribe (Brevo list 3) -->
+        <button type="button" class="signup__pay signup__pay--bank" data-goto="email">Western Union / Ria / Moneygram</button>
+        <button type="button" class="signup__pay signup__pay--bank" data-goto="email">Plaćanje preko računa</button>
+        <button type="button" class="signup__back" data-back>← Nazad</button>
+      </div>
+
+      <!-- Korak 3: email (deljen — Srbija, Western Union, račun → /api/subscribe, lista 3) -->
+      <div class="signup__step" id="signupStepEmail" hidden>
+        <p class="signup__paytitle">Upiši email — instrukcije stižu odmah:</p>
+        <form class="signup__bankform" id="signupBankForm" novalidate>
           <div class="signup__field"><input type="email" name="bankEmail" placeholder="Upiši svoj email" autocomplete="email" inputmode="email" required></div>
           <p class="signup__error" id="bankError" role="alert" hidden>Unesi ispravnu email adresu.</p>
-          <button type="submit" class="signup__pay signup__pay--card">Pošalji mi uputstvo</button>
+          <button type="submit" class="signup__pay signup__pay--card">Pošalji mi instrukcije</button>
         </form>
-        <p class="signup__banknote" hidden>Hvala! Uputstvo za uplatu preko računa stiže ti na mejl.</p>
+        <p class="signup__banknote" hidden>Instrukcije stižu na mejl!</p>
         <button type="button" class="signup__back" data-back>← Nazad</button>
       </div>
     </div>

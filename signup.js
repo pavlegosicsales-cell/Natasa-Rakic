@@ -10,7 +10,6 @@
   if (!modal) return;
 
   var step1 = document.getElementById("signupStep1");
-  var step2 = document.getElementById("signupStep2");
   var card = document.getElementById("signupCard");
   var errorEl = document.getElementById("signupError");
   var bankNote = modal.querySelector(".signup__banknote");
@@ -20,22 +19,53 @@
   var step2Subs = modal.querySelectorAll("[data-step2-only]");
   var lastFocused = null;
 
-  function showStep(n) {
-    step1.hidden = n !== 1;
-    step2.hidden = n !== 2;
-    step1Subs.forEach(function (e) { e.hidden = n !== 1; });
-    step2Subs.forEach(function (e) { e.hidden = n !== 2; });
-    if (bankNote) bankNote.hidden = true;
-    if (bankForm) { bankForm.hidden = true; if (bankError) bankError.hidden = true; }
+  // Named steps + a small history stack so "← Nazad" returns to the previous step.
+  // Flow: podaci → odakle → (email | inostranstvo → email). The email step is
+  // shared by all paths that submit to /api/subscribe (Brevo list 3).
+  var steps = {
+    podaci: step1,
+    odakle: document.getElementById("signupStepOdakle"),
+    inostranstvo: document.getElementById("signupStepInostranstvo"),
+    email: document.getElementById("signupStepEmail")
+  };
+  var stack = [];
+
+  function renderStep(name) {
+    Object.keys(steps).forEach(function (k) {
+      if (steps[k]) steps[k].hidden = (k !== name);
+    });
+    // Head subtitle: only the data-collection step uses the step-1 copy.
+    step1Subs.forEach(function (e) { e.hidden = name !== "podaci"; });
+    step2Subs.forEach(function (e) { e.hidden = name === "podaci"; });
+    // Reset the (shared) email step each time it is shown.
+    if (name === "email") {
+      if (bankForm) bankForm.hidden = false;
+      if (bankNote) bankNote.hidden = true;
+      if (bankError) bankError.hidden = true;
+    }
+    var focusEl = steps[name] && steps[name].querySelector("input, button, a");
+    if (focusEl) setTimeout(function () { focusEl.focus(); }, 50);
+  }
+
+  function goToStep(name) {
+    if (!steps[name]) return;
+    stack.push(name);
+    renderStep(name);
+  }
+
+  function back() {
+    if (stack.length > 1) {
+      stack.pop();
+      renderStep(stack[stack.length - 1]);
+    }
   }
 
   function open() {
     lastFocused = document.activeElement;
     modal.hidden = false;
     document.body.style.overflow = "hidden";
-    showStep(1);
-    var first = step1.querySelector("input");
-    if (first) setTimeout(function () { first.focus(); }, 50);
+    stack = ["podaci"];
+    renderStep("podaci");
     document.addEventListener("keydown", onKey);
   }
 
@@ -77,23 +107,16 @@
 
     if (!ok) { errorEl.hidden = false; return; }
     errorEl.hidden = true;
-    showStep(2);
+    goToStep("odakle");
   });
 
-  // Back to step 1
-  var backBtn = modal.querySelector("[data-back]");
-  if (backBtn) backBtn.addEventListener("click", function () { showStep(1); });
-
-  // "Plaćanje preko računa" and "Strano plaćanje" → reveal the SAME email form.
-  modal.querySelectorAll("[data-bank]").forEach(function (bankBtn) {
-    bankBtn.addEventListener("click", function () {
-      if (bankNote) bankNote.hidden = true;
-      if (bankForm) {
-        bankForm.hidden = false;
-        var input = bankForm.querySelector("input");
-        if (input) setTimeout(function () { input.focus(); }, 50);
-      }
-    });
+  // Step navigation: "Plaćam iz Srbije"/"...inostranstva", WU, račun (data-goto)
+  // and "← Nazad" (data-back) on every step.
+  modal.querySelectorAll("[data-goto]").forEach(function (btn) {
+    btn.addEventListener("click", function () { goToStep(btn.getAttribute("data-goto")); });
+  });
+  modal.querySelectorAll("[data-back]").forEach(function (btn) {
+    btn.addEventListener("click", back);
   });
 
   // Bank email form submit → add contact to Brevo, then show success
