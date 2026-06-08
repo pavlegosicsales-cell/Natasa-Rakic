@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang="sr-Latn">
 <head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-32H63CQE1Y"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-32H63CQE1Y');
+</script>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Nataša Rakić — Smršaj bez gladovanja | 15-dnevni izazov</title>
@@ -1087,7 +1095,7 @@
       <div class="signup__step" id="signupStepInostranstvo" hidden>
         <p class="signup__paytitle">Način plaćanja iz inostranstva:</p>
         <!-- PayPal → lava.top checkout (same Lavatop URL as before) -->
-        <a class="signup__pay signup__pay--card" href="https://app.lava.top/products/7d9804c6-7833-47c1-9af4-bb63d65e2a06" target="_blank" rel="noopener noreferrer">PayPal</a>
+        <a class="signup__pay signup__pay--card" data-paypal href="https://app.lava.top/products/7d9804c6-7833-47c1-9af4-bb63d65e2a06" target="_blank" rel="noopener noreferrer">PayPal</a>
         <!-- Both open the SAME email step → /api/subscribe (Brevo list 3) -->
         <button type="button" class="signup__pay signup__pay--bank" data-goto="email">Western Union / Ria / Moneygram</button>
         <button type="button" class="signup__pay signup__pay--bank" data-goto="email">Plaćanje preko računa</button>
@@ -1222,6 +1230,7 @@
         nlForm.hidden = true;        // hide the form
         nlSuccess.hidden = false;    // reveal success state in its place
         nlSuccess.focus();           // move focus so screen readers announce it
+        if (typeof window.gtag === "function") window.gtag("event", "generate_lead");
       }).catch(function () {
         nlError.textContent = "Nešto nije u redu. Pokušaj ponovo.";
         nlError.hidden = false;

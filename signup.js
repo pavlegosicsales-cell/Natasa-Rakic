@@ -19,6 +19,11 @@
   var step2Subs = modal.querySelectorAll("[data-step2-only]");
   var lastFocused = null;
 
+  // GA4 helper — no-op if gtag is missing (e.g. blocked by an ad blocker).
+  function track(eventName) {
+    if (typeof window.gtag === "function") window.gtag("event", eventName);
+  }
+
   // Named steps + a small history stack so "← Nazad" returns to the previous step.
   // Flow: podaci → odakle → (email | inostranstvo → email). The email step is
   // shared by all paths that submit to /api/subscribe (Brevo list 3).
@@ -82,7 +87,16 @@
   document.querySelectorAll("[data-open-signup]").forEach(function (btn) {
     btn.addEventListener("click", function (e) {
       e.preventDefault();
+      track("begin_checkout"); // "Prijavi se" CTA
       open();
+    });
+  });
+
+  // PayPal button → redirects to Lavatop checkout.
+  modal.querySelectorAll("[data-paypal]").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      track("begin_checkout");
+      track("initiate_checkout"); // PayPal → Lavatop redirect
     });
   });
 
@@ -123,6 +137,7 @@
   if (bankForm) bankForm.addEventListener("submit", function (e) {
     e.preventDefault();
     var email = bankForm.bankEmail.value.trim();
+    track("begin_checkout"); // "Pošalji mi instrukcije" CTA
     var valid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
     bankForm.bankEmail.setAttribute("aria-invalid", valid ? "false" : "true");
     if (!valid) { bankError.textContent = "Unesi ispravnu email adresu."; bankError.hidden = false; return; }
@@ -147,6 +162,7 @@
       if (!r.ok) throw new Error("request failed");
       bankForm.hidden = true;                 // success only after a 2xx response
       if (bankNote) bankNote.hidden = false;
+      track("generate_lead");                 // email captured → success shown
     }).catch(function () {
       bankError.textContent = "Nešto nije u redu. Pokušaj ponovo.";
       bankError.hidden = false;
