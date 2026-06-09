@@ -529,6 +529,9 @@ section[id] { scroll-margin-top: var(--header-h); }
   .shiny-cta--block { transition: box-shadow 0.7s ease; }
 }
 
+/* Recurring centered CTA placed at the end of several sections */
+.section-cta { text-align: center; margin-top: 40px; }
+
 @keyframes gradient-angle { to { --gradient-angle: 360deg; } }
 @keyframes shimmer { to { rotate: 360deg; } }
 @keyframes breathe { from, to { scale: 1; } 50% { scale: 1.2; } }
