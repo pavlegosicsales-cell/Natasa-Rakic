@@ -9,11 +9,12 @@
    Set BREVO_API_KEY in Vercel → Settings → Environment Variables.
    ============================================================ */
 
-// Brevo lists, by payment method (each list triggers its own instructions email):
-//   3 — Srbija / domaći račun (default)   8 — Western Union / Ria / MoneyGram
-//   9 — inostranstvo / devizni račun
-const BREVO_DEFAULT_LIST_ID = 3;
-var BREVO_ALLOWED_LISTS = [3, 8, 9]; // allowlist — never trust a client-supplied list id blindly
+// Brevo lists:
+//   7 — free signup (default, current flow)
+//   3/8/9 — legacy payment lists (Srbija / WU-Ria-MG / devizni račun)
+const BREVO_DEFAULT_LIST_ID = 7;
+var BREVO_ALLOWED_LISTS = [3, 7, 8, 9]; // allowlist — never trust a client-supplied list id blindly
+var BREVO_PAYMENT_LISTS = [3, 8, 9];    // legacy payment lists (mutually exclusive via unlink)
 
 function resolveListId(raw) {
   var n = typeof raw === "number" ? raw : parseInt(raw, 10);
@@ -65,7 +66,9 @@ function isSuccess(status, data) {
    the WRONG payment-instructions email. After adding to the chosen list, remove
    the contact from the other payment lists. Best-effort: never fails the signup. */
 async function unlinkOtherPaymentLists(apiKey, email, keepListId) {
-  var others = BREVO_ALLOWED_LISTS.filter(function (id) { return id !== keepListId; });
+  // Only relevant for the legacy payment lists; the free list (7) is left alone.
+  if (BREVO_PAYMENT_LISTS.indexOf(keepListId) === -1) return;
+  var others = BREVO_PAYMENT_LISTS.filter(function (id) { return id !== keepListId; });
   if (!others.length) return;
   try {
     var r = await fetch("https://api.brevo.com/v3/contacts/" + encodeURIComponent(email), {
@@ -101,9 +104,10 @@ module.exports = async function handler(req, res) {
     var telefon = typeof body.telefon === "string" ? body.telefon.trim() : "";
     var email = typeof body.email === "string" ? body.email.trim().toLowerCase() : "";
 
-    // Server-side validation — never trust the client.
+    // Server-side validation — free signup needs only ime + email
+    // (prezime/telefon remain optional for any legacy callers).
     var emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-    if (!emailOk || !ime || !prezime || !telefon) {
+    if (!emailOk || !ime) {
       return res.status(400).json({ error: "Nedostaju podaci ili neispravan email." });
     }
 
