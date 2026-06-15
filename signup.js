@@ -1,7 +1,11 @@
 /* ============================================================
-   Signup modal — free signup. One step: Ime + Email.
-   On submit → POST { ime, email, listId: 7 } to /api/subscribe.
-   No payment, no storage.
+   Signup / payment modal — 3-step flow:
+   1) Ime, Prezime, Telefon
+   2) Odakle plaćaš? (Srbija / inostranstvo)
+   3) Plaćanje: Srbija → email (list 3); inostranstvo → PayPal (Lavatop) /
+      Western Union (list 8) / devizni račun (list 9), each via the shared
+      email step → POST { ime, prezime, telefon, email, listId } to /api/subscribe.
+   "← Nazad" on every step (history stack). No storage.
    ============================================================ */
 (function () {
   "use strict";
@@ -9,26 +13,65 @@
   var modal = document.getElementById("signup");
   if (!modal) return;
 
+  var step1 = document.getElementById("signupStep1");
   var card = document.getElementById("signupCard");
-  var form = document.getElementById("signupForm");
   var errorEl = document.getElementById("signupError");
-  var successEl = document.getElementById("signupSuccess");
+  var bankNote = modal.querySelector(".signup__banknote");
+  var bankForm = document.getElementById("signupBankForm");
+  var bankError = document.getElementById("bankError");
+  var emailTitle = document.getElementById("signupEmailTitle");
+  var step1Subs = modal.querySelectorAll("[data-step1-only]");
+  var step2Subs = modal.querySelectorAll("[data-step2-only]");
   var lastFocused = null;
+  var selectedListId = 3; // Brevo list for the chosen payment method (3 = Srbija/default)
 
   // GA4 helper — no-op if gtag is blocked/missing.
   function track(eventName) {
     if (typeof window.gtag === "function") window.gtag("event", eventName);
   }
 
+  var steps = {
+    podaci: step1,
+    odakle: document.getElementById("signupStepOdakle"),
+    inostranstvo: document.getElementById("signupStepInostranstvo"),
+    email: document.getElementById("signupStepEmail")
+  };
+  var stack = [];
+
+  function renderStep(name) {
+    Object.keys(steps).forEach(function (k) {
+      if (steps[k]) steps[k].hidden = (k !== name);
+    });
+    step1Subs.forEach(function (e) { e.hidden = name !== "podaci"; });
+    step2Subs.forEach(function (e) { e.hidden = name === "podaci"; });
+    if (name === "email") {
+      if (bankForm) bankForm.hidden = false;
+      if (bankNote) bankNote.hidden = true;
+      if (bankError) bankError.hidden = true;
+    }
+    var focusEl = steps[name] && steps[name].querySelector("input, button, a");
+    if (focusEl) setTimeout(function () { focusEl.focus(); }, 50);
+  }
+
+  function goToStep(name) {
+    if (!steps[name]) return;
+    stack.push(name);
+    renderStep(name);
+  }
+
+  function back() {
+    if (stack.length > 1) {
+      stack.pop();
+      renderStep(stack[stack.length - 1]);
+    }
+  }
+
   function open() {
     lastFocused = document.activeElement;
     modal.hidden = false;
     document.body.style.overflow = "hidden";
-    if (form) form.hidden = false;
-    if (successEl) successEl.hidden = true;
-    if (errorEl) errorEl.hidden = true;
-    var first = form && form.querySelector("input");
-    if (first) setTimeout(function () { first.focus(); }, 50);
+    stack = ["podaci"];
+    renderStep("podaci");
     document.addEventListener("keydown", onKey);
   }
 
@@ -55,33 +98,80 @@
     el.addEventListener("click", close);
   });
 
-  // Submit → add contact to Brevo (list 7), then show success.
-  if (form) form.addEventListener("submit", function (e) {
+  // Step 1 (podaci) → validate → "Odakle plaćaš?"
+  step1.addEventListener("submit", function (e) {
     e.preventDefault();
-    var ime = form.ime.value.trim();
-    var email = form.email.value.trim();
-    var emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    var ime = step1.ime.value.trim();
+    var prezime = step1.prezime.value.trim();
+    var tel = step1.telefon.value.trim();
+    var telOk = /[0-9]{6,}/.test(tel.replace(/[\s\-()+]/g, ""));
+    var ok = ime && prezime && telOk;
 
-    form.ime.setAttribute("aria-invalid", ime ? "false" : "true");
-    form.email.setAttribute("aria-invalid", emailOk ? "false" : "true");
-    if (!ime || !emailOk) { errorEl.textContent = "Upiši ime i ispravan email."; errorEl.hidden = false; return; }
+    [step1.ime, step1.prezime].forEach(function (f) {
+      f.setAttribute("aria-invalid", f.value.trim() ? "false" : "true");
+    });
+    step1.telefon.setAttribute("aria-invalid", telOk ? "false" : "true");
+
+    if (!ok) { errorEl.hidden = false; return; }
     errorEl.hidden = true;
+    goToStep("odakle");
+  });
 
-    var submitBtn = document.getElementById("signupSubmit");
+  // Step navigation (data-goto) + "← Nazad" (data-back) on every step.
+  modal.querySelectorAll("[data-goto]").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      var t = btn.getAttribute("data-email-title");
+      if (t && emailTitle) emailTitle.textContent = t;
+      var list = btn.getAttribute("data-list");
+      if (list) selectedListId = parseInt(list, 10);
+      goToStep(btn.getAttribute("data-goto"));
+    });
+  });
+  modal.querySelectorAll("[data-back]").forEach(function (btn) {
+    btn.addEventListener("click", back);
+  });
+
+  // PayPal → redirects to Lavatop checkout.
+  modal.querySelectorAll("[data-paypal]").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      track("begin_checkout");
+      track("initiate_checkout");
+    });
+  });
+
+  // Email form submit → add contact to Brevo (selected list), then show success.
+  if (bankForm) bankForm.addEventListener("submit", function (e) {
+    e.preventDefault();
+    var email = bankForm.bankEmail.value.trim();
+    track("begin_checkout");
+    var valid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    bankForm.bankEmail.setAttribute("aria-invalid", valid ? "false" : "true");
+    if (!valid) { bankError.textContent = "Unesi ispravnu email adresu."; bankError.hidden = false; return; }
+    bankError.hidden = true;
+
+    var payload = {
+      ime: step1.ime.value.trim(),
+      prezime: step1.prezime.value.trim(),
+      telefon: step1.telefon.value.trim(),
+      email: email,
+      listId: selectedListId
+    };
+
+    var submitBtn = bankForm.querySelector("button[type=submit]");
     if (submitBtn) submitBtn.disabled = true;
 
     fetch("/api/subscribe", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ ime: ime, email: email, listId: 7 })
+      body: JSON.stringify(payload)
     }).then(function (r) {
       if (!r.ok) throw new Error("request failed");
-      form.hidden = true;                 // success only after a 2xx response
-      if (successEl) successEl.hidden = false;
+      bankForm.hidden = true;
+      if (bankNote) bankNote.hidden = false;
       track("generate_lead");
     }).catch(function () {
-      errorEl.textContent = "Nešto nije u redu. Pokušaj ponovo.";
-      errorEl.hidden = false;
+      bankError.textContent = "Nešto nije u redu. Pokušaj ponovo.";
+      bankError.hidden = false;
     }).then(function () {
       if (submitBtn) submitBtn.disabled = false;
     });
