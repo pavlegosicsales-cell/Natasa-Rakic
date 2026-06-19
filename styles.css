@@ -561,7 +561,7 @@ section[id] { scroll-margin-top: var(--header-h); }
 }
 .media-ph--portrait { aspect-ratio: 4 / 5; }
 /* Hero photo */
-.hero__media { max-width: 380px; margin-inline: auto; }
+.hero__media { max-width: 440px; margin-inline: auto; }
 .hero__photo {
   display: block;
   width: 100%;
@@ -668,8 +668,9 @@ section[id] { scroll-margin-top: var(--header-h); }
   pointer-events: none; -webkit-user-drag: none;
 }
 /* per-image framing so the head sits at a similar height in both */
-.ba__img--before { clip-path: inset(0 calc(100% - var(--pos)) 0 0); object-position: center 6%; }
-.ba__img--after  { object-position: center 8%; }
+.ba__img--before { clip-path: inset(0 calc(100% - var(--pos)) 0 0); object-position: center 30%; }
+/* "fit" full-length shot: keep head near the top so the whole body shows */
+.ba__img--after  { object-position: center top; }
 .ba__tag {
   position: absolute; top: 14px; z-index: 3;
   font-size: 0.7rem; font-weight: 800; letter-spacing: 0.12em;
@@ -923,6 +924,7 @@ section[id] { scroll-margin-top: var(--header-h); }
 .vcard__caption p:last-child { margin-bottom: 0; }
 .vcard__quote { font-style: italic; color: #fff; }
 .vcard__result { font-family: var(--font-display); font-size: 1.6rem; color: var(--accent-magenta); margin: 6px 0; }
+.vcard__by { margin: 10px 0 0; font-weight: 600; color: var(--accent-magenta); font-size: 0.95rem; }
 .vcard--inline { margin-top: 22px; }
 .vcard--inline .vcard__caption p { color: #C7C7CD; }
 
@@ -1412,13 +1414,17 @@ section[id] { scroll-margin-top: var(--header-h); }
 .faq__a .vcard__caption p { padding: 0; color: #C7C7CD; }
 
 /* FAQ embedded video clip — smaller, sits inside the expanded answer */
-.faq__clip { width: 100%; max-width: 300px; margin: 0 22px 22px; border-radius: 14px; overflow: hidden; }
+.faq__clip { width: 100%; max-width: 300px; margin: 0 auto 22px; border-radius: 14px; overflow: hidden; }
 .faq__clip .vcard__video { margin: 0; }
 
 /* PRIRUČNIK — feature cards grid (2 rows / 4 cols desktop) */
 .feature-grid { display: grid; grid-template-columns: 1fr; gap: 16px; margin-top: 30px; }
 @media (min-width: 600px) { .feature-grid { grid-template-columns: 1fr 1fr; } }
-@media (min-width: 1000px) { .feature-grid { grid-template-columns: repeat(4, 1fr); gap: 18px; } }
+@media (min-width: 1000px) {
+  /* Flex (not grid) so a non-full last row stays centered under the section */
+  .feature-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 18px; grid-template-columns: none; }
+  .feature-grid > .feature-card { flex: 0 1 calc((100% - 3 * 18px) / 4); }
+}
 .feature-card {
   position: relative;
   padding: 26px 22px;
@@ -1448,6 +1454,17 @@ section[id] { scroll-margin-top: var(--header-h); }
 .feature-card:nth-child(4n+2) .feature-card__ic { background: rgba(255, 106, 0, 0.12); color: var(--cta); }
 .feature-card:nth-child(4n+3) .feature-card__ic { background: rgba(26, 26, 31, 0.07); color: #2A2A30; }
 .feature-card:nth-child(4n+4) .feature-card__ic { background: rgba(255, 30, 142, 0.10); color: var(--accent-magenta); }
+/* On dark sections the cards are glassy dark (not white) so the contrast with the
+   background stays gentle and on-brand. */
+.section--dark .feature-card { background: rgba(255, 255, 255, 0.045); border-color: rgba(255, 255, 255, 0.10); box-shadow: 0 14px 32px -22px rgba(0, 0, 0, 0.7); }
+.section--dark .feature-card h3 { color: #fff; }
+.section--dark .feature-card p { color: #B8B8C2; }
+.section--dark .feature-card:hover { border-color: rgba(255, 30, 142, 0.4); box-shadow: 0 24px 46px -24px rgba(255, 30, 142, 0.35); }
+.section--dark .feature-card .feature-card__ic,
+.section--dark .feature-card:nth-child(4n+2) .feature-card__ic,
+.section--dark .feature-card:nth-child(4n+3) .feature-card__ic,
+.section--dark .feature-card:nth-child(4n+4) .feature-card__ic { background: rgba(255, 30, 142, 0.16); color: var(--accent-magenta); }
+.section--dark .feature-card:nth-child(2n) .feature-card__ic { background: rgba(232, 255, 58, 0.14); color: var(--accent-yellow); }
 @media (prefers-reduced-motion: reduce) {
   .feature-card, .feature-card__ic { transition: none; }
 }
@@ -1463,16 +1480,98 @@ section[id] { scroll-margin-top: var(--header-h); }
 .price__context { max-width: 52ch; margin: 10px auto 32px; font-size: 1.1rem; line-height: 1.55; color: #EAEAEF; }
 
 /* Masterklas section helpers */
-.mk-subhead { font-family: var(--font-display); font-size: 1.4rem; letter-spacing: 0.02em; color: #fff; text-align: center; margin: 34px 0 12px; }
+.mk-subhead { font-family: var(--font-body); font-size: 0.82rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent-magenta); text-align: center; margin: 40px 0 12px; }
 .mk-note { max-width: 60ch; margin: 26px auto 0; padding: 16px 20px; border-left: 3px solid var(--accent-yellow); border-radius: 12px; background: rgba(232, 255, 58, 0.07); color: #E4E4EA; font-size: 1.0625rem; line-height: 1.5; }
 .mk-note strong { color: var(--accent-yellow); }
+
+/* Per-product result subheading (works on light + dark sections) */
+.result-head { font-family: var(--font-display); font-size: clamp(1.5rem, 4vw, 2.1rem); letter-spacing: -0.01em; text-align: center; margin: 46px 0 22px; }
+.section--light .result-head { color: var(--text-dark); }
+.section--dark .result-head { color: #fff; }
+
+/* Secondary hero line under the subheadline */
+.hero__sub2 { margin: 14px 0 0; font-size: 1.0625rem; line-height: 1.6; color: var(--text-muted-dark); }
+.hero__sub2 .hl-mag { font-weight: 600; }
+/* Readable narrative prose (works on dark + light narrative sections) */
+.prose { max-width: 62ch; margin: 0 auto; }
+.prose p { font-size: 1.0938rem; line-height: 1.75; margin: 0 0 18px; }
+.prose p:last-child { margin-bottom: 0; }
+.prose p.prose__lead { font-size: 1.25rem; line-height: 1.6; }
+.section--dark .prose p { color: #D7D7DD; }
+.section--light .prose p { color: #3A3A40; }
+.prose strong { font-weight: 600; color: inherit; }
+.section--dark .prose strong { color: #fff; }
+
+/* ============================================================
+   SECTION ATMOSPHERES — layered radial glows so sections aren't
+   flat fills (cheap, static; no extra canvas/JS for performance).
+   ============================================================ */
+/* WHY (dark): dramatic dual brand glow */
+.whymatter {
+  background:
+    radial-gradient(70% 60% at 12% 0%, rgba(255, 30, 142, 0.16), transparent 60%),
+    radial-gradient(60% 60% at 100% 100%, rgba(232, 255, 58, 0.10), transparent 60%),
+    var(--bg-dark);
+}
+/* MASTERKLAS (dark): gentle top glow + corner accent (kept soft so cards stay readable) */
+.challenge {
+  background:
+    radial-gradient(90% 55% at 50% -8%, rgba(255, 30, 142, 0.12), transparent 60%),
+    radial-gradient(55% 55% at 0% 100%, rgba(232, 255, 58, 0.07), transparent 60%),
+    var(--bg-dark);
+}
+/* CENA (dark): money moment glows the most */
+.price {
+  background:
+    radial-gradient(62% 60% at 50% 0%, rgba(255, 30, 142, 0.18), transparent 60%),
+    radial-gradient(50% 60% at 100% 100%, rgba(232, 255, 58, 0.12), transparent 60%),
+    var(--bg-dark);
+}
+/* Light sections: subtle brand wash so they aren't flat white */
+.offer, .faq {
+  background:
+    radial-gradient(60% 50% at 100% 0%, rgba(255, 30, 142, 0.05), transparent 60%),
+    radial-gradient(55% 45% at 0% 100%, rgba(232, 255, 58, 0.06), transparent 60%),
+    var(--bg-light);
+}
+/* Keep section content above the animated background layers (rays / aurora) */
+.whymatter > .container { position: relative; z-index: 1; }
+.price__inner { position: relative; z-index: 1; }
+/* WHY heading + prose share the same flush-left edge (no centering offset) */
+.whymatter h2 { text-align: left; margin-bottom: 30px; }
+.whymatter .prose { margin-left: 0; margin-right: 0; }
+/* REZULTATI: more breathing room between the two-line heading and the list */
+#rezultati h2 { margin-bottom: 46px; }
+/* Interactive pink dot-grid behind the Priručnik section */
+.offer { overflow: hidden; }
+.offer > .container { position: relative; z-index: 1; }
+.offer .mistakes__dots { opacity: 0.85; }
+/* Lift the white cards off the dotted background (clearer edges) */
+.offer .feature-card { border-color: rgba(20, 20, 30, 0.14); box-shadow: 0 18px 40px -22px rgba(20, 20, 30, 0.34), 0 3px 10px -5px rgba(20, 20, 30, 0.14); }
+
+/* PROBLEM (zakoga) restructured: standalone texts + numbered mini-cards + two product cards */
+.zakoga .z-lead { font-size: clamp(1.15rem, 2.8vw, 1.45rem); font-weight: 700; color: #fff; max-width: 42ch; margin: 6px auto 34px; line-height: 1.45; }
+.zakoga .z-intro { font-size: 1.05rem; font-weight: 600; color: var(--accent-magenta); margin: 0 auto 18px; }
+.zakoga .problem__lines { text-align: left; max-width: 640px; margin: 0 auto; }
+.zakoga .z-solution { font-size: clamp(1.05rem, 2.4vw, 1.28rem); color: #E6E6EC; max-width: 54ch; margin: 34px auto 0; line-height: 1.65; }
+.zakoga .z-solution strong { color: var(--accent-magenta); }
+.solution-duo { display: grid; gap: 16px; margin: 30px auto 0; max-width: 640px; text-align: left; }
+@media (min-width: 700px) { .solution-duo { grid-template-columns: 1fr 1fr; } }
+.solution-card { position: relative; padding: 26px 24px; border-radius: 18px; border: 1px solid var(--line-dark); background: rgba(255, 255, 255, 0.04); overflow: hidden; transition: transform .4s cubic-bezier(.16,1,.3,1), border-color .4s ease, box-shadow .4s ease; }
+.solution-card:hover { transform: translateY(-6px); border-color: rgba(255, 30, 142, 0.45); box-shadow: 0 24px 50px -26px rgba(255, 30, 142, 0.45); }
+.solution-card__tag { display: inline-block; font-family: var(--font-display); font-size: 1.5rem; color: var(--accent-magenta); margin-bottom: 10px; }
+.solution-card p { margin: 0; color: #D7D7DD; font-size: 1.05rem; line-height: 1.6; max-width: none; }
+/* Stronger card surfaces so they don't melt into the aurora background */
+.zakoga .problem-card { background: rgba(18, 14, 24, 0.55); border-color: rgba(255, 255, 255, 0.14); box-shadow: 0 14px 32px -22px rgba(0, 0, 0, 0.75); backdrop-filter: blur(3px); }
+.zakoga .problem-card:hover { background: rgba(28, 22, 36, 0.7); }
+.solution-card { background: rgba(18, 14, 24, 0.6); border-color: rgba(255, 255, 255, 0.16); box-shadow: 0 16px 36px -24px rgba(0, 0, 0, 0.8); backdrop-filter: blur(3px); }
 
 /* KO JE NATAŠA — plain photo (reuses the .story grid) */
 .natasa-photo { display: block; width: 100%; height: auto; border-radius: 20px; box-shadow: 0 22px 50px -22px rgba(0,0,0,0.45); }
 
 /* ZA KOGA JE — darkened aurora backdrop + fancy hover card */
 .zakoga { position: relative; overflow: hidden; isolation: isolate; background: #1d1726; }
-.zakoga .nl-aurora { opacity: 0.95; }           /* orbs glow on the darker base */
+.zakoga .nl-aurora { opacity: 0.5; }            /* subtler so cards/text stay legible */
 .zakoga__inner { position: relative; z-index: 1; }
 .zakoga h2 { color: #fff; text-shadow: 0 2px 18px rgba(0, 0, 0, 0.45); }
 .fancy-card {
@@ -1512,7 +1611,8 @@ section[id] { scroll-margin-top: var(--header-h); }
 .fancy-card:hover { transform: translateY(-7px); box-shadow: 0 34px 68px -26px rgba(255, 30, 142, 0.42), 0 18px 40px -20px rgba(0, 0, 0, 0.28); }
 .fancy-card:hover::before { opacity: 1; }
 .fancy-card:hover::after { left: 125%; }
-.fancy-card p { position: relative; z-index: 3; margin: 0 0 15px; font-size: 1.12rem; line-height: 1.55; color: #3A3A40; }
+.fancy-card { text-align: left; }
+.fancy-card p { position: relative; z-index: 3; margin: 0 0 17px; font-size: 1.1rem; line-height: 1.68; color: #3A3A40; }
 .fancy-card p:last-child { margin-bottom: 0; }
 .fancy-card__lead { font-weight: 700; font-size: 1.26rem !important; line-height: 1.4 !important; color: #1A1A1F !important; }
 .fancy-card__hi { font-size: 1.16rem !important; color: #2A2A30 !important; }
@@ -1901,10 +2001,14 @@ section[id] { scroll-margin-top: var(--header-h); }
   .nav__toggle { display: none; }
   .nav__mobile { display: none !important; }
 
-  .hero__grid { grid-template-columns: 1.15fr 0.85fr; align-items: center; gap: 56px; }
+  .hero__grid { grid-template-columns: 1fr 1.05fr; align-items: center; gap: 56px; }
   .hero__cta .btn { width: auto; }
+  /* Bigger product mockup on desktop — let the book dominate its column */
+  .hero__media { max-width: 600px; }
+  .hero__mockup { max-height: 92vh; }
 
-  .story__grid { grid-template-columns: 0.9fr 1.1fr; align-items: start; gap: 56px; }
+  .story__grid { grid-template-columns: 0.85fr 1.15fr; align-items: start; gap: 56px; }
+  .story__media .ba { max-width: 360px; margin-inline: auto; }
 
   .vcard { padding: 40px; }
   .vcard--feature { padding: 44px; }

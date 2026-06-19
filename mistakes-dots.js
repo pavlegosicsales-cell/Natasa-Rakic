@@ -16,7 +16,7 @@
   // ---- Brand config (subtle, non-distracting) ----
   var dotSize = 4;          // px
   var gap = 26;             // px
-  var baseColor = "#3E3040";  // dim warm-dark dot
+  var baseColor = "#F0A6CC";  // soft pink dot (on white)
   var activeColor = "#FF1E8E"; // brand magenta on proximity
   var proximity = 120;      // px reaction radius
   var speedTrigger = 120;   // px/s mouse speed to fling dots

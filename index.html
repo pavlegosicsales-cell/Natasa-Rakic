@@ -28,14 +28,50 @@
 <!-- STICKY HEADER: nav (logo + one CTA)                          -->
 <!-- ============================================================ -->
 <header class="site-header" id="top">
+
+  <!-- Announcement bar -->
+  <div class="announce">
+    <div class="container announce__inner">
+      <span class="announce__text">
+        <strong>Priručnik + Masterklas · sve za 50€.</strong>
+      </span>
+    </div>
+  </div>
+
+  <!-- Navigation -->
   <nav class="nav" aria-label="Glavna navigacija">
     <div class="container nav__inner">
       <a href="#top" class="nav__logo">Nataša&nbsp;Rakić<span class="nav__logo__tag">svoja i slobodna</span></a>
 
-      <a href="#cena" class="liquid-btn nav__cta nav__cta--always" data-open-signup>
+      <ul class="nav__links">
+        <li class="tube-lamp" aria-hidden="true"></li>
+        <li><a href="#pocetak">Početak</a></li>
+        <li><a href="#prica">Moja priča</a></li>
+        <li><a href="#prirucnik">Šta dobijaš</a></li>
+        <li><a href="#rezultati">Rezultati</a></li>
+        <li><a href="#cena">Cena</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+
+      <a href="#cena" class="liquid-btn nav__cta" data-open-signup>
         <span class="liquid-btn__blobs" aria-hidden="true"><span></span><span></span><span></span></span>
         <span class="liquid-btn__label">Hoću priručnik</span>
       </a>
+
+      <button class="nav__toggle" id="navToggle" aria-label="Otvori meni" aria-expanded="false" aria-controls="navMobile">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+
+    <!-- Mobile menu -->
+    <div class="nav__mobile" id="navMobile" hidden>
+      <a href="#pocetak">Početak</a>
+      <a href="#prica">Moja priča</a>
+      <a href="#prirucnik">Šta dobijaš</a>
+      <a href="#rezultati">Rezultati</a>
+      <a href="#cena">Cena</a>
+      <a href="#faq">FAQ</a>
+      <a href="#cena" class="btn btn--cta btn--block" data-open-signup>Hoću priručnik</a>
     </div>
   </nav>
 </header>
@@ -49,26 +85,27 @@
     <div class="hero__rays" aria-hidden="true"></div>
     <div class="container hero__grid">
       <div class="hero__copy">
-        <p class="pill reveal"><span class="pill__dot" aria-hidden="true"></span><span>Priručnik + Masterklas (6,5h) za žene koje su <span class="hl">umorne od dijeta</span></span></p>
+        <p class="pill reveal"><span class="pill__dot" aria-hidden="true"></span><span>Za ženu koja je <span class="hl">probala sve</span></span></p>
 
         <h1 class="hero__title">SMRŠAJ BEZ <span class="hl">VAGANJA, KALORIJA I GLADOVANJA.</span></h1>
 
         <p class="lede reveal">
-          Konkretni odgovori za svaku situaciju: kad pukneš, kad si u gostima, na poslu, na putu, u PMS-u, na slavi.
-          Plus <span class="hl-mag">6,5h video radionice</span> gde Nataša pokazuje sve uživo na primeru.
+          Znam šta misliš: „I ovo sam već probala." Nisi. Ovo nije još jedna dijeta koja puca čim dođe slava, PMS ili loš dan. Ovo je tačan odgovor na pitanje <em class="hl-mag">šta da jedem</em>. U svakoj situaciji, sa hranom koju već imaš kod kuće.
         </p>
+
+        <p class="hero__sub2 reveal"><span class="hl-mag">6,5h video radionice</span> gde ti Nataša pokazuje sve uživo, korak po korak.</p>
 
         <div class="hero__cta reveal">
           <a href="#cena" class="shiny-cta" data-open-signup>
-            <span>Hoću priručnik + masterklas — 50€</span>
+            <span>Hoću priručnik + masterklas</span>
           </a>
-          <p class="micro">Sigurno plaćanje · Pristup ti stiže odmah na mejl.</p>
+          <p class="micro">Sigurno plaćanje · Pristup ti stiže odmah na mejl</p>
         </div>
 
         <ul class="stat-row reveal">
           <li class="stat"><span class="stat__num" data-count="1000" data-sep data-suffix="+">1.000+</span><span class="stat__lbl">žena</span></li>
-          <li class="stat"><span class="stat__num">−65kg</span><span class="stat__lbl">Nataša drži 5 godina</span></li>
-          <li class="stat"><span class="stat__num">6,5h</span><span class="stat__lbl">video radionice</span></li>
+          <li class="stat"><span class="stat__num">5–40kg</span><span class="stat__lbl">skinuto</span></li>
+          <li class="stat"><span class="stat__num">5 godina</span><span class="stat__lbl">iskustva</span></li>
         </ul>
       </div>
 
@@ -86,11 +123,46 @@
     <div class="nl-aurora" aria-hidden="true"></div>
     <div class="container container--narrow centered zakoga__inner">
       <h2 class="reveal centered">PROBALA SI <span class="hl-mag">SVE</span> I NE ZNAŠ VIŠE ŠTA DA RADIŠ.</h2>
-      <div class="fancy-card reveal">
-        <p class="fancy-card__lead">Dijete pucaju. Planovi se završe. Vraćaš se na staro.</p>
-        <p>I uveče, kad utihne — sama sa sobom i frižiderom — nemaš ko da ti kaže šta da uradiš.</p>
-        <p class="fancy-card__hi"><span class="hl-mag">Priručnik</span> je tvoj odgovor za svaku situaciju.</p>
-        <p class="fancy-card__hi"><span class="hl-mag">Masterklas</span> je 6,5h gde Nataša pokazuje sve uživo — od običnih namirnica, korak po korak.</p>
+      <p class="z-lead reveal">Keto. Proteinska. Kupus dijeta. Po krvnim grupama. Detoks čajevi. Članarine koje nisi iskoristila.</p>
+
+      <p class="z-intro reveal">Svaki put ista priča:</p>
+      <ol class="problem__lines">
+        <li class="problem-card reveal"><span class="problem-card__num">01</span><p>Prvih par nedelja ide, vaga se mrda.</p></li>
+        <li class="problem-card reveal"><span class="problem-card__num">02</span><p>A onda stres na poslu, dete se razboli, jedna slava, i sve pukne.</p></li>
+        <li class="problem-card reveal"><span class="problem-card__num">03</span><p>Vratiš se na staro.</p></li>
+        <li class="problem-card reveal"><span class="problem-card__num">04</span><p>I onaj glas u glavi kaže: „Eto, opet nisam uspela. Ja to ne mogu."</p></li>
+      </ol>
+
+      <p class="z-solution reveal">Da ti kažem nešto: nije do tebe. Do toga je što ti niko nije dao <strong>sistem</strong>, nego samo još jedan <span class="hl-mag">strogi jelovnik</span> koji se ne uklapa u tvoj život.</p>
+
+      <div class="solution-duo">
+        <article class="solution-card reveal">
+          <span class="solution-card__tag">Priručnik</span>
+          <p>Tvoj odgovor za <span class="hl-mag">svaku situaciju</span>. Gosti, restoran, put, PMS, slava, Nova godina.</p>
+        </article>
+        <article class="solution-card reveal">
+          <span class="solution-card__tag">Masterklas</span>
+          <p><span class="hl-mag">6,5h radionice</span> gde Nataša pokazuje sve. Od običnih namirnica, korak po korak.</p>
+        </article>
+      </div>
+
+      <div class="section-cta centered reveal" style="margin-top:36px"><a href="#cena" class="shiny-cta" data-open-signup><span>Hoću priručnik + masterklas</span></a></div>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- ZAŠTO JE OVO DRUGAČIJE (dark) — handling the "ovo sam već probala" objection -->
+  <!-- ============================================================ -->
+  <section class="section section--dark whymatter">
+    <div class="wall-rays" aria-hidden="true"></div>
+    <div class="container container--narrow">
+      <h2 class="reveal">„DOBRO, A <span class="hl">ZAŠTO</span> BI OVO <span class="hl">UPALILO</span> KAD <span class="hl">NIŠTA NIJE?</span>"</h2>
+      <div class="prose reveal">
+        <p class="prose__lead">Pošteno pitanje. Evo iskreno:</p>
+        <p>Dijete pucaju jer su restrikcija. Zabrane ti hranu, ti izdržiš dok možeš, pa je prekršiš. To nije tvoja slabost. To je kako restrikcija radi na svakome.</p>
+        <p>Ovde <strong>nema zabranjene hrane. Nema brojanja kalorija ni grama. Nema vaganja.</strong> Jedeš običnu hranu, onu koju tvoja porodica ionako jede, samo naučiš <strong>kako</strong> da je složiš da te drži sitom i da kilogrami idu dole.</p>
+        <p><strong class="hl-mag">I najvažnije:</strong> dobiješ tačan odgovor za trenutke u kojima inače pukneš. Kad te uveče vuče frižider a nisi gladna. Kad si na slavi. Kad si na putu. Tu se dijete lome. I baš tu ti ovaj sistem blista.</p>
+        <p><strong>Zato ostaje. Zato se ne vraćaš na staro.</strong></p>
       </div>
     </div>
   </section>
@@ -98,11 +170,12 @@
   <!-- ============================================================ -->
   <!-- ŠTA JE U PRIRUČNIKU (light)                                  -->
   <!-- ============================================================ -->
-  <section class="section section--light offer">
+  <section class="section section--light offer" id="prirucnik">
+    <div class="mistakes__dots" aria-hidden="true"></div>
     <div class="container">
       <span class="pill pill--eyebrow pill--light pill--center reveal"><span class="pill__dot" aria-hidden="true"></span>Priručnik</span>
       <h2 class="centered reveal">ŠTA JE U <span class="hl-mag">PRIRUČNIKU.</span></h2>
-      <p class="steps__intro centered reveal">Svi odgovori na jednom mestu.</p>
+      <p class="steps__intro centered reveal">Tvoj odgovor za <span class="hl-mag">svaku situaciju</span>, na <span class="hl-mag">jednom mestu</span>.</p>
 
       <div class="feature-grid">
         <article class="feature-card reveal">
@@ -112,13 +185,13 @@
         </article>
         <article class="feature-card reveal">
           <span class="feature-card__ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span>
-          <h3>Brzi obroci od 10 minuta</h3>
+          <h3>Brzi obroci za 10 minuta</h3>
           <p>od namirnica koje već imaš kod kuće</p>
         </article>
         <article class="feature-card reveal">
           <span class="feature-card__ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3.5"/><path d="m4.9 4.9 4.6 4.6"/><path d="m14.5 14.5 4.6 4.6"/><path d="m14.5 9.5 4.6-4.6"/><path d="m4.9 19.1 4.6-4.6"/></svg></span>
-          <h3>SOS vodič</h3>
-          <p>šta da radiš kad pukneš, kad si pregrešila, kad ne ideš po planu</p>
+          <h3>SOS vodič za kad pukneš</h3>
+          <p>šta tačno da uradiš kad pregrešiš, da ti jedan dan ne sruši sve</p>
         </article>
         <article class="feature-card reveal">
           <span class="feature-card__ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="4" rx="1"/><path d="M12 8v13"/><path d="M19 12v9H5v-9"/><path d="M7.5 8a2.5 2.5 0 0 1 0-5C11 3 12 8 12 8"/><path d="M16.5 8a2.5 2.5 0 0 0 0-5C13 3 12 8 12 8"/></svg></span>
@@ -126,26 +199,23 @@
           <p>gosti, restoran, put, slava, Nova godina, posao</p>
         </article>
         <article class="feature-card reveal">
-          <span class="feature-card__ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M2 12h20M5.6 5.6l12.8 12.8M18.4 5.6 5.6 18.4"/></svg></span>
-          <h3>Zimske namirnice</h3>
-          <p>šta biraš, kako kombinuješ, kako organizuješ dan</p>
-        </article>
-        <article class="feature-card reveal">
           <span class="feature-card__ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.5 1.5M17.5 17.5 19 19M19 5l-1.5 1.5M6.5 17.5 5 19"/></svg></span>
-          <h3>Letnje namirnice</h3>
-          <p>prilagođeno letu, moru, godišnjem odmoru</p>
+          <h3>Zima i leto</h3>
+          <p>šta biraš i kako složiš dan, prilagođeno godišnjem dobu i moru</p>
         </article>
         <article class="feature-card reveal">
           <span class="feature-card__ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.6-9.5-9A4.8 4.8 0 0 1 12 6a4.8 4.8 0 0 1 9.5 6c-2.5 4.4-9.5 9-9.5 9z"/></svg></span>
           <h3>Emotivno prejedanje</h3>
-          <p>konkretni koraci kad te vuče frižider, a nisi gladna</p>
+          <p>konkretni koraci kad te vuče frižider a nisi gladna</p>
         </article>
         <article class="feature-card reveal">
           <span class="feature-card__ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8z"/></svg></span>
-          <h3>Post</h3>
-          <p>kako da mršaviš i ne vratiš sve čim post prođe</p>
+          <h3>Post, slave i praznici</h3>
+          <p>kako da mršaviš i da ne vratiš sve čim prođe</p>
         </article>
       </div>
+
+      <div class="section-cta centered reveal"><a href="#cena" class="shiny-cta" data-open-signup><span>Hoću priručnik + masterklas</span></a></div>
     </div>
   </section>
 
@@ -154,56 +224,58 @@
   <!-- ============================================================ -->
   <section class="section section--dark challenge">
     <div class="container">
-      <span class="pill pill--eyebrow pill--center reveal"><span class="pill__dot" aria-hidden="true"></span>Masterklas — 6,5h sa Natašom</span>
+      <span class="pill pill--eyebrow pill--center reveal"><span class="pill__dot" aria-hidden="true"></span>Masterklas · 6,5h sa Natašom</span>
       <h2 class="centered reveal">ŠTA JE U <span class="hl">MASTERKLASU.</span></h2>
-      <p class="sec-sub centered reveal">Radionica gde ti pokazujem svoj autorski način ishrane — korak po korak, za <span class="hl-mag">6,5h</span>.</p>
+      <p class="sec-sub centered reveal">6,5h radionice gde Nataša prenosi svoj autorski način ishrane. Korak po korak.</p>
 
       <p class="challenge__line reveal" style="margin-top:22px">Detaljne instrukcije za ishranu:</p>
 
       <div class="feature-grid">
         <article class="feature-card reveal">
           <span class="feature-card__ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18h18"/><path d="M5 18a7 7 0 0 1 14 0"/><path d="M12 7V5"/><circle cx="12" cy="4" r="1"/></svg></span>
-          <h3>Doručak, ručak, večera i užina</h3>
+          <h3>Doručak, ručak, večera, užina</h3>
           <p>šta da jedeš za svaki obrok</p>
         </article>
         <article class="feature-card reveal">
           <span class="feature-card__ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="13" r="8"/><path d="M12 13V9"/><path d="M9 2h6"/></svg></span>
           <h3>Količine i vreme</h3>
-          <p>u kojim količinama, u koje vreme, sa kojim razmacima</p>
+          <p>koliko, u koje vreme i sa kojim razmacima</p>
         </article>
         <article class="feature-card reveal">
           <span class="feature-card__ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="m12 2 9 5-9 5-9-5 9-5Z"/><path d="m3 12 9 5 9-5"/><path d="m3 17 9 5 9-5"/></svg></span>
           <h3>Kombinovanje namirnica</h3>
-          <p>sklopi obrok koji te drži sitom</p>
+          <p>kako da složiš obrok koji te zaista drži sitom</p>
         </article>
         <article class="feature-card reveal">
           <span class="feature-card__ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/><path d="m9 16 2 2 4-4"/></svg></span>
           <h3>Uklapanje u tvoj dan</h3>
-          <p>decu, posao, obaveze</p>
+          <p>ishrana prilagođena deci, poslu i obavezama</p>
         </article>
         <article class="feature-card reveal">
           <span class="feature-card__ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/><path d="M9 21v-6h6v6"/></svg></span>
           <h3>Šta uvek da imaš u kući</h3>
-          <p>spremanje ne traje duže od 15-30 min</p>
+          <p>da ne trošiš više od 15–30 min na spremanje</p>
         </article>
         <article class="feature-card reveal">
           <span class="feature-card__ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><path d="M2 13h20"/></svg></span>
           <h3>Kad nisi kući</h3>
-          <p>kako da se hraniš na poslu, na putu</p>
+          <p>kako da se hraniš na poslu ili na putu</p>
         </article>
         <article class="feature-card reveal">
           <span class="feature-card__ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.6 6.3 6.8.5-5.2 4.4 1.6 6.6L12 17l-5.4 3.3 1.6-6.6L3 9.8l6.8-.5L12 3Z"/></svg></span>
           <h3>Post, slave i praznici</h3>
-          <p>kako sve to primeniš tih dana</p>
+          <p>kako sve to primeniš i kad dođu praznici</p>
         </article>
       </div>
 
       <h3 class="mk-subhead reveal">Praktičan deo</h3>
       <p class="challenge__line reveal">
-        Vidiš na primeru kako se kombinuju namirnice i kako od jednostavnih, dostupnih namirnica praviš <span class="hl-mag">100+ raznovrsnih i ukusnih obroka</span>.
+        Na konkretnom primeru vidiš kako se od jednostavnih, dostupnih namirnica pravi <span class="hl-mag">100+ raznovrsnih i ukusnih obroka.</span>
       </p>
 
-      <p class="mk-note reveal"><strong>Trajanje: 6,5h.</strong> Gledaš svojim tempom, koliko god puta.</p>
+      <p class="mk-note reveal"><strong>Trajanje: 6,5h</strong> · Gledaš svojim tempom, koliko god puta želiš.</p>
+
+      <div class="section-cta centered reveal"><a href="#cena" class="shiny-cta" data-open-signup><span>Hoću priručnik + masterklas</span></a></div>
     </div>
   </section>
 
@@ -215,16 +287,19 @@
       <h2 class="centered reveal">OVO NISU OBEĆANJA. OVO SU PROSEČNI <span class="hl-mag">REZULTATI.</span></h2>
 
       <ul class="checklist checklist--light reveal">
-        <li><span class="checklist__ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg></span><span class="checklist__txt"><span class="hl-mag">5-10 kg mesečno</span> — bez dijete, gladovanja i stresa (priručnik)</span></li>
-        <li><span class="checklist__ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg></span><span class="checklist__txt"><span class="hl-mag">3-6 kg za 15-30 dana</span> — prosek polaznica masterklasa</span></li>
-        <li><span class="checklist__ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg></span><span class="checklist__txt">Bez večernjih kriza i napada gladi</span></li>
-        <li><span class="checklist__ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg></span><span class="checklist__txt">Jedeš ono što voliš — bez krivice i prejedanja</span></li>
-        <li><span class="checklist__ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg></span><span class="checklist__txt">Znaš tačno šta da jedeš — na putu, u PMS-u, u gostima, na poslu</span></li>
-        <li><span class="checklist__ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg></span><span class="checklist__txt">Ishrana koja se uklapa u tvoj život — decu, posao, obaveze</span></li>
-        <li><span class="checklist__ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg></span><span class="checklist__txt">Plan koji radi dugoročno — ne pravila koja pucaju na prvoj slavi</span></li>
+        <li><span class="checklist__ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg></span><span class="checklist__txt"><span class="hl-mag">3–6 kg manje za 15–30 dana</span>. Prosek među ženama sa masterklasa</span></li>
+        <li><span class="checklist__ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg></span><span class="checklist__txt">Bez gladi, umora, stresa i nadutosti</span></li>
+        <li><span class="checklist__ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg></span><span class="checklist__txt">Bez večernjih kriza i napada za slatkim</span></li>
+        <li><span class="checklist__ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg></span><span class="checklist__txt">Jedeš običnu hranu. Bez egzotičnih namirnica i komplikovanih recepata</span></li>
+        <li><span class="checklist__ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg></span><span class="checklist__txt">Znaš tačno šta da jedeš. Na putu, u PMS-u, u gostima, na poslu</span></li>
+        <li><span class="checklist__ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg></span><span class="checklist__txt">Ishrana koja se uklapa u tvoj život. Decu, posao, obaveze</span></li>
+        <li><span class="checklist__ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg></span><span class="checklist__txt">Plan koji radi dugoročno. U realnom životu, sa puno obaveza i malo vremena</span></li>
       </ul>
+
+      <div class="section-cta centered reveal"><a href="#cena" class="shiny-cta" data-open-signup><span>Hoću priručnik + masterklas</span></a></div>
     </div>
   </section>
+
 
   <!-- ============================================================ -->
   <!-- KO JE NATAŠA (light) — photo + 3 sentences                   -->
@@ -232,21 +307,25 @@
   <section class="section section--light story" id="prica">
     <div class="container story__grid">
       <div class="story__media reveal">
-        <!-- TODO (placeholder): zameni fotografijom Nataše -->
-        <img class="natasa-photo" src="hero-natasa.jpg" alt="Nataša Rakić" loading="lazy" decoding="async" />
+        <!-- Before/After: prevuci ručicu da iz „debele" pređeš u „fit" Natašu -->
+        <div class="ba" data-ba role="slider" aria-label="Prevuci da vidiš Natašu pre i danas" aria-valuemin="0" aria-valuemax="100" aria-valuenow="85" tabindex="0">
+          <img class="ba__img ba__img--after" src="Natasa%20fit.JPG" alt="Nataša danas" loading="lazy" decoding="async" />
+          <img class="ba__img ba__img--before" src="Natasa%20debela.JPG" alt="Nataša ranije" loading="lazy" decoding="async" />
+          <span class="ba__tag ba__tag--before">PRE</span>
+          <span class="ba__tag ba__tag--after">DANAS</span>
+          <div class="ba__handle"><div class="ba__knob"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 7-5 5 5 5"/><path d="m15 7 5 5-5 5"/></svg></div></div>
+        </div>
       </div>
 
       <div class="story__copy">
         <h2 class="reveal">KO STOJI IZA <span class="hl-mag">OVOGA.</span></h2>
 
-        <p class="reveal">Pre 5 godina sam imala <span class="hl-mag">120 kilograma</span>. Probala sam sve i potrošila preko <span class="hl-mag">50.000€</span> na dijete, nutricioniste i preparate — pre nego što sam shvatila <strong>3 greške</strong> koje su me držale u krugu.</p>
+        <p class="reveal">Od kad sam ispravila svoje greške, držim svoju kilažu već <span class="hl-mag">5 godina</span>. Jedem hleb. Jedem slatkiše. Bez muke.</p>
 
-        <p class="reveal">Od kad sam ih ispravila — držim svoju kilažu <span class="hl-mag">(−65kg)</span> već 5 godina. Jedem hleb. Jedem slatkiše. Bez muke.</p>
-
-        <p class="reveal">Kroz isti sistem provela sam preko <span class="hl-mag">1.000 žena</span>.</p>
+        <p class="reveal">Ne pričam ti teoriju iz knjige. Prošla sam kroz isto kroz šta i ti prolaziš sada. Kroz ovaj sistem provela sam preko <span class="hl-mag">1.000 žena</span>.</p>
 
         <p class="signature reveal">— Nataša</p>
-        <div class="section-cta reveal"><a href="#cena" class="shiny-cta" data-open-signup><span>Hoću priručnik + masterklas — 50€</span></a></div>
+        <div class="section-cta reveal"><a href="#cena" class="shiny-cta" data-open-signup><span>Hoću priručnik + masterklas · 50€</span></a></div>
       </div>
     </div>
   </section>
@@ -258,7 +337,7 @@
     <div class="container container--narrow">
       <article class="vcard reveal">
         <span class="vcard__badge">▶ VIDEO · BRANKA</span>
-        <h3 class="vcard__trigger">Ako se jednom kreneš da jedeš i ne možeš da staneš — pogledaj <span class="hl">Branku.</span></h3>
+        <h3 class="vcard__trigger">Ako odjednom kreneš da jedeš i ne možeš da staneš, pogledaj <span class="hl">Branku.</span></h3>
 
         <div class="vcard__video" role="button" tabindex="0" data-video="videos/branka.mp4" aria-label="Pusti video: Branka">
           <img class="vcard__thumb" src="videos/branka.jpg" alt="" aria-hidden="true" loading="lazy" />
@@ -267,9 +346,8 @@
         </div>
 
         <div class="vcard__caption">
-          <!-- TODO: caption za Branku — isečak za priručnik (TBD) -->
-          <p class="vcard__quote">„Jela sam pleh trileća. Sama. Nisam mogla da stanem."</p>
-          <p class="vcard__result">Skinula <span class="hl-mag">−20kg</span></p>
+          <p class="vcard__quote">„Jela sam pet kila trešanja. Sama. Nisam mogla da stanem."</p>
+          <p class="vcard__by">— Branka</p>
         </div>
       </article>
     </div>
@@ -279,6 +357,7 @@
   <!-- CENA + CTA (dark) — money section                            -->
   <!-- ============================================================ -->
   <section class="section section--dark price" id="cena">
+    <div class="nl-aurora" aria-hidden="true"></div>
     <div class="container container--narrow price__inner">
       <h2 class="centered reveal">SVE TO ZA <span class="hl">50€.</span></h2>
 
@@ -291,10 +370,10 @@
         <span class="price__now hl">50€</span>
       </div>
 
-      <p class="price__context centered reveal">To je manje od cene jedne konsultacije sa nutricionistom — a ovde dobijaš sistem koji ostaje sa tobom <span class="hl-mag">zauvek</span>.</p>
+      <p class="price__context centered reveal">To je manje od cene jedne konsultacije sa nutricionistom, a ovde dobijaš sistem koji ostaje sa tobom <span class="hl-mag">zauvek</span>.</p>
 
-      <a href="#" class="shiny-cta shiny-cta--block reveal" data-open-signup><span>Hoću — 50€</span></a>
-      <p class="micro centered reveal">Sigurno plaćanje · Više načina plaćanja (kartica, PayPal, račun, Western Union)</p>
+      <a href="#" class="shiny-cta shiny-cta--block reveal" data-open-signup><span>Hoću · 50€</span></a>
+      <p class="micro centered reveal">Jednom kupljeno, tvoje zauvek. Priručnik i 6,5h masterklasa ostaju ti na mejlu, gledaš svojim tempom i vraćaš se kad god zatreba.</p>
     </div>
   </section>
 
@@ -306,7 +385,7 @@
       <article class="vcard reveal">
         <span class="vcard__badge">▶ VIDEO · KATARINA</span>
         <!-- TODO: trigger headline za #2 (TBD) -->
-        <h3 class="vcard__trigger">Ako se pitaš da li ovo zaista radi u realnom životu — pogledaj <span class="hl">Katarinu.</span></h3>
+        <h3 class="vcard__trigger">Ako se dvoumiš, pogledaj <span class="hl">Katarinu.</span></h3>
 
         <div class="vcard__video" role="button" tabindex="0" data-video="videos/katarina.mp4" aria-label="Pusti video: Katarina">
           <img class="vcard__thumb" src="videos/katarina.jpg" alt="" aria-hidden="true" loading="lazy" />
@@ -315,8 +394,8 @@
         </div>
 
         <div class="vcard__caption">
-          <!-- TODO: caption za #2 — isečak za masterklas (TBD) -->
           <p class="vcard__quote">„Ne treba da se boje. Samo da krenu."</p>
+          <p class="vcard__by">— Katarina</p>
         </div>
       </article>
     </div>
@@ -327,7 +406,7 @@
   <!-- ============================================================ -->
   <section class="section section--light faq" id="faq">
     <div class="container container--narrow">
-      <h2 class="centered reveal">ČESTA <span class="hl">PITANJA</span></h2>
+      <h2 class="centered reveal">ČESTA <span class="hl-mag">PITANJA</span></h2>
 
       <div class="faq__list reveal">
         <div class="faq__item">
@@ -336,7 +415,7 @@
             <span class="faq__icon" aria-hidden="true"></span>
           </button>
           <div class="faq__a"><div>
-            <p>Ne. Priručnik te uči kako da jedeš normalno — hleb, slatkiše, sve — i mršaviš. Bez vaganja, bez kalorija, bez izbacivanja namirnica.</p>
+            <p>Nije. Nema zabranjene hrane, brojanja kalorija ni vaganja. Jedeš običnu hranu koju i inače imaš kod kuće. Samo naučiš kako da je složiš. Zato se i ne vraćaš na staro kao posle dijete.</p>
             <div class="faq__clip">
               <div class="vcard__video" role="button" tabindex="0" data-video="videos/svetlana.mp4" aria-label="Pusti video: Svetlana">
                 <img class="vcard__thumb" src="videos/svetlana.jpg" alt="" aria-hidden="true" loading="lazy" />
@@ -349,13 +428,13 @@
 
         <div class="faq__item">
           <button class="faq__q" aria-expanded="false">
-            <span>Šta ako mi ne odgovara — Hašimoto / IR / menopauza?</span>
+            <span>Šta ako mi ne odgovara, imam Hašimoto / IR / menopauzu?</span>
             <span class="faq__icon" aria-hidden="true"></span>
           </button>
           <div class="faq__a"><div>
-            <p>Ovaj sistem koristi žena od 20 do 80 godina, sa Hašimotom, IR, dijabetesom, u menopauzi. Prilagođava se svakoj.</p>
+            <p>Sistem se zasniva na kombinovanju običnih namirnica i prilagođavanju tvom danu, a ne na ekstremnim restrikcijama. Upravo zato ga žene sa usporenim metabolizmom, insulinskom rezistencijom i u menopauzi lakše prate nego klasične dijete. Ako imaš dijagnozu, plan uvek uskladi sa svojim lekarom.</p>
             <div class="faq__clip">
-              <div class="vcard__video" role="button" tabindex="0" data-video="videos/jelica.mp4" aria-label="Pusti video: Jelica">
+              <div class="vcard__video" role="button" tabindex="0" data-video="videos/JELICA%20FINAL.mp4" aria-label="Pusti video: Jelica">
                 <img class="vcard__thumb" src="videos/jelica.jpg" alt="" aria-hidden="true" loading="lazy" />
                 <button class="vcard__play" aria-label="Pusti video" tabindex="-1">▶</button>
                 <span class="vcard__phlabel">Pusti video · Jelica, 54 god.</span>
@@ -370,7 +449,7 @@
             <span class="faq__icon" aria-hidden="true"></span>
           </button>
           <div class="faq__a"><div>
-            <p>Zato što si pratila tuđi plan i borila se voljom. Ovde dobijaš sistem koji se prilagođava tvom životu — slavama, putovanjima, danima kad pukneš.</p>
+            <p>Najčešće ne radi zato što ti niko nije rekao šta da uradiš kad pukneš. Na slavi, na putu, uveče pred frižiderom. Tu se dijete lome. Baš za te trenutke postoji SOS vodič i vanredne situacije u priručniku.</p>
             <div class="faq__clip">
               <div class="vcard__video" role="button" tabindex="0" data-video="videos/aleksandra.mp4" aria-label="Pusti video: Aleksandra">
                 <img class="vcard__thumb" src="videos/aleksandra.jpg" alt="" aria-hidden="true" loading="lazy" />
@@ -386,7 +465,7 @@
             <span>Kako dobijam priručnik i masterklas?</span>
             <span class="faq__icon" aria-hidden="true"></span>
           </button>
-          <div class="faq__a"><div><p>Posle uplate, odmah na mejl dobijaš pristup priručniku (PDF) i masterklas snimku. Gledaš i čitaš kad god hoćeš — pristup je tvoj zauvek.</p></div></div>
+          <div class="faq__a"><div><p>Odmah nakon kupovine sve ti stiže na mejl. Priručnik čitaš kad hoćeš, masterklas (6,5h) gledaš svojim tempom, koliko god puta želiš.</p></div></div>
         </div>
       </div>
     </div>
@@ -398,13 +477,13 @@
   <section class="section section--dark finale">
     <div class="finale__bg" aria-hidden="true"></div>
     <div class="container container--narrow centered">
-      <h2 class="reveal">PROBALA SI VEĆ SVE. PROBAJ <span class="hl">JEDNU</span> STVAR KOJA JE DRUGAČIJA.</h2>
+      <h2 class="reveal">PROBALA SI VEĆ SVE. PROBAJ <span class="hl">JEDNU</span> STVAR KOJA JE <span class="hl">DRUGAČIJA.</span></h2>
 
       <p class="finale__body reveal">
-        Sve odgovore za svaku situaciju. 6,5h video radionice. Sistem koji ostaje sa tobom zauvek. Za 50€.
+        Odgovor za svaku situaciju. 6,5h video radionice. Sistem koji ostaje sa tobom. Bez gladovanja, bez vaganja, bez vraćanja na staro.
       </p>
 
-      <a href="#" class="shiny-cta shiny-cta--block reveal" data-open-signup><span>Hoću priručnik + masterklas — 50€</span></a>
+      <a href="#" class="shiny-cta shiny-cta--block reveal" data-open-signup><span>Hoću priručnik + masterklas · 50€</span></a>
     </div>
   </section>
 
@@ -444,7 +523,7 @@
 
       <div class="signup__head">
         <span class="signup__logo" aria-hidden="true">N</span>
-        <h2 class="signup__title" id="signupTitle">Priručnik + Masterklas — 50€</h2>
+        <h2 class="signup__title" id="signupTitle">Priručnik + Masterklas · 50€</h2>
         <p class="signup__sub" data-step1-only>Popuni podatke i kreni.</p>
         <p class="signup__sub" data-step2-only hidden>Još samo izaberi način plaćanja.</p>
       </div>
@@ -461,7 +540,7 @@
       <!-- Korak 2: odakle plaćaš? -->
       <div class="signup__step" id="signupStepOdakle" hidden>
         <p class="signup__paytitle">Odakle plaćaš?</p>
-        <button type="button" class="signup__pay signup__pay--bank" data-goto="email" data-list="3" data-email-title="Plaćanje preko računa — upiši email, šaljem ti instrukcije:">Plaćam iz Srbije</button>
+        <button type="button" class="signup__pay signup__pay--bank" data-goto="email" data-list="3" data-email-title="Plaćanje preko računa. Upiši email, šaljem ti instrukcije:">Plaćam iz Srbije</button>
         <button type="button" class="signup__pay signup__pay--bank" data-goto="inostranstvo">Plaćam iz inostranstva</button>
         <button type="button" class="signup__back" data-back>← Nazad</button>
       </div>
@@ -471,14 +550,14 @@
         <p class="signup__paytitle">Način plaćanja iz inostranstva:</p>
         <!-- TODO: zameni LAVATOP_URL_50 sa Lavatop checkout linkom za 50€ proizvod -->
         <a class="signup__pay signup__pay--card" data-paypal href="LAVATOP_URL_50" target="_blank" rel="noopener noreferrer">PayPal</a>
-        <button type="button" class="signup__pay signup__pay--bank" data-goto="email" data-list="8" data-email-title="Western Union / Ria / Moneygram — upiši email, šaljem ti instrukcije:">Western Union / Ria / Moneygram</button>
-        <button type="button" class="signup__pay signup__pay--bank" data-goto="email" data-list="9" data-email-title="Plaćanje preko deviznog računa — upiši email, šaljem ti instrukcije:">Plaćanje preko deviznog računa</button>
+        <button type="button" class="signup__pay signup__pay--bank" data-goto="email" data-list="8" data-email-title="Western Union / Ria / Moneygram. Upiši email, šaljem ti instrukcije:">Western Union / Ria / Moneygram</button>
+        <button type="button" class="signup__pay signup__pay--bank" data-goto="email" data-list="9" data-email-title="Plaćanje preko deviznog računa. Upiši email, šaljem ti instrukcije:">Plaćanje preko deviznog računa</button>
         <button type="button" class="signup__back" data-back>← Nazad</button>
       </div>
 
       <!-- Korak 3: email (deljen — Srbija, Western Union, devizni račun) -->
       <div class="signup__step" id="signupStepEmail" hidden>
-        <p class="signup__paytitle" id="signupEmailTitle">Plaćanje preko računa — upiši email, šaljem ti instrukcije:</p>
+        <p class="signup__paytitle" id="signupEmailTitle">Plaćanje preko računa. Upiši email, šaljem ti instrukcije:</p>
         <form class="signup__bankform" id="signupBankForm" novalidate>
           <div class="signup__field"><input type="email" name="bankEmail" placeholder="Upiši svoj email" autocomplete="email" inputmode="email" required></div>
           <p class="signup__error" id="bankError" role="alert" hidden>Unesi ispravnu email adresu.</p>
@@ -497,6 +576,23 @@
 <script>
 (function () {
   "use strict";
+
+  /* ---------- Mobile nav toggle ---------- */
+  var navToggle = document.getElementById("navToggle");
+  var navMobile = document.getElementById("navMobile");
+  if (navToggle && navMobile) {
+    navToggle.addEventListener("click", function () {
+      var open = navMobile.hasAttribute("hidden") ? false : true;
+      if (open) { navMobile.setAttribute("hidden", ""); navToggle.setAttribute("aria-expanded", "false"); navToggle.setAttribute("aria-label", "Otvori meni"); }
+      else { navMobile.removeAttribute("hidden"); navToggle.setAttribute("aria-expanded", "true"); navToggle.setAttribute("aria-label", "Zatvori meni"); }
+      navToggle.classList.toggle("is-open", !open);
+    });
+    navMobile.querySelectorAll("a").forEach(function (a) {
+      a.addEventListener("click", function () {
+        navMobile.setAttribute("hidden", ""); navToggle.setAttribute("aria-expanded", "false"); navToggle.classList.remove("is-open");
+      });
+    });
+  }
 
   /* ---------- FAQ accordion ---------- */
   document.querySelectorAll(".faq__q").forEach(function (btn) {
@@ -520,14 +616,16 @@
     v.className = "vcard__media";
     var poster = box.querySelector(".vcard__thumb");
     if (poster) v.poster = poster.getAttribute("src");
-    v.src = src;
+    var start = box.getAttribute("data-start");        // optional start offset (seconds)
+    v.src = start ? src + "#t=" + start : src;          // media fragment → begins at that second
     v.controls = true;
-    v.autoplay = true;
+    v.muted = false;            // play WITH sound (this runs inside the click gesture)
     v.playsInline = true;
     v.setAttribute("playsinline", "");
     v.preload = "metadata";
     box.innerHTML = "";
     box.appendChild(v);
+    v.volume = 1;
     var p = v.play(); if (p && p.catch) p.catch(function () {});
   }
   document.querySelectorAll(".vcard__video[data-video]").forEach(function (box) {
@@ -591,12 +689,59 @@
       statNums.forEach(function (el) { statIO.observe(el); });
     }
   }
+
+  /* ---------- Tubelight navbar: lamp springs to the active link ---------- */
+  var navLinks = document.querySelector(".nav__links");
+  if (navLinks) {
+    var tLinks = Array.prototype.slice.call(navLinks.querySelectorAll("a"));
+    var lamp = navLinks.querySelector(".tube-lamp");
+    if (tLinks.length && lamp) {
+      var moveLamp = function (link) {
+        lamp.style.width = link.offsetWidth + "px";
+        lamp.style.height = link.offsetHeight + "px";
+        lamp.style.transform = "translate(" + link.offsetLeft + "px, " + (link.offsetTop - 5) + "px)";
+      };
+      var setActive = function (link, animate) {
+        tLinks.forEach(function (l) { l.classList.toggle("is-active", l === link); });
+        if (!animate) lamp.style.transition = "none";
+        moveLamp(link);
+        if (!animate) { void lamp.offsetWidth; lamp.style.transition = ""; }
+      };
+      tLinks.forEach(function (l) { l.addEventListener("click", function () { setActive(l, true); }); });
+
+      var tSections = tLinks.map(function (l) {
+        var href = l.getAttribute("href");
+        return href && href.charAt(0) === "#" ? document.querySelector(href) : null;
+      });
+      if ("IntersectionObserver" in window) {
+        var spy = new IntersectionObserver(function (entries) {
+          entries.forEach(function (e) {
+            if (!e.isIntersecting) return;
+            var idx = tSections.indexOf(e.target);
+            if (idx >= 0) setActive(tLinks[idx], true);
+          });
+        }, { rootMargin: "-45% 0px -50% 0px", threshold: 0 });
+        tSections.forEach(function (s) { if (s) spy.observe(s); });
+      }
+
+      var syncLamp = function () {
+        var active = navLinks.querySelector("a.is-active") || tLinks[0];
+        setActive(active, false);
+      };
+      setActive(tLinks[0], false);
+      window.addEventListener("resize", syncLamp);
+      window.addEventListener("load", syncLamp);
+    }
+  }
 })();
 </script>
 <!-- Hero light-rays (vanilla WebGL port of SideRays) -->
 <script src="hero-rays.js"></script>
 <script src="hero-split.js"></script>
 <script src="vcard-dots.js"></script>
+<script src="story-ba.js"></script>
+<script src="mistakes-dots.js"></script>
+<script src="wall-rays.js"></script>
 <script src="newsletter-aurora.js"></script>
 <script src="signup.js"></script>
 </body>
