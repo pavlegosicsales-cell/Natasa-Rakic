@@ -29,15 +29,6 @@
 <!-- ============================================================ -->
 <header class="site-header" id="top">
 
-  <!-- Announcement bar -->
-  <div class="announce">
-    <div class="container announce__inner">
-      <span class="announce__text">
-        <strong>Priručnik + Masterklas · sve za 50€.</strong>
-      </span>
-    </div>
-  </div>
-
   <!-- Navigation -->
   <nav class="nav" aria-label="Glavna navigacija">
     <div class="container nav__inner">
@@ -87,17 +78,19 @@
       <div class="hero__copy">
         <p class="pill reveal"><span class="pill__dot" aria-hidden="true"></span><span>Za ženu koja je <span class="hl">probala sve</span></span></p>
 
-        <h1 class="hero__title">SMRŠAJ BEZ <span class="hl">VAGANJA, KALORIJA I GLADOVANJA.</span></h1>
+        <h1 class="hero__title">SMRŠAJ BEZ <span class="hl">BROJANJA KALORIJA I GLADOVANJA.</span></h1>
 
         <p class="lede reveal">
-          Znam šta misliš: „I ovo sam već probala." Nisi. Ovo nije još jedna dijeta koja puca čim dođe slava, PMS ili loš dan. Ovo je tačan odgovor na pitanje <em class="hl-mag">šta da jedem</em>. U svakoj situaciji, sa hranom koju već imaš kod kuće.
+          Znam šta misliš: „Sve sam probala." Nisi.<br>
+          Ovo nije još jedna dijeta koja puca čim dođe slava, PMS ili loš dan.<br>
+          Sistem koji radi u realnom životu, sa običnom hranom, malo vremena i puno obaveza.
         </p>
 
-        <p class="hero__sub2 reveal"><span class="hl-mag">6,5h video radionice</span> gde ti Nataša pokazuje sve uživo, korak po korak.</p>
+        <p class="hero__sub2 reveal">Od žene koja je smršala <span class="hl-mag">65kg</span> i nije ih vratila <span class="hl-mag">5 godina</span>.</p>
 
         <div class="hero__cta reveal">
           <a href="#cena" class="shiny-cta" data-open-signup>
-            <span>Hoću priručnik + masterklas</span>
+            <span>To mi treba!</span>
           </a>
           <p class="micro">Sigurno plaćanje · Pristup ti stiže odmah na mejl</p>
         </div>
@@ -105,8 +98,9 @@
         <ul class="stat-row reveal">
           <li class="stat"><span class="stat__num" data-count="1000" data-sep data-suffix="+">1.000+</span><span class="stat__lbl">žena</span></li>
           <li class="stat"><span class="stat__num">5–40kg</span><span class="stat__lbl">skinuto</span></li>
-          <li class="stat"><span class="stat__num">5 godina</span><span class="stat__lbl">iskustva</span></li>
+          <li class="stat"><span class="stat__num">5 godina</span><span class="stat__lbl">ista kilaža</span></li>
         </ul>
+
       </div>
 
       <div class="hero__media reveal">
@@ -122,8 +116,8 @@
   <section class="section section--light zakoga">
     <div class="nl-aurora" aria-hidden="true"></div>
     <div class="container container--narrow centered zakoga__inner">
-      <h2 class="reveal centered">PROBALA SI <span class="hl-mag">SVE</span> I NE ZNAŠ VIŠE ŠTA DA RADIŠ.</h2>
-      <p class="z-lead reveal">Keto. Proteinska. Kupus dijeta. Po krvnim grupama. Detoks čajevi. Članarine koje nisi iskoristila.</p>
+      <h2 class="reveal centered"><span class="hl-mag">PROBALA SI SVE</span> I NE ZNAŠ VIŠE ŠTA DA RADIŠ.</h2>
+      <p class="z-lead reveal">Dijete. Nutricionisti. Članarine. Praškovi.</p>
 
       <p class="z-intro reveal">Svaki put ista priča:</p>
       <ol class="problem__lines">
@@ -138,11 +132,11 @@
       <div class="solution-duo">
         <article class="solution-card reveal">
           <span class="solution-card__tag">Priručnik</span>
-          <p>Tvoj odgovor za <span class="hl-mag">svaku situaciju</span>. Gosti, restoran, put, PMS, slava, Nova godina.</p>
+          <p>Šta, kada i koliko da jedeš. Bez vaganja i brojanja kalorija. Brzi obroci za 10 minuta od namirnica koje već imaš kod kuće. Kako da jedeš kad nisi kući, tokom posta i slava.</p>
         </article>
         <article class="solution-card reveal">
           <span class="solution-card__tag">Masterklas</span>
-          <p><span class="hl-mag">6,5h radionice</span> gde Nataša pokazuje sve. Od običnih namirnica, korak po korak.</p>
+          <p>Kako od običnih namirnica napraviš <span class="hl-mag">100+ raznovrsnih obroka</span>. Kombinovanje na konkretnim primerima i namirnicama. Kako da uklopiš ishranu u svoj dan. Bez plana i jelovnika.</p>
         </article>
       </div>
 
@@ -524,24 +518,25 @@
       <div class="signup__head">
         <span class="signup__logo" aria-hidden="true">N</span>
         <h2 class="signup__title" id="signupTitle">Priručnik + Masterklas · 50€</h2>
-        <p class="signup__sub" data-step1-only>Popuni podatke i kreni.</p>
+        <p class="signup__sub" data-step1-only>Jedan korak do pristupa.</p>
         <p class="signup__sub" data-step2-only hidden>Još samo izaberi način plaćanja.</p>
       </div>
 
       <!-- Korak 1: podaci -->
       <form class="signup__step" id="signupStep1" novalidate>
         <div class="signup__field"><input type="text" name="ime" placeholder="Ime" autocomplete="given-name" required></div>
-        <div class="signup__field"><input type="text" name="prezime" placeholder="Prezime" autocomplete="family-name" required></div>
         <div class="signup__field"><input type="tel" name="telefon" placeholder="Broj telefona" autocomplete="tel" inputmode="tel" required></div>
-        <p class="signup__error" id="signupError" role="alert" hidden>Molim te popuni sva polja (ispravan broj telefona).</p>
+        <div class="signup__field"><input type="email" name="email" placeholder="Email" autocomplete="email" inputmode="email" required></div>
+        <p class="signup__error" id="signupError" role="alert" hidden>Molim te popuni sva polja (ispravan telefon i email).</p>
         <button type="submit" class="signup__next">Dalje →</button>
       </form>
 
       <!-- Korak 2: odakle plaćaš? -->
       <div class="signup__step" id="signupStepOdakle" hidden>
         <p class="signup__paytitle">Odakle plaćaš?</p>
-        <button type="button" class="signup__pay signup__pay--bank" data-goto="email" data-list="3" data-email-title="Plaćanje preko računa. Upiši email, šaljem ti instrukcije:">Plaćam iz Srbije</button>
+        <button type="button" class="signup__pay signup__pay--bank" data-submit data-list="3" data-result-title="Plaćanje iz Srbije.">Plaćam iz Srbije</button>
         <button type="button" class="signup__pay signup__pay--bank" data-goto="inostranstvo">Plaćam iz inostranstva</button>
+        <p class="signup__error" role="alert" hidden>Nešto nije u redu. Pokušaj ponovo.</p>
         <button type="button" class="signup__back" data-back>← Nazad</button>
       </div>
 
@@ -550,20 +545,16 @@
         <p class="signup__paytitle">Način plaćanja iz inostranstva:</p>
         <!-- TODO: zameni LAVATOP_URL_50 sa Lavatop checkout linkom za 50€ proizvod -->
         <a class="signup__pay signup__pay--card" data-paypal href="LAVATOP_URL_50" target="_blank" rel="noopener noreferrer">PayPal</a>
-        <button type="button" class="signup__pay signup__pay--bank" data-goto="email" data-list="8" data-email-title="Western Union / Ria / Moneygram. Upiši email, šaljem ti instrukcije:">Western Union / Ria / Moneygram</button>
-        <button type="button" class="signup__pay signup__pay--bank" data-goto="email" data-list="9" data-email-title="Plaćanje preko deviznog računa. Upiši email, šaljem ti instrukcije:">Plaćanje preko deviznog računa</button>
+        <button type="button" class="signup__pay signup__pay--bank" data-submit data-list="8" data-result-title="Western Union / Ria / Moneygram.">Western Union / Ria / Moneygram</button>
+        <button type="button" class="signup__pay signup__pay--bank" data-submit data-list="9" data-result-title="Plaćanje preko deviznog računa.">Plaćanje preko deviznog računa</button>
+        <p class="signup__error" role="alert" hidden>Nešto nije u redu. Pokušaj ponovo.</p>
         <button type="button" class="signup__back" data-back>← Nazad</button>
       </div>
 
-      <!-- Korak 3: email (deljen — Srbija, Western Union, devizni račun) -->
-      <div class="signup__step" id="signupStepEmail" hidden>
-        <p class="signup__paytitle" id="signupEmailTitle">Plaćanje preko računa. Upiši email, šaljem ti instrukcije:</p>
-        <form class="signup__bankform" id="signupBankForm" novalidate>
-          <div class="signup__field"><input type="email" name="bankEmail" placeholder="Upiši svoj email" autocomplete="email" inputmode="email" required></div>
-          <p class="signup__error" id="bankError" role="alert" hidden>Unesi ispravnu email adresu.</p>
-          <button type="submit" class="signup__pay signup__pay--card">Pošalji mi instrukcije</button>
-        </form>
-        <p class="signup__banknote" hidden>Instrukcije stižu na mejl!</p>
+      <!-- Rezultat: instrukcije stižu na email -->
+      <div class="signup__step" id="signupStepResult" hidden>
+        <p class="signup__paytitle"><span id="signupResultTitle"></span> Instrukcije ti stižu na email.</p>
+        <p class="signup__banknote">Proveri inbox (i spam) — sve potrebno za uplatu ti je na mejlu.</p>
         <button type="button" class="signup__back" data-back>← Nazad</button>
       </div>
     </div>
