@@ -668,9 +668,14 @@ section[id] { scroll-margin-top: var(--header-h); }
   pointer-events: none; -webkit-user-drag: none;
 }
 /* per-image framing so the head sits at a similar height in both */
-.ba__img--before { clip-path: inset(0 calc(100% - var(--pos)) 0 0); object-position: center 30%; }
-/* "fit" full-length shot: keep head near the top so the whole body shows */
-.ba__img--after  { object-position: center top; }
+.ba__img--before { clip-path: inset(0 calc(100% - var(--pos)) 0 0); }
+/* Nataša (story) framing: nudge "danas" head up to match the "pre" head height */
+.story .ba__img--before { object-position: center 30%; }
+.story .ba__img--after  { object-position: center 30%; transform: scale(1.15) translateY(-14%); transform-origin: center top; }
+/* Katarina before/after: collage (960×1280 = 3:4) shows fully, "pre" fitted */
+.ba--kat { aspect-ratio: 3 / 4; width: 100%; max-width: 420px; margin: 14px auto 0; }
+.ba--kat .ba__img--after  { object-position: center center; }
+.ba--kat .ba__img--before { object-position: center 20%; }
 .ba__tag {
   position: absolute; top: 14px; z-index: 3;
   font-size: 0.7rem; font-weight: 800; letter-spacing: 0.12em;
@@ -787,6 +792,31 @@ section[id] { scroll-margin-top: var(--header-h); }
    VIDEO TESTIMONIAL CARDS (visually distinct)
    ============================================================ */
 .vsection { padding: 48px 0; }
+/* ---- Testimonial carousel (slika -28kg + video priče) ---- */
+.tcar { position: relative; display: flex; align-items: center; gap: 10px; max-width: 920px; margin: 0 auto; }
+.tcar__viewport { overflow: hidden; flex: 1 1 auto; border-radius: var(--radius-lg); }
+.tcar__track { display: flex; align-items: center; transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1); }
+.tcar__slide { flex: 0 0 100%; min-width: 0; padding: 6px; }
+.tcar__slide .vcard { height: 100%; }
+.tcar__imgwrap { margin-top: 6px; border-radius: var(--radius-md); overflow: hidden; background: #0b0a0d; }
+.tcar__imgwrap img { display: block; width: 100%; height: auto; }
+.tcar__arrow {
+  flex: 0 0 auto; width: 46px; height: 46px; border-radius: 999px; cursor: pointer;
+  display: grid; place-items: center; color: #fff;
+  background: rgba(255, 30, 142, 0.16); border: 1px solid rgba(255, 30, 142, 0.55);
+  backdrop-filter: blur(4px); transition: background 0.2s ease, transform 0.2s ease;
+}
+.tcar__arrow:hover { background: var(--accent-magenta); transform: scale(1.06); }
+.tcar__arrow svg { width: 22px; height: 22px; }
+.tcar__dots { display: flex; justify-content: center; gap: 8px; margin-top: 18px; }
+.tcar__dot { width: 8px; height: 8px; border-radius: 999px; border: 0; padding: 0; cursor: pointer;
+  background: rgba(255, 255, 255, 0.28); transition: background 0.2s ease, transform 0.2s ease; }
+.tcar__dot.is-active { background: var(--accent-magenta); transform: scale(1.25); }
+@media (max-width: 560px) {
+  .tcar { gap: 4px; }
+  .tcar__arrow { width: 38px; height: 38px; }
+  .tcar__arrow svg { width: 18px; height: 18px; }
+}
 /* Two-up testimonial layout: side-by-side on desktop, stacked on mobile */
 .vcard-duo { display: grid; grid-template-columns: 1fr; gap: 22px; max-width: 920px; margin: 0 auto; align-items: stretch; }
 .vcard-duo .vcard { display: flex; flex-direction: column; height: 100%; }
@@ -947,6 +977,8 @@ section[id] { scroll-margin-top: var(--header-h); }
 .steps > .container { position: relative; z-index: 1; }
 .steps h2 { color: var(--text-dark); margin-bottom: 16px; }
 .steps__intro { color: var(--text-muted); font-size: 1.0625rem; max-width: 60ch; margin-bottom: 16px; }
+.offer__bridge { color: var(--text-dark); font-size: 1.0625rem; line-height: 1.6; max-width: 64ch; margin: 0 auto 42px; }
+.solution-cards-section .offer__bridge { color: rgba(255,255,255,0.92); position: relative; z-index: 1; }
 .steps__sub { font-family: var(--font-display); text-transform: uppercase; font-size: clamp(1.2rem, 3.6vw, 1.7rem); color: var(--text-dark); line-height: 1.18; margin: 0 auto 36px; }
 .steps__grid { display: grid; gap: 22px; counter-reset: step; }
 .step {
