@@ -794,6 +794,8 @@ section[id] { scroll-margin-top: var(--header-h); }
    ============================================================ */
 .vsection { padding: 48px 0; }
 /* ---- Testimonial carousel (slika -28kg + video priče) ---- */
+.vcard--result { max-width: 460px; margin: 0 auto; }
+.vsec-videos { margin-top: 40px; }
 .tcar { position: relative; display: flex; align-items: center; gap: 10px; max-width: 920px; margin: 0 auto; }
 .tcar__viewport { overflow: hidden; flex: 1 1 auto; border-radius: var(--radius-lg); }
 .tcar__track { display: flex; align-items: center; transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1); }
