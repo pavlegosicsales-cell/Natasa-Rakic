@@ -1361,6 +1361,8 @@ section[id] { scroll-margin-top: var(--header-h); }
 .price__stack { display: inline-grid; gap: 10px; text-align: left; margin: 0 auto 30px; }
 .price__stack li { position: relative; padding-left: 30px; font-size: 1.0625rem; color: #DADAE0; }
 .price__stack li::before { content: "✓"; position: absolute; left: 0; color: var(--accent-yellow); font-weight: 700; }
+.price__stack li { display: flex; align-items: baseline; gap: 14px; justify-content: space-between; }
+.price__val { color: var(--accent-magenta); font-weight: 700; white-space: nowrap; }
 .price__tag { display: flex; align-items: baseline; justify-content: center; gap: 16px; margin-bottom: 6px; }
 .price__old { font-family: var(--font-display); font-size: 2rem; color: var(--text-muted-dark); text-decoration: line-through; }
 .price__now { font-family: var(--font-display); font-size: clamp(3.5rem, 12vw, 5.5rem); line-height: 1; }
