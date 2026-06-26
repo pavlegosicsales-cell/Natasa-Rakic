@@ -1513,6 +1513,19 @@ section[id] { scroll-margin-top: var(--header-h); }
 .story__copy .section-cta { text-align: left; }
 /* CENA — context line: clearer, larger, spaced from the button */
 .price__context { max-width: 52ch; margin: 10px auto 32px; font-size: 1.1rem; line-height: 1.55; color: #EAEAEF; }
+/* 48h urgency countdown */
+.price-timer { display: flex; flex-direction: column; align-items: center; gap: 10px; margin: 4px auto 26px; }
+.price-timer__label { font-size: 0.95rem; color: #EAEAEF; letter-spacing: 0.02em; }
+.price-timer__label strong { color: var(--accent-yellow); }
+.price-timer__clock { display: inline-flex; align-items: center; gap: 8px; }
+.price-timer__seg { display: inline-flex; flex-direction: column; align-items: center; min-width: 62px; padding: 10px 6px 8px;
+  border-radius: 14px; background: rgba(255, 30, 142, 0.12); border: 1px solid rgba(255, 30, 142, 0.45);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.06), 0 0 24px -10px rgba(255, 30, 142, 0.6); }
+.price-timer__seg b { font-family: var(--font-display); font-size: 1.9rem; line-height: 1; color: #fff; font-variant-numeric: tabular-nums; }
+.price-timer__seg i { font-style: normal; font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent-magenta); margin-top: 5px; }
+.price-timer__sep { font-family: var(--font-display); font-size: 1.5rem; color: rgba(255,255,255,0.4); align-self: flex-start; margin-top: 8px; }
+.price-timer__note { font-size: 0.82rem; color: var(--text-muted-dark); }
+@media (max-width: 420px) { .price-timer__seg { min-width: 54px; } .price-timer__seg b { font-size: 1.6rem; } }
 
 /* Masterklas section helpers */
 .mk-subhead { font-family: var(--font-body); font-size: 0.82rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent-magenta); text-align: center; margin: 40px 0 12px; }

@@ -530,7 +530,20 @@ src="https://www.facebook.com/tr?id=620010238098956&ev=PageView&noscript=1"
       </ul>
 
       <div class="price__tag reveal">
+        <span class="price__old">100€</span>
         <span class="price__now hl">50€</span>
+      </div>
+
+      <div class="price-timer reveal" data-countdown="48" aria-live="polite">
+        <span class="price-timer__label">Cena od <strong>50€</strong> važi još</span>
+        <div class="price-timer__clock">
+          <span class="price-timer__seg"><b data-cd-h>48</b><i>h</i></span>
+          <span class="price-timer__sep">:</span>
+          <span class="price-timer__seg"><b data-cd-m>00</b><i>min</i></span>
+          <span class="price-timer__sep">:</span>
+          <span class="price-timer__seg"><b data-cd-s>00</b><i>sek</i></span>
+        </div>
+        <span class="price-timer__note">Posle toga se vraća na 100€.</span>
       </div>
 
       <p class="price__context centered reveal">To je manje od cene jedne konsultacije sa nutricionistom, a ovde dobijaš sistem koji ostaje sa tobom <span class="hl-mag">zauvek</span>.</p>
@@ -897,6 +910,39 @@ src="https://www.facebook.com/tr?id=620010238098956&ev=PageView&noscript=1"
 
     go(0);
   });
+
+  /* ---------- 48h offer countdown (per-visitor, persists in localStorage) ---------- */
+  (function () {
+    var el = document.querySelector("[data-countdown]");
+    if (!el) return;
+    var hEl = el.querySelector("[data-cd-h]"), mEl = el.querySelector("[data-cd-m]"), sEl = el.querySelector("[data-cd-s]");
+    var hours = parseInt(el.getAttribute("data-countdown"), 10) || 48;
+    var KEY = "sis_offer_deadline";
+    function getDeadline() {
+      var raw = 0;
+      try { raw = parseInt(localStorage.getItem(KEY), 10); } catch (e) {}
+      var now = Date.now();
+      if (!raw || isNaN(raw) || raw <= now) {
+        raw = now + hours * 3600 * 1000;
+        try { localStorage.setItem(KEY, String(raw)); } catch (e) {}
+      }
+      return raw;
+    }
+    var deadline = getDeadline();
+    function pad(n) { return n < 10 ? "0" + n : "" + n; }
+    function tick() {
+      var diff = deadline - Date.now();
+      if (diff <= 0) { deadline = getDeadline(); diff = deadline - Date.now(); }
+      var h = Math.floor(diff / 3600000);
+      var m = Math.floor((diff % 3600000) / 60000);
+      var s = Math.floor((diff % 60000) / 1000);
+      if (hEl) hEl.textContent = pad(h);
+      if (mEl) mEl.textContent = pad(m);
+      if (sEl) sEl.textContent = pad(s);
+    }
+    tick();
+    setInterval(tick, 1000);
+  })();
 
   /* ---------- Wall of messages: lightbox for raw screenshots ---------- */
   (function () {
